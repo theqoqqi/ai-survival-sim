@@ -1,0 +1,290 @@
+{
+  "width": 10,
+  "height": 10,
+  "tiles": [
+    {
+      "position": {
+        "x": 6,
+        "y": 0
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 1
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 2,
+        "y": 2
+      },
+      "data": {
+        "terrain": {
+          "title": "Равнина",
+          "color": "#fafffa"
+        },
+        "content": {
+          "title": "Дерево",
+          "icon": "🌲",
+          "description": "Обычное дерево"
+        }
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 4,
+        "y": 2
+      },
+      "data": {
+        "terrain": {
+          "title": "Равнина",
+          "color": "#fafffa"
+        },
+        "content": {
+          "title": "Дерево",
+          "icon": "🌲",
+          "description": "Обычное дерево"
+        }
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 2
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 3
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": {
+          "title": "Мост",
+          "icon": "🌉",
+          "description": "Старый дряхлый мост, проходящий через реку"
+        }
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 4
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 3,
+        "y": 5
+      },
+      "data": {
+        "terrain": {
+          "title": "Равнина",
+          "color": "#fafffa"
+        },
+        "content": null
+      },
+      "entities": [
+        {
+          "id": "player",
+          "icon": "👤",
+          "title": "Игрок",
+          "inventory": [
+            {
+              "id": "apple",
+              "icon": "🍎",
+              "title": "Яблоко",
+              "description": "Не очень вкусное на вид яблоко",
+              "amount": 2
+            },
+            {
+              "id": "bottleWithWater",
+              "icon": "💧",
+              "title": "Бутылка с водой",
+              "description": "Полупустая бутылка с питьевой водой",
+              "amount": 1
+            },
+            {
+              "id": "axe",
+              "icon": "🪓",
+              "title": "Топор",
+              "description": "Старый топор, который вот-вот сломается",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 5
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 6
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 8,
+        "y": 6
+      },
+      "data": {
+        "terrain": {
+          "title": "Равнина",
+          "color": "#fafffa"
+        },
+        "content": {
+          "title": "Дерево",
+          "icon": "🌲",
+          "description": "Обычное дерево"
+        }
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 7
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 9,
+        "y": 7
+      },
+      "data": {
+        "terrain": {
+          "title": "Равнина",
+          "color": "#fafffa"
+        },
+        "content": {
+          "title": "Дерево",
+          "icon": "🌲",
+          "description": "Обычное дерево"
+        }
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 8
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 9,
+        "y": 8
+      },
+      "data": {
+        "terrain": {
+          "title": "Равнина",
+          "color": "#fafffa"
+        },
+        "content": {
+          "title": "Дерево",
+          "icon": "🌲",
+          "description": "Обычное дерево"
+        }
+      },
+      "entities": []
+    },
+    {
+      "position": {
+        "x": 6,
+        "y": 9
+      },
+      "data": {
+        "terrain": {
+          "title": "Река",
+          "color": "#fafbff"
+        },
+        "content": null
+      },
+      "entities": []
+    }
+  ],
+  "emptyTileData": {
+    "terrain": {
+      "title": "Равнина",
+      "color": "#fafffa"
+    },
+    "content": null
+  }
+}
