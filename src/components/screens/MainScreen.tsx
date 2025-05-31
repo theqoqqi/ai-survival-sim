@@ -5,10 +5,20 @@ import Tile from '../../core/Tile';
 import { WorldMapView } from '../world/WorldMapView';
 import WorldMap from '../../core/WorldMap';
 import { createTestWorld } from '../../presets/testWorld';
+import Entity from '../../core/Entity';
+import { EntityDetailsPanel } from '../EntityDetailsPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
+    const [selectedEntity, setSelectedEntity] = React.useState<Entity | null>(null);
     const [worldMap, setWorldMap] = React.useState<WorldMap | null>(null);
+    const onClickTile = (tile: Tile) => {
+        setSelectedTile(tile);
+        setSelectedEntity(null);
+    };
+    const onClickEntity = (entity: Entity) => {
+        setSelectedEntity(entity);
+    };
 
     React.useEffect(() => {
         setWorldMap(createTestWorld());
@@ -23,11 +33,17 @@ export default function MainScreen() {
             <div className={styles.worldMapContainer}>
                 <WorldMapView
                     worldMap={worldMap}
-                    onClickTile={setSelectedTile}
+                    onClickTile={onClickTile}
                 />
             </div>
             <div className={styles.sidebar}>
-                <TileDetailsPanel tile={selectedTile}/>
+                {selectedEntity && <EntityDetailsPanel entity={selectedEntity} />}
+                {!selectedEntity && (
+                    <TileDetailsPanel
+                        tile={selectedTile}
+                        onClickEntity={onClickEntity}
+                    />
+                )}
             </div>
         </div>
     );
