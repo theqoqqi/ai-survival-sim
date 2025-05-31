@@ -1,0 +1,23 @@
+
+.worldMapView {
+    --width: 1;
+    --height: 1;
+    --max-tile-width: 100cqw / var(--width);
+    --max-tile-height: 100cqh / var(--height);
+    --tile-size: min(var(--max-tile-width), var(--max-tile-height));
+
+    display: grid;
+    grid-template-columns: repeat(var(--width), 1fr);
+    grid-template-rows: repeat(var(--height), 1fr);
+
+    gap: 8px;
+    padding: 12px;
+
+    width: calc(var(--tile-size) * var(--width));
+    height: calc(var(--tile-size) * var(--height));
+
+    border: 2px solid #eee;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
