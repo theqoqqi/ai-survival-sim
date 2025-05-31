@@ -1,0 +1,114 @@
+
+.container {
+    width: 100%;
+    padding: 12px;
+
+    color: #333;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    font-family: Arial, sans-serif;
+
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.header .entityNames {
+    display: flex;
+    flex-direction: column;
+}
+
+.header .title {
+    font-size: 1.2em;
+}
+
+.header .id {
+    color: #777;
+    font-size: 0.75em;
+    font-weight: 400;
+}
+
+.icon {
+    font-size: 1.5em;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.body {
+    margin-top: 8px;
+}
+
+.inventoryTitle {
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+.inventoryList {
+    display: flex;
+    flex-direction: column;
+}
+
+.inventoryItem {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+    padding: 6px;
+}
+
+.inventoryItem:hover {
+    background-color: #eee;
+}
+
+.itemIcon {
+    width: 1.2em;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+}
+
+.itemTitle {
+    font-weight: 500;
+}
+
+.itemId {
+    color: #777;
+    font-size: 0.7em;
+}
+
+.itemDescription {
+    color: #777;
+    font-size: 0.75em;
+}
+
+.itemAmount {
+    color: #555;
+    font-size: 1.2em;
+}
+
+.empty {
+    padding: 16px;
+
+    color: #777;
+    font-style: italic;
+    text-align: center;
+}
