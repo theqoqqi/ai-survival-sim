@@ -1,0 +1,84 @@
+
+.container {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fafafa;
+
+    color: #333;
+    font-family: Arial, sans-serif;
+
+    box-sizing: border-box;
+}
+
+.header {
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+
+    border-bottom: 1px solid #ddd;
+
+    font-size: 1.1em;
+}
+
+.empty {
+    padding: 16px;
+
+    color: #777;
+    font-style: italic;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    gap: 12px;
+}
+
+.tileWrapper {
+    display: grid;
+
+    width: 80px;
+    height: 80px;
+
+    flex-shrink: 0;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.terrainLine {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.terrainLine span {
+    padding: 0 8px;
+
+    border: 2px solid #999;
+    border-radius: 4px;
+
+    font-weight: 600;
+}
+
+.field {
+    font-size: 0.95em;
+}
+
+.field span {
+    font-weight: 600;
+}
+
+.emptyContent {
+    padding: 4px;
+
+    color: #777;
+    font-style: italic;
+}
