@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './MainScreen.module.css';
-import { TileDetailsPanel } from '../TileDetailsPanel';
+import { TileDetailsPanel } from '../sidebar/TileDetailsPanel';
 import Tile from '../../core/Tile';
 import { WorldMapView } from '../world/WorldMapView';
 import WorldMap from '../../core/WorldMap';
 import { createTestWorld } from '../../presets/testWorld';
 import Entity from '../../core/Entity';
-import { EntityDetailsPanel } from '../EntityDetailsPanel';
+import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);

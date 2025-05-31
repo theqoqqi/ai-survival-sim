@@ -1,8 +1,8 @@
 import React from 'react';
-import Tile, { TileContent, TileTerrain } from '../core/Tile';
-import TileView from './world/TileView';
+import Tile, { TileContent, TileTerrain } from '../../core/Tile';
+import TileView from '../world/TileView';
 import styles from './TileDetailsPanel.module.css';
-import Entity from '../core/Entity';
+import Entity from '../../core/Entity';
 import { DetailsPanel } from './DetailsPanel';
 
 const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => (

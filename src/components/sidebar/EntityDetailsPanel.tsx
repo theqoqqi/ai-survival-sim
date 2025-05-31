@@ -1,9 +1,9 @@
 import React from 'react';
-import Entity from '../core/Entity';
+import Entity from '../../core/Entity';
 import styles from './EntityDetailsPanel.module.css';
-import InventoryItem from '../core/InventoryItem';
+import InventoryItem from '../../core/InventoryItem';
 import { DetailsPanel } from './DetailsPanel';
-import Inventory from '../core/Inventory';
+import Inventory from '../../core/Inventory';
 
 const Header: React.FC<{ entity: Entity }> = ({ entity }) => (
     <>
