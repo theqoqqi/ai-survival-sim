@@ -8,7 +8,7 @@ export class TileGrid {
 
     constructor(width: number, height: number, initializer: (x: number, y: number) => TileData) {
         this.grid = new Grid<Tile>(width, height, (x, y) => {
-            return TileGrid.createTile(x, y, initializer(x, y));
+            return new Tile(x, y, initializer(x, y));
         });
     }
 
@@ -25,7 +25,7 @@ export class TileGrid {
     }
 
     setData(x: number, y: number, data: TileData): void {
-        this.setTile(x, y, TileGrid.createTile(x, y, data));
+        this.getTile(x, y).data = data;
     }
 
     getTile(x: number, y: number): Tile {
@@ -65,17 +65,5 @@ export class TileGrid {
 
     toArray(): Tile[][] {
         return this.grid.toArray();
-    }
-
-    private static createTile(x: number, y: number, data: TileData): Tile {
-        return {
-            position: { x, y },
-            data,
-            entities: [],
-        };
-    }
-
-    static fromArray(data: TileData[][]): TileGrid {
-        return new TileGrid(data[0].length, data.length, (x, y) => data[y][x]);
     }
 }

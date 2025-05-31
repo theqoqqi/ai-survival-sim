@@ -1,5 +1,5 @@
 import { Position } from './util/Position';
-import Entity from './Entity';
+import Entity, { SerializedEntity } from './Entity';
 
 export interface TileContent {
     icon: string;
@@ -17,8 +17,40 @@ export interface TileData {
     terrain: TileTerrain;
 }
 
-export default interface Tile {
+export interface SerializedTile {
+    position: Position;
+    data: TileData;
+    entities: SerializedEntity[];
+}
+
+export default class Tile {
+
     readonly position: Position;
-    readonly data: TileData;
-    readonly entities: Entity[],
+
+    data: TileData;
+
+    readonly entities: Entity[];
+
+    constructor(x: number, y: number, data: TileData, entities: Entity[] = []) {
+        this.position = { x, y };
+        this.data = data;
+        this.entities = entities;
+    }
+
+    toJson(): SerializedTile {
+        return {
+            position: this.position,
+            data: this.data,
+            entities: this.entities.map(entity => entity.toJson()),
+        };
+    }
+
+    static fromJson(tile: SerializedTile): Tile {
+        return new Tile(
+            tile.position.x,
+            tile.position.y,
+            tile.data,
+            tile.entities.map(entity => Entity.fromJson(entity))
+        );
+    }
 }

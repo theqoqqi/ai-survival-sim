@@ -15,24 +15,20 @@ export function createTestWorld(): WorldMap {
     });
 
     for (let y = 0; y < 10; y++) {
-        let content = null;
-
-        if (y === 3) {
-            content = {
-                title: 'Мост',
-                icon: '🌉',
-                description: 'Старый дряхлый мост, проходящий через реку',
-            };
-        }
-
         worldMap.setTileData(6, y, {
             terrain: {
                 title: 'Река',
                 color: '#fafbff',
             },
-            content,
+            content: null,
         });
     }
+
+    worldMap.getTile(6, 3).data.content = {
+        title: 'Мост',
+        icon: '🌉',
+        description: 'Старый дряхлый мост, проходящий через реку',
+    };
 
     const trees = [
         { x: 2, y: 2 },

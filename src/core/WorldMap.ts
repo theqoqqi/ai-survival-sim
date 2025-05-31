@@ -1,41 +1,31 @@
-import Tile, { TileData } from './Tile';
+import Tile, { SerializedTile, TileData } from './Tile';
 import { TileGrid } from './TileGrid';
 import Entity from './Entity';
 
-type WorldMapOptions = InitialTilesWorldMapOptions | EmptyTileDataWorldMapOptions;
+type WorldMapOptions = SerializedWorldMap | CreateWorldMapOptions;
 
-export interface InitialTilesWorldMapOptions {
-    initialTiles: TileData[][];
-}
-
-export interface EmptyTileDataWorldMapOptions {
+export interface CreateWorldMapOptions {
     width: number;
     height: number;
     emptyTileData: TileData;
 }
 
 export interface SerializedWorldMap {
-    tiles: TileData[][];
+    width: number;
+    height: number;
+    emptyTileData: TileData;
+    tiles: SerializedTile[];
 }
 
 export default class WorldMap {
 
     readonly grid: TileGrid;
 
+    readonly emptyTileData: TileData;
+
     constructor(options: WorldMapOptions) {
-        this.grid = this.createTilesFromOptions(options);
-    }
-
-    private createTilesFromOptions(options: WorldMapOptions) {
-        if ('initialTiles' in options) {
-            return TileGrid.fromArray(options.initialTiles);
-        }
-
-        if (options.width === undefined || options.height === undefined) {
-            throw new Error('Width and height must be provided if no initialTiles');
-        }
-
-        return new TileGrid(options.width, options.height, () => options.emptyTileData);
+        this.grid = new TileGrid(options.width, options.height, () => options.emptyTileData);
+        this.emptyTileData = options.emptyTileData;
     }
 
     get width(): number {
@@ -68,13 +58,27 @@ export default class WorldMap {
 
     toJson(): SerializedWorldMap {
         return {
-            tiles: this.grid.map(tile => tile.data)
+            width: this.grid.width,
+            height: this.grid.height,
+            tiles: this.serializeTiles(),
+            emptyTileData: this.emptyTileData,
         };
     }
 
+    private serializeTiles() {
+        return this.grid.toArray()
+            .flat()
+            .filter(tile => tile.data !== this.emptyTileData || tile.entities.length > 0)
+            .map(tile => tile.toJson());
+    }
+
     static fromJson(json: SerializedWorldMap): WorldMap {
-        return new WorldMap({
-            initialTiles: json.tiles
-        });
+        const map = new WorldMap(json);
+
+        json.tiles.map(tile => Tile.fromJson(tile)).forEach(tile => {
+            map.grid.setTile(tile.position.x, tile.position.y, tile);
+        })
+
+        return map;
     }
 }
