@@ -91,11 +91,20 @@
     gap: 6px;
 }
 
-.entityIcon {
-    font-size: 1.2em;
-    line-height: 1;
+.entityListItem:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
 }
 
-.entityTitle {
+.entityListItem:hover .entityNames {
+    color: #222;
+}
+
+.entityIcon {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.entityNames {
     font-size: 0.95em;
 }

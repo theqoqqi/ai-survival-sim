@@ -28,7 +28,12 @@ const ContentInfo: React.FC<{ content: TileContent | null }> = ({ content }) => 
     );
 };
 
-const EntityList: React.FC<{ entities: Entity[] }> = ({ entities }) => {
+interface EntityListProps {
+    entities: Entity[];
+    onClickEntity?: (entity: Entity) => void;
+}
+
+const EntityList: React.FC<EntityListProps> = ({ entities, onClickEntity }) => {
     if (entities.length === 0) {
         return null;
     }
@@ -37,7 +42,7 @@ const EntityList: React.FC<{ entities: Entity[] }> = ({ entities }) => {
         <div className={styles.entityList}>
             Сущности:
             {entities.map((ent) => (
-                <div key={ent.id} className={styles.entityListItem}>
+                <div key={ent.id} className={styles.entityListItem} onClick={() => onClickEntity?.(ent)}>
                     <span className={styles.entityIcon}>{ent.icon}</span>
                     <span className={styles.entityTitle}>{ent.title}</span>
                 </div>
@@ -48,9 +53,10 @@ const EntityList: React.FC<{ entities: Entity[] }> = ({ entities }) => {
 
 interface TileDetailsPanelProps {
     tile: Tile | null;
+    onClickEntity?: (entity: Entity) => void;
 }
 
-export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
+export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClickEntity }) => {
     if (!tile) {
         return (
             <DetailsPanel emptyMessage='Выберите тайл' />
@@ -75,7 +81,7 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
             <div className={styles.info}>
                 <TerrainInfo terrain={terrain} />
                 <ContentInfo content={content} />
-                <EntityList entities={entities} />
+                <EntityList entities={entities} onClickEntity={onClickEntity} />
             </div>
         </DetailsPanel>
     );
