@@ -1,4 +1,5 @@
 import WorldMap from '../core/WorldMap';
+import Entity from '../core/Entity';
 
 export function createTestWorld(): WorldMap {
     const worldMap = new WorldMap({
@@ -54,6 +55,13 @@ export function createTestWorld(): WorldMap {
             },
         });
     }
+
+    worldMap.addEntity(3, 5, new Entity({
+        id: 'player',
+        icon: '👤',
+        title: 'Игрок',
+        initialItems: [],
+    }));
 
     return worldMap;
 }
