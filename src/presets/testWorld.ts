@@ -60,7 +60,29 @@ export function createTestWorld(): WorldMap {
         id: 'player',
         icon: '👤',
         title: 'Игрок',
-        initialItems: [],
+        initialItems: [
+            {
+                id: 'apple',
+                icon: '🍎',
+                title: 'Яблоко',
+                description: 'Не очень вкусное на вид яблоко',
+                amount: 2,
+            },
+            {
+                id: 'bottleWithWater',
+                icon: '💧',
+                title: 'Бутылка с водой',
+                description: 'Полупустая бутылка с питьевой водой',
+                amount: 1,
+            },
+            {
+                id: 'axe',
+                icon: '🪓',
+                title: 'Топор',
+                description: 'Старый топор, который вот-вот сломается',
+                amount: 1,
+            },
+        ],
     }));
 
     return worldMap;
