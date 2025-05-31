@@ -2,6 +2,7 @@ import React from 'react';
 import Tile, { TileContent, TileTerrain } from '../core/Tile';
 import TileView from './world/TileView';
 import styles from './TileDetailsPanel.module.css';
+import Entity from '../core/Entity';
 
 interface TileDetailsPanelProps {
     tile: Tile | null;
@@ -34,6 +35,24 @@ const ContentInfo: React.FC<{ content: TileContent | null }> = ({ content }) => 
     );
 };
 
+const EntityList: React.FC<{ entities: Entity[] }> = ({ entities }) => {
+    if (entities.length === 0) {
+        return null;
+    }
+
+    return (
+        <div className={styles.entityList}>
+            Сущности:
+            {entities.map((ent) => (
+                <div key={ent.id} className={styles.entityListItem}>
+                    <span className={styles.entityIcon}>{ent.icon}</span>
+                    <span className={styles.entityTitle}>{ent.title}</span>
+                </div>
+            ))}
+        </div>
+    );
+};
+
 export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
     if (!tile) {
         return (
@@ -45,7 +64,8 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
 
     const {
         position: { x, y },
-        data: { terrain, content }
+        data: { terrain, content },
+        entities,
     } = tile;
 
     return (
@@ -60,6 +80,7 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
                 <div className={styles.info}>
                     <TerrainInfo terrain={terrain} />
                     <ContentInfo content={content} />
+                    <EntityList entities={entities} />
                 </div>
             </div>
         </section>

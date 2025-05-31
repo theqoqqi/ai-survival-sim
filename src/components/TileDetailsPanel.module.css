@@ -82,3 +82,27 @@
     color: #777;
     font-style: italic;
 }
+
+.entityList {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.entityListItem {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.entityIcon {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.entityTitle {
+    font-size: 0.95em;
+}
