@@ -1,5 +1,6 @@
 import Tile, { TileData } from './Tile';
 import { TileGrid } from './TileGrid';
+import Entity from './Entity';
 
 type WorldMapOptions = InitialTilesWorldMapOptions | EmptyTileDataWorldMapOptions;
 
@@ -51,6 +52,18 @@ export default class WorldMap {
 
     setTileData(x: number, y: number, data: TileData): void {
         this.grid.setData(x, y, data);
+    }
+
+    addEntity(x: number, y: number, entity: Entity): void {
+        this.grid.addEntity(x, y, entity);
+    }
+
+    removeEntity(x: number, y: number, entityId: string): boolean {
+        return this.grid.removeEntity(x, y, entityId);
+    }
+
+    getEntities(x: number, y: number): Entity[] {
+        return this.grid.getEntities(x, y);
     }
 
     toJson(): SerializedWorldMap {

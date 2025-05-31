@@ -1,4 +1,5 @@
 import { Position } from './util/Position';
+import Entity from './Entity';
 
 export interface TileContent {
     icon: string;
@@ -19,4 +20,5 @@ export interface TileData {
 export default interface Tile {
     readonly position: Position;
     readonly data: TileData;
+    readonly entities: Entity[],
 }

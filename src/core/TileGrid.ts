@@ -1,5 +1,6 @@
 import { Grid } from './util/Grid';
 import Tile, { TileData } from './Tile';
+import Entity from './Entity';
 
 export class TileGrid {
 
@@ -35,6 +36,29 @@ export class TileGrid {
         this.grid.set(x, y, tile);
     }
 
+    addEntity(x: number, y: number, entity: Entity): void {
+        const tile = this.getTile(x, y);
+
+        tile.entities.push(entity);
+    }
+
+    removeEntity(x: number, y: number, entityId: string): boolean {
+        const tile = this.getTile(x, y);
+        const index = tile.entities.findIndex(e => e.id === entityId);
+
+        if (index < 0) {
+            return false;
+        }
+
+        tile.entities.splice(index, 1);
+
+        return true;
+    }
+
+    getEntities(x: number, y: number): Entity[] {
+        return [...this.getTile(x, y).entities];
+    }
+
     map<U>(callback: (tile: Tile, x: number, y: number) => U): U[][] {
         return this.grid.map(callback);
     }
@@ -46,7 +70,8 @@ export class TileGrid {
     private static createTile(x: number, y: number, data: TileData): Tile {
         return {
             position: { x, y },
-            data
+            data,
+            entities: [],
         };
     }
 
