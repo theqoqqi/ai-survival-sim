@@ -3,14 +3,7 @@ import Tile, { TileContent, TileTerrain } from '../core/Tile';
 import TileView from './world/TileView';
 import styles from './TileDetailsPanel.module.css';
 import Entity from '../core/Entity';
-
-interface TileDetailsPanelProps {
-    tile: Tile | null;
-}
-
-const Header: React.FC<{ x: number; y: number }> = ({ x, y }) => (
-    <header className={styles.header}>{`X: ${x}, Y: ${y}`}</header>
-);
+import { DetailsPanel } from './DetailsPanel';
 
 const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => (
     <div className={styles.terrainLine}>
@@ -53,12 +46,14 @@ const EntityList: React.FC<{ entities: Entity[] }> = ({ entities }) => {
     );
 };
 
+interface TileDetailsPanelProps {
+    tile: Tile | null;
+}
+
 export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
     if (!tile) {
         return (
-            <section className={styles.container}>
-                <div className={styles.empty}>Выберите тайл</div>
-            </section>
+            <DetailsPanel emptyMessage='Выберите тайл' />
         );
     }
 
@@ -69,20 +64,19 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile }) => {
     } = tile;
 
     return (
-        <section className={styles.container}>
-            <Header x={x} y={y} />
-
-            <div className={styles.main}>
-                <div className={styles.tileWrapper}>
-                    <TileView tile={tile} />
-                </div>
-
-                <div className={styles.info}>
-                    <TerrainInfo terrain={terrain} />
-                    <ContentInfo content={content} />
-                    <EntityList entities={entities} />
-                </div>
+        <DetailsPanel
+            header={`X: ${x}, Y: ${y}`}
+            classNames={{ body: styles.body }}
+        >
+            <div className={styles.tileWrapper}>
+                <TileView tile={tile} />
             </div>
-        </section>
+
+            <div className={styles.info}>
+                <TerrainInfo terrain={terrain} />
+                <ContentInfo content={content} />
+                <EntityList entities={entities} />
+            </div>
+        </DetailsPanel>
     );
 };

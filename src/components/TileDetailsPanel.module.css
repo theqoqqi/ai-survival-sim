@@ -13,15 +13,6 @@
     box-sizing: border-box;
 }
 
-.header {
-    margin-bottom: 12px;
-    padding-bottom: 4px;
-
-    border-bottom: 1px solid #ddd;
-
-    font-size: 1.1em;
-}
-
 .empty {
     padding: 16px;
 
@@ -30,9 +21,11 @@
     text-align: center;
 }
 
-.main {
+.body {
     display: flex;
     gap: 12px;
+
+    margin-top: 12px;
 }
 
 .tileWrapper {
