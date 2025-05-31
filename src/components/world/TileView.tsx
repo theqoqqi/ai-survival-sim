@@ -31,7 +31,10 @@ const TileView: React.FC<TileViewProps> = ({ tile, onClick }) => {
             title={tooltip}
             onClick={() => onClick?.(tile)}
         >
-            {icon}
+            <span>{icon}</span>
+            <div className={styles.entities}>
+                {tile.entities.map(entity => entity.icon)}
+            </div>
         </div>
     );
 };
