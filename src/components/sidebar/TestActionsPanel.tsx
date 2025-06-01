@@ -8,6 +8,7 @@ import InventoryItem from '../../core/InventoryItem';
 import { AddInventoryItemAction } from '../../core/actions/AddInventoryItemAction';
 import { RemoveInventoryItemAction } from '../../core/actions/RemoveInventoryItemAction';
 import { AddItemToStackAction } from '../../core/actions/AddItemToStackAction';
+import { SetTileFeatureAction } from '../../core/actions/SetTileFeatureAction';
 
 interface TestActionsPanelProps {
     worldMap: WorldMap;
@@ -60,6 +61,26 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
         apply(new RemoveInventoryItemAction('player', 'apple'));
     };
 
+    const setTreeFeature = () => {
+        apply(new SetTileFeatureAction({ x: 8, y: 1 }, {
+            icon: '🌳',
+            title: 'Дерево',
+            description: 'Большое зеленое дерево',
+        }));
+    };
+
+    const setMountainFeature = () => {
+        apply(new SetTileFeatureAction({ x: 8, y: 1 }, {
+            icon: '⛰️',
+            title: 'Гора',
+            description: 'Большая гора',
+        }));
+    };
+
+    const clearFeature = () => {
+        apply(new SetTileFeatureAction({ x: 8, y: 1 }));
+    };
+
     return (
         <DetailsPanel
             header='Тестовые действия'
@@ -90,6 +111,16 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
             </button>
             <button onClick={removeAllItems}>
                 Remove all 🍎
+            </button>
+
+            <button onClick={setTreeFeature}>
+                Set tile feature 🌳 at (8, 1)
+            </button>
+            <button onClick={setMountainFeature}>
+                Set tile feature ⛰️ at (8, 1)
+            </button>
+            <button onClick={clearFeature}>
+                Clear tile feature at (8, 1)
             </button>
         </DetailsPanel>
     );
