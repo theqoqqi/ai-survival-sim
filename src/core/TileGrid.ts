@@ -37,22 +37,19 @@ export class TileGrid {
     }
 
     addEntity(x: number, y: number, entity: Entity): void {
-        const tile = this.getTile(x, y);
-
-        tile.entities.push(entity);
+        this.getTile(x, y).addEntity(entity);
     }
 
-    removeEntity(x: number, y: number, entityId: string): boolean {
-        const tile = this.getTile(x, y);
-        const index = tile.entities.findIndex(e => e.id === entityId);
+    removeEntity(entity: Entity | string): boolean {
+        const foundEntity = this.getEntity(entity);
 
-        if (index < 0) {
+        if (!foundEntity) {
             return false;
         }
 
-        tile.entities.splice(index, 1);
+        const tile = this.findEntityTile(foundEntity);
 
-        return true;
+        return tile?.removeEntity(foundEntity) ?? false;
     }
 
     getEntity(entity: Entity | string): Entity | null {

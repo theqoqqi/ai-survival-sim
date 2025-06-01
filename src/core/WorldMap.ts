@@ -48,8 +48,8 @@ export default class WorldMap {
         this.grid.addEntity(x, y, entity);
     }
 
-    removeEntity(x: number, y: number, entityId: string): boolean {
-        return this.grid.removeEntity(x, y, entityId);
+    removeEntity(entityId: string): boolean {
+        return this.grid.removeEntity(entityId);
     }
 
     getEntities(x: number, y: number): Entity[] {
