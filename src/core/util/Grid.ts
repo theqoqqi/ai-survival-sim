@@ -15,6 +15,10 @@ export class Grid<T> {
         );
     }
 
+    isInBounds(x: number, y: number): boolean {
+        return x >= 0 && x < this.width && y >= 0 && y < this.height;
+    }
+
     get(x: number, y: number): T {
         this.checkBounds(x, y);
         return this.data[y][x];
@@ -32,7 +36,7 @@ export class Grid<T> {
     }
 
     private checkBounds(x: number, y: number): void {
-        if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
+        if (!this.isInBounds(x, y)) {
             throw new Error(`Out of bounds: (${x}, ${y})`);
         }
     }

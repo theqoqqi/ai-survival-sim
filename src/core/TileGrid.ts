@@ -37,6 +37,10 @@ export class TileGrid {
     }
 
     moveEntity(entity: Entity | string, x: number, y: number): void {
+        if (!this.grid.isInBounds(x, y)) {
+            return;
+        }
+
         const foundEntity = this.getEntity(entity);
 
         if (!foundEntity) {
