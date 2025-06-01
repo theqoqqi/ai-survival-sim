@@ -56,6 +56,18 @@ export default class WorldMap {
         return this.grid.getEntities(x, y);
     }
 
+    getEntity(entityId: string): Entity | null {
+        return this.grid.getEntity(entityId);
+    }
+
+    findEntity(entityId: string): Entity | null {
+        return this.grid.findEntity(entityId);
+    }
+
+    findEntityTile(entityId: string): Tile | null {
+        return this.grid.findEntityTile(entityId);
+    }
+
     toJson(): SerializedWorldMap {
         return {
             width: this.grid.width,
