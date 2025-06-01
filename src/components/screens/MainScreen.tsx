@@ -7,11 +7,14 @@ import WorldMap from '../../core/WorldMap';
 import { createTestWorld } from '../../presets/testWorld';
 import Entity from '../../core/Entity';
 import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
+import Action from '../../core/actions/Action';
+import { TestActionsPanel } from '../sidebar/TestActionsPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
     const [selectedEntity, setSelectedEntity] = React.useState<Entity | null>(null);
     const [worldMap, setWorldMap] = React.useState<WorldMap | null>(null);
+    const [appliedActions, setAppliedActions] = React.useState<Action<any>[]>([]);
     const onClickTile = (tile: Tile) => {
         setSelectedTile(tile);
         setSelectedEntity(null);
@@ -32,6 +35,7 @@ export default function MainScreen() {
         <div className={styles.mainScreen}>
             <div className={styles.worldMapContainer}>
                 <WorldMapView
+                    key={appliedActions.length}
                     worldMap={worldMap}
                     onClickTile={onClickTile}
                 />
@@ -44,6 +48,12 @@ export default function MainScreen() {
                         onClickEntity={onClickEntity}
                     />
                 )}
+                <TestActionsPanel
+                    worldMap={worldMap}
+                    onApplyAction={(action) => {
+                        setAppliedActions([...appliedActions, action]);
+                    }}
+                />
             </div>
         </div>
     );
