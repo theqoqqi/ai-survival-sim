@@ -37,6 +37,30 @@ export default class Tile {
         this.entities = entities;
     }
 
+    addEntity(entity: Entity): void {
+        this.entities.push(entity);
+    }
+
+    removeEntity(entity: Entity): boolean {
+        const index = this.entities.indexOf(entity);
+
+        if (index < 0) {
+            return false;
+        }
+
+        this.entities.splice(index, 1);
+
+        return true;
+    }
+
+    hasEntity(entityId: string): boolean {
+        return this.entities.some(entity => entity.id === entityId);
+    }
+
+    getEntity(entityId: string): Entity | null {
+        return this.entities.find(entity => entity.id === entityId) || null;
+    }
+
     toJson(): SerializedTile {
         return {
             position: this.position,
