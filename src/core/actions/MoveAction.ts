@@ -1,0 +1,40 @@
+import Action from './Action';
+import type WorldMap from '../WorldMap';
+import type { Position } from '../util/Position';
+
+export type SerializedMoveAction = {
+    type: 'move';
+    entityId: string;
+    target: Position;
+}
+
+export default class MoveAction extends Action<SerializedMoveAction> {
+
+    readonly type = 'move' as const;
+
+    readonly entityId: string;
+
+    readonly target: Position;
+
+    constructor(entityId: string, target: Position) {
+        super();
+        this.entityId = entityId;
+        this.target = target;
+    }
+
+    apply(world: WorldMap): void {
+        world.moveEntity(this.entityId, this.target.x, this.target.y);
+    }
+
+    toJson(): SerializedMoveAction {
+        return {
+            type: this.type,
+            entityId: this.entityId,
+            target: this.target
+        };
+    }
+
+    static fromJson(json: any): MoveAction {
+        return new MoveAction(json.entityId, json.target);
+    }
+}
