@@ -1,7 +1,7 @@
 import { Position } from './util/Position';
 import Entity, { SerializedEntity } from './Entity';
 
-export interface TileContent {
+export interface TileFeature {
     icon: string;
     title: string;
     description: string;
@@ -13,7 +13,7 @@ export interface TileTerrain {
 }
 
 export interface TileData {
-    content: TileContent | null;
+    feature: TileFeature | null;
     terrain: TileTerrain;
 }
 

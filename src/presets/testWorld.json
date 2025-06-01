@@ -12,7 +12,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -26,7 +26,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -40,7 +40,7 @@
           "title": "Равнина",
           "color": "#fafffa"
         },
-        "content": {
+        "feature": {
           "title": "Дерево",
           "icon": "🌲",
           "description": "Обычное дерево"
@@ -58,7 +58,7 @@
           "title": "Равнина",
           "color": "#fafffa"
         },
-        "content": {
+        "feature": {
           "title": "Дерево",
           "icon": "🌲",
           "description": "Обычное дерево"
@@ -76,7 +76,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -90,7 +90,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": {
+        "feature": {
           "title": "Мост",
           "icon": "🌉",
           "description": "Старый дряхлый мост, проходящий через реку"
@@ -108,7 +108,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -122,7 +122,7 @@
           "title": "Равнина",
           "color": "#fafffa"
         },
-        "content": null
+        "feature": null
       },
       "entities": [
         {
@@ -165,7 +165,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -179,7 +179,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -193,7 +193,7 @@
           "title": "Равнина",
           "color": "#fafffa"
         },
-        "content": {
+        "feature": {
           "title": "Дерево",
           "icon": "🌲",
           "description": "Обычное дерево"
@@ -211,7 +211,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -225,7 +225,7 @@
           "title": "Равнина",
           "color": "#fafffa"
         },
-        "content": {
+        "feature": {
           "title": "Дерево",
           "icon": "🌲",
           "description": "Обычное дерево"
@@ -243,7 +243,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     },
@@ -257,7 +257,7 @@
           "title": "Равнина",
           "color": "#fafffa"
         },
-        "content": {
+        "feature": {
           "title": "Дерево",
           "icon": "🌲",
           "description": "Обычное дерево"
@@ -275,7 +275,7 @@
           "title": "Река",
           "color": "#fafbff"
         },
-        "content": null
+        "feature": null
       },
       "entities": []
     }
@@ -285,6 +285,6 @@
       "title": "Равнина",
       "color": "#fafffa"
     },
-    "content": null
+    "feature": null
   }
 }

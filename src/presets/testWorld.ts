@@ -10,7 +10,7 @@ export function createTestWorld(): WorldMap {
                 title: 'Равнина',
                 color: '#fafffa',
             },
-            content: null,
+            feature: null,
         },
     });
 
@@ -20,11 +20,11 @@ export function createTestWorld(): WorldMap {
                 title: 'Река',
                 color: '#fafbff',
             },
-            content: null,
+            feature: null,
         });
     }
 
-    worldMap.getTile(6, 3).data.content = {
+    worldMap.getTile(6, 3).data.feature = {
         title: 'Мост',
         icon: '🌉',
         description: 'Старый дряхлый мост, проходящий через реку',
@@ -44,7 +44,7 @@ export function createTestWorld(): WorldMap {
                 title: 'Равнина',
                 color: '#fafffa',
             },
-            content: {
+            feature: {
                 title: 'Дерево',
                 icon: '🌲',
                 description: 'Обычное дерево',

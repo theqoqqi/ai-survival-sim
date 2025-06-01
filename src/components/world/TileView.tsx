@@ -1,5 +1,5 @@
 import React from 'react';
-import Tile, { TileContent } from '../../core/Tile';
+import Tile, { TileFeature } from '../../core/Tile';
 import styles from './TileView.module.css';
 
 interface TileViewProps {
@@ -7,22 +7,22 @@ interface TileViewProps {
     onClick?: (tile: Tile) => void,
 }
 
-function getTooltipText(terrainTitle: string, content: TileContent | null) {
+function getTooltipText(terrainTitle: string, feature: TileFeature | null) {
     const lines = [
         terrainTitle,
-        content && `${content.icon} ${content.title}`,
-        content?.description,
+        feature && `${feature.icon} ${feature.title}`,
+        feature?.description,
     ];
 
     return lines.filter(Boolean).join('\n');
 }
 
 const TileView: React.FC<TileViewProps> = ({ tile, onClick }) => {
-    const { icon } = tile.data.content ?? { icon: ' ' };
+    const { icon } = tile.data.feature ?? { icon: ' ' };
     const { color, title: terrainTitle } = tile.data.terrain;
-    const content = tile.data.content;
+    const tileFeature = tile.data.feature;
 
-    const tooltip = getTooltipText(terrainTitle, content);
+    const tooltip = getTooltipText(terrainTitle, tileFeature);
 
     return (
         <div

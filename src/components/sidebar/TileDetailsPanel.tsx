@@ -1,5 +1,5 @@
 import React from 'react';
-import Tile, { TileContent, TileTerrain } from '../../core/Tile';
+import Tile, { TileFeature, TileTerrain } from '../../core/Tile';
 import TileView from '../world/TileView';
 import styles from './TileDetailsPanel.module.css';
 import Entity from '../../core/Entity';
@@ -11,10 +11,10 @@ const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => (
     </div>
 );
 
-const ContentInfo: React.FC<{ content: TileContent | null }> = ({ content }) => {
-    if (!content) {
+const FeatureInfo: React.FC<{ feature: TileFeature | null }> = ({ feature }) => {
+    if (!feature) {
         return (
-            <div className={styles.emptyContent}>
+            <div className={styles.emptyFeature}>
                 Пусто
             </div>
         );
@@ -22,8 +22,8 @@ const ContentInfo: React.FC<{ content: TileContent | null }> = ({ content }) => 
 
     return (
         <>
-            <div className={styles.field}>Объект: <span>{content.icon} {content.title}</span></div>
-            <div className={styles.field}>{content.description}</div>
+            <div className={styles.field}>Объект: <span>{feature.icon} {feature.title}</span></div>
+            <div className={styles.field}>{feature.description}</div>
         </>
     );
 };
@@ -65,7 +65,7 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClic
 
     const {
         position: { x, y },
-        data: { terrain, content },
+        data: { terrain, feature },
         entities,
     } = tile;
 
@@ -80,7 +80,7 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClic
 
             <div className={styles.info}>
                 <TerrainInfo terrain={terrain} />
-                <ContentInfo content={content} />
+                <FeatureInfo feature={feature} />
                 <EntityList entities={entities} onClickEntity={onClickEntity} />
             </div>
         </DetailsPanel>
