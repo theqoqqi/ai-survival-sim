@@ -9,18 +9,37 @@ import Entity from '../../core/Entity';
 import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
 import Action from '../../core/actions/Action';
 import { TestActionsPanel } from '../sidebar/TestActionsPanel';
+import { AgentMove } from '../../agent/AgentMove';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
     const [selectedEntity, setSelectedEntity] = React.useState<Entity | null>(null);
     const [worldMap, setWorldMap] = React.useState<WorldMap | null>(null);
-    const [appliedActions, setAppliedActions] = React.useState<Action<any>[]>([]);
+    const [appliedMoves, setAppliedMoves] = React.useState<AgentMove[]>([]);
     const onClickTile = (tile: Tile) => {
         setSelectedTile(tile);
         setSelectedEntity(null);
     };
     const onClickEntity = (entity: Entity) => {
         setSelectedEntity(entity);
+    };
+    const handleTestAction = (action: Action<any>) => {
+        if (!worldMap) {
+            return;
+        }
+
+        handleApplyMove({
+            actions: [action],
+            thought: '',
+        });
+    };
+    const handleApplyMove = (move: AgentMove) => {
+        if (!worldMap) {
+            return;
+        }
+
+        move.actions.forEach(action => action.apply(worldMap));
+        setAppliedMoves(prev => [...prev, move]);
     };
 
     React.useEffect(() => {
@@ -35,7 +54,7 @@ export default function MainScreen() {
         <div className={styles.mainScreen}>
             <div className={styles.worldMapContainer}>
                 <WorldMapView
-                    key={appliedActions.length}
+                    key={appliedMoves.length}
                     worldMap={worldMap}
                     onClickTile={onClickTile}
                 />
@@ -50,10 +69,7 @@ export default function MainScreen() {
                 )}
                 <TestActionsPanel
                     worldMap={worldMap}
-                    onApplyAction={(action) => {
-                        action.apply(worldMap);
-                        setAppliedActions([...appliedActions, action]);
-                    }}
+                    onApplyAction={handleTestAction}
                 />
             </div>
         </div>
