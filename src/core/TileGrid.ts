@@ -36,6 +36,15 @@ export class TileGrid {
         this.grid.set(x, y, tile);
     }
 
+    getTilesInRadius(centerX: number, centerY: number, radius: number): Tile[] {
+        return this.toArray().flat().filter(tile => {
+            const isXInRadius = Math.abs(tile.position.x - centerX) <= radius;
+            const isYInRadius = Math.abs(tile.position.y - centerY) <= radius;
+
+            return isXInRadius && isYInRadius;
+        });
+    }
+
     moveEntity(entity: Entity | string, x: number, y: number): void {
         if (!this.grid.isInBounds(x, y)) {
             return;

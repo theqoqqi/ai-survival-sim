@@ -44,6 +44,10 @@ export default class WorldMap {
         this.grid.setData(x, y, data);
     }
 
+    getTilesInRadius(centerX: number, centerY: number, radius: number): Tile[] {
+        return this.grid.getTilesInRadius(centerX, centerY, radius);
+    }
+
     moveEntity(entityId: string, x: number, y: number) {
         this.grid.moveEntity(entityId, x, y);
     }
