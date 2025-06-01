@@ -12,35 +12,48 @@ export default class Inventory {
         return [...this.items];
     }
 
-    addItem(item: InventoryItem): void {
-        const existing = this.items.find((i) => i.id === item.id);
-
-        if (existing) {
-            existing.amount += item.amount;
-        } else {
-            this.items.push({ ...item });
-        }
-    }
-
-    removeItem(itemId: string, amount: number): boolean {
-        const index = this.items.findIndex((i) => i.id === itemId);
-
-        if (index === -1 || this.items[index].amount < amount) {
-            return false;
+    addItem(item: InventoryItem | string, amount: number = 1): boolean {
+        if (typeof item === 'string') {
+            return this.modifyStackSize(item, amount);
         }
 
-        this.items[index].amount -= amount;
-
-        if (this.items[index].amount <= 0) {
-            this.items.splice(index, 1);
+        if (this.hasItem(item.id)) {
+            return this.modifyStackSize(item.id, item.amount);
         }
 
+        this.items.push({ ...item });
         return true;
     }
 
-    hasItem(itemId: string, count: number = 1): boolean {
-        const existing = this.items.find((i) => i.id === itemId);
+    removeItem(itemId: string, amount: number = Infinity): boolean {
+        return this.modifyStackSize(itemId, -amount);
+    }
 
-        return Boolean(existing && existing.amount >= count);
+    hasItem(itemId: string, count: number = 1): boolean {
+        return this.getItemAmount(itemId) >= count;
+    }
+
+    getItemAmount(itemId: string): number {
+        return this.findItem(itemId)?.amount ?? 0;
+    }
+
+    findItem(itemId: string): InventoryItem | null {
+        return this.items.find((i) => i.id === itemId) ?? null;
+    }
+
+    private modifyStackSize(itemId: string, amount: number): boolean {
+        const foundItem = this.items.find((i) => i.id === itemId);
+
+        if (!foundItem) {
+            return false;
+        }
+
+        foundItem.amount += amount;
+
+        if (foundItem.amount <= 0) {
+            this.items.splice(this.items.indexOf(foundItem), 1);
+        }
+
+        return true;
     }
 }
