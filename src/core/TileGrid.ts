@@ -55,6 +55,30 @@ export class TileGrid {
         return true;
     }
 
+    getEntity(entity: Entity | string): Entity | null {
+        if (typeof entity === 'string') {
+            return this.findEntity(entity);
+        }
+
+        return entity;
+    }
+
+    findEntity(entityId: string): Entity | null {
+        return this.findEntityTile(entityId)?.getEntity(entityId) ?? null;
+    }
+
+    findEntityTile(entity: Entity | string): Tile | null {
+        const entityId = typeof entity === 'string' ? entity : entity.id;
+
+        for (const tile of this.toArray().flat()) {
+            if (tile.hasEntity(entityId)) {
+                return tile;
+            }
+        }
+
+        return null;
+    }
+
     getEntities(x: number, y: number): Entity[] {
         return [...this.getTile(x, y).entities];
     }
