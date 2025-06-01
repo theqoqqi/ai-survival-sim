@@ -20,7 +20,6 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
     onApplyAction,
 }) => {
     const apply = (action: Action<any>) => {
-        action.apply(worldMap);
         onApplyAction(action);
     };
 

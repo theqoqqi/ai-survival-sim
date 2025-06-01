@@ -51,6 +51,7 @@ export default function MainScreen() {
                 <TestActionsPanel
                     worldMap={worldMap}
                     onApplyAction={(action) => {
+                        action.apply(worldMap);
                         setAppliedActions([...appliedActions, action]);
                     }}
                 />
