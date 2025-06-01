@@ -36,6 +36,17 @@ export class TileGrid {
         this.grid.set(x, y, tile);
     }
 
+    moveEntity(entity: Entity | string, x: number, y: number): void {
+        const foundEntity = this.getEntity(entity);
+
+        if (!foundEntity) {
+            return;
+        }
+
+        this.removeEntity(foundEntity);
+        this.addEntity(x, y, foundEntity);
+    }
+
     addEntity(x: number, y: number, entity: Entity): void {
         this.getTile(x, y).addEntity(entity);
     }

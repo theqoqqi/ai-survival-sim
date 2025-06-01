@@ -44,6 +44,10 @@ export default class WorldMap {
         this.grid.setData(x, y, data);
     }
 
+    moveEntity(entityId: string, x: number, y: number) {
+        this.grid.moveEntity(entityId, x, y);
+    }
+
     addEntity(x: number, y: number, entity: Entity): void {
         this.grid.addEntity(x, y, entity);
     }
