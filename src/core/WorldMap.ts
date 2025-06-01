@@ -24,7 +24,7 @@ export default class WorldMap {
     readonly emptyTileData: TileData;
 
     constructor(options: WorldMapOptions) {
-        this.grid = new TileGrid(options.width, options.height, () => options.emptyTileData);
+        this.grid = new TileGrid(options.width, options.height, () => ({ ...options.emptyTileData }));
         this.emptyTileData = options.emptyTileData;
     }
 
