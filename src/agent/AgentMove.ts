@@ -1,4 +1,5 @@
 import { SerializedJumpAction } from '../core/actions/JumpAction';
+import { SerializedMoveAction } from '../core/actions/MoveAction';
 import { SerializedAddInventoryItemAction } from '../core/actions/AddInventoryItemAction';
 import { SerializedAddItemToStackAction } from '../core/actions/AddItemToStackAction';
 import { SerializedRemoveInventoryItemAction } from '../core/actions/RemoveInventoryItemAction';
@@ -7,6 +8,7 @@ import Action from '../core/actions/Action';
 import createActionFromJson from '../core/actions/createActionFromJson';
 
 export type SerializedAction = SerializedJumpAction
+    | SerializedMoveAction
     | SerializedAddInventoryItemAction
     | SerializedAddItemToStackAction
     | SerializedRemoveInventoryItemAction

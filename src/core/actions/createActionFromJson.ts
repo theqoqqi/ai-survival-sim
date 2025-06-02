@@ -1,4 +1,5 @@
 import JumpAction from './JumpAction';
+import MoveAction from './MoveAction';
 import { AddInventoryItemAction } from './AddInventoryItemAction';
 import { AddItemToStackAction } from './AddItemToStackAction';
 import { RemoveInventoryItemAction } from './RemoveInventoryItemAction';
@@ -7,6 +8,7 @@ import Action from './Action';
 
 const factories: Record<string, (json: any) => Action<any>> = {
     'jump': JumpAction.fromJson,
+    'move': MoveAction.fromJson,
     'addItem': AddInventoryItemAction.fromJson,
     'addItemToStack': AddItemToStackAction.fromJson,
     'removeItem': RemoveInventoryItemAction.fromJson,
