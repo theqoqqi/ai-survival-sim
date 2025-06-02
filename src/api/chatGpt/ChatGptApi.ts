@@ -12,6 +12,7 @@ export type ChatCompletionOptions = {
     systemPrompt?: string,
     model?: string,
     maxCompletionTokens?: number,
+    temperature?: number,
 };
 
 export type ChatCompletionTokenUsage = {
@@ -53,6 +54,7 @@ export default class ChatGptApi {
             model: model,
             messages: this.getMessages(options) as any[],
             max_completion_tokens: options.maxCompletionTokens,
+            temperature: options.temperature,
         });
 
         return this.buildResult(chatCompletion, options);
