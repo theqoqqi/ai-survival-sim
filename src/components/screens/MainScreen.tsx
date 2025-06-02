@@ -11,6 +11,7 @@ import { TestActionsPanel } from '../sidebar/TestActionsPanel';
 import { AgentPanel } from '../sidebar/agentPanel/AgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
+import { ImportExportPanel } from '../sidebar/ImportExportPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
@@ -63,6 +64,11 @@ export default function MainScreen() {
                         onClickEntity={onClickEntity}
                     />
                 )}
+                <ImportExportPanel
+                    worldMap={worldMap}
+                    onImport={setWorldMap}
+                    autoImport
+                />
                 <TestActionsPanel
                     worldMap={worldMap}
                     onApplyMove={handleApplyMove}
