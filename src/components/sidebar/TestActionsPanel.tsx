@@ -89,6 +89,7 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
         <DetailsPanel
             header='Тестовые действия'
             classNames={{ body: styles.body }}
+            collapsedByDefault
         >
             <div className={styles.moveControls}>
                 <div />
