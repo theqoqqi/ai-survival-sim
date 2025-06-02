@@ -9,7 +9,14 @@ interface MoveListPanelProps {
 }
 
 export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
+    const bodyRef = React.useRef<HTMLDivElement>(null);
     const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
+
+    React.useEffect(() => {
+        if (bodyRef.current) {
+            bodyRef.current.scrollTop = -bodyRef.current.scrollHeight;
+        }
+    }, [moves]);
 
     const toggleExpand = (index: number) => {
         setExpandedIndex(prev => (prev === index ? null : index));
@@ -19,6 +26,7 @@ export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
         <DetailsPanel
             header='Ходы'
             classNames={{ body: styles.body }}
+            refs={{ body: bodyRef }}
         >
             {moves.map((move, index) => (
                 <MoveItem
