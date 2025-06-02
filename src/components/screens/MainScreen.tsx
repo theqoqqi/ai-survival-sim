@@ -9,6 +9,7 @@ import Entity from '../../core/Entity';
 import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
 import Action from '../../core/actions/Action';
 import { TestActionsPanel } from '../sidebar/TestActionsPanel';
+import { AgentPanel } from '../sidebar/agentPanel/AgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 
@@ -52,6 +53,8 @@ export default function MainScreen() {
         return <div>Loading...</div>;
     }
 
+    const player = worldMap.findEntity('player') ?? null;
+
     return (
         <div className={styles.mainScreen}>
             <div className={styles.sidebar + ' ' + styles.moves}>
@@ -76,6 +79,13 @@ export default function MainScreen() {
                     worldMap={worldMap}
                     onApplyAction={handleTestAction}
                 />
+                {player && (
+                    <AgentPanel
+                        worldMap={worldMap}
+                        playerEntity={player}
+                        onApplyMove={handleApplyMove}
+                    />
+                )}
             </div>
         </div>
     );
