@@ -1,11 +1,11 @@
-import { Position } from '../util/Position';
+import { Vector } from '../util/Vector';
 import { TileFeature } from '../Tile';
 import Action from './Action';
 import WorldMap from '../WorldMap';
 
 export type SerializedSetTileFeatureAction = {
     type: 'setTileFeature';
-    position: Position;
+    position: Vector;
     feature?: TileFeature;
 };
 
@@ -13,11 +13,11 @@ export class SetTileFeatureAction extends Action<SerializedSetTileFeatureAction>
 
     readonly type = 'setTileFeature' as const;
 
-    readonly position: Position;
+    readonly position: Vector;
 
     readonly feature?: TileFeature;
 
-    constructor(position: Position, feature?: TileFeature) {
+    constructor(position: Vector, feature?: TileFeature) {
         super();
         this.position = position;
         this.feature = feature;

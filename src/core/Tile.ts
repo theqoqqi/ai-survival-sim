@@ -1,4 +1,4 @@
-import { Position } from './util/Position';
+import { Vector } from './util/Vector';
 import Entity, { SerializedEntity } from './Entity';
 
 export interface TileFeature {
@@ -18,14 +18,14 @@ export interface TileData {
 }
 
 export interface SerializedTile {
-    position: Position;
+    position: Vector;
     data: TileData;
     entities: SerializedEntity[];
 }
 
 export default class Tile {
 
-    readonly position: Position;
+    readonly position: Vector;
 
     data: TileData;
 

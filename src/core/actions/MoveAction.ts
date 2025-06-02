@@ -1,11 +1,11 @@
 import Action from './Action';
 import type WorldMap from '../WorldMap';
-import type { Position } from '../util/Position';
+import type { Vector } from '../util/Vector';
 
 export type SerializedMoveAction = {
     type: 'move';
     entityId: string;
-    target: Position;
+    target: Vector;
 }
 
 export default class MoveAction extends Action<SerializedMoveAction> {
@@ -14,9 +14,9 @@ export default class MoveAction extends Action<SerializedMoveAction> {
 
     readonly entityId: string;
 
-    readonly target: Position;
+    readonly target: Vector;
 
-    constructor(entityId: string, target: Position) {
+    constructor(entityId: string, target: Vector) {
         super();
         this.entityId = entityId;
         this.target = target;
