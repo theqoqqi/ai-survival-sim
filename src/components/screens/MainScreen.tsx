@@ -7,7 +7,6 @@ import WorldMap from '../../core/WorldMap';
 import { createTestWorld } from '../../presets/testWorld';
 import Entity from '../../core/Entity';
 import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
-import Action from '../../core/actions/Action';
 import { TestActionsPanel } from '../sidebar/TestActionsPanel';
 import { AgentPanel } from '../sidebar/agentPanel/AgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
@@ -24,17 +23,6 @@ export default function MainScreen() {
     };
     const onClickEntity = (entity: Entity) => {
         setSelectedEntity(entity);
-    };
-    const handleTestAction = (action: Action<any>) => {
-        if (!worldMap) {
-            return;
-        }
-
-        handleApplyMove({
-            actions: [action],
-            thought: '',
-            narrativeEvents: [],
-        });
     };
     const handleApplyMove = (move: AgentMove) => {
         if (!worldMap) {
@@ -77,7 +65,7 @@ export default function MainScreen() {
                 )}
                 <TestActionsPanel
                     worldMap={worldMap}
-                    onApplyAction={handleTestAction}
+                    onApplyMove={handleApplyMove}
                 />
                 {player && (
                     <AgentPanel

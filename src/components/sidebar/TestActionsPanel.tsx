@@ -9,18 +9,23 @@ import { AddInventoryItemAction } from '../../core/actions/AddInventoryItemActio
 import { RemoveInventoryItemAction } from '../../core/actions/RemoveInventoryItemAction';
 import { AddItemToStackAction } from '../../core/actions/AddItemToStackAction';
 import { SetTileFeatureAction } from '../../core/actions/SetTileFeatureAction';
+import { AgentMove } from '../../agent/AgentMove';
 
 interface TestActionsPanelProps {
     worldMap: WorldMap;
-    onApplyAction: (action: Action<any>) => void;
+    onApplyMove: (action: AgentMove) => void;
 }
 
 export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
     worldMap,
-    onApplyAction,
+    onApplyMove,
 }) => {
     const apply = (action: Action<any>) => {
-        onApplyAction(action);
+        onApplyMove({
+            actions: [action],
+            thought: '',
+            narrativeEvents: [],
+        });
     };
 
     const move = (byX: number, byY: number) => {
