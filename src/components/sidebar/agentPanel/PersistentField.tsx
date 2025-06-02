@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './AgentConfigInput.module.css';
+import styles from './PersistentField.module.css';
 
-interface AgentConfigInputProps {
+interface PersistentFieldProps {
     type?: string;
     label: string;
     storageKey: string;
@@ -9,7 +9,7 @@ interface AgentConfigInputProps {
     onValueChange: (value: string) => void;
 }
 
-export const AgentConfigInput: React.FC<AgentConfigInputProps> = ({
+export const PersistentField: React.FC<PersistentFieldProps> = ({
     type,
     label,
     storageKey,
@@ -37,7 +37,7 @@ export const AgentConfigInput: React.FC<AgentConfigInputProps> = ({
     };
 
     return (
-        <label className={styles.agentConfigInput}>
+        <label className={styles.persistentField}>
             <div>{label}:</div>
             {type === 'textarea' ? (
                 <textarea {...inputProps} rows={3} />

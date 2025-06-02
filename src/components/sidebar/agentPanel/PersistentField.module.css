@@ -1,0 +1,10 @@
+
+.persistentField input,
+.persistentField textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.persistentField textarea {
+    resize: vertical;
+}

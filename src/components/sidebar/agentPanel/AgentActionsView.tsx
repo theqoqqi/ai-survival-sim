@@ -4,7 +4,7 @@ import WorldMap from '../../../core/WorldMap';
 import Entity from '../../../core/Entity';
 import React from 'react';
 import styles from './AgentActionsView.module.css';
-import { AgentConfigInput } from './AgentConfigInput';
+import { PersistentField } from './PersistentField';
 
 interface AgentActionsViewProps {
     agent: Agent;
@@ -46,7 +46,7 @@ export const AgentActionsView: React.FC<AgentActionsViewProps> = ({
 
     return (
         <div className={styles.agentActionsView}>
-            <AgentConfigInput
+            <PersistentField
                 type='textarea'
                 label='Глобальная цель'
                 storageKey='agent_globalTarget'

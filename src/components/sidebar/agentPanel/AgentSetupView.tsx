@@ -1,6 +1,6 @@
 import { Agent } from '../../../agent/Agent';
 import React from 'react';
-import { AgentConfigInput } from './AgentConfigInput';
+import { PersistentField } from './PersistentField';
 import styles from './AgentSetupView.module.css';
 
 interface AgentSetupViewProps {
@@ -36,21 +36,21 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onAgentCreated }
 
     return (
         <div className={styles.agentSetupView}>
-            <AgentConfigInput
+            <PersistentField
                 type='text'
                 label='Base URL'
                 storageKey='agent_baseUrl'
                 defaultValue=''
                 onValueChange={setBaseUrl}
             />
-            <AgentConfigInput
+            <PersistentField
                 type='password'
                 label='API Key'
                 storageKey='agent_apiKey'
                 defaultValue=''
                 onValueChange={setApiKey}
             />
-            <AgentConfigInput
+            <PersistentField
                 type='text'
                 label='Model Name'
                 storageKey='agent_modelName'
