@@ -7,6 +7,10 @@ interface DetailsPanelProps {
         header?: string;
         body?: string;
     };
+    refs?: {
+        header?: React.RefObject<HTMLDivElement | null>;
+        body?: React.RefObject<HTMLDivElement | null>;
+    };
     emptyMessage?: string;
     children?: React.ReactNode;
 }
@@ -14,6 +18,7 @@ interface DetailsPanelProps {
 export const DetailsPanel: React.FC<DetailsPanelProps> = ({
     header,
     classNames,
+    refs,
     emptyMessage = 'Ничего не выбрано',
     children,
 }) => {
@@ -27,8 +32,10 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
 
     return (
         <section className={styles.container}>
-            <header className={styles.header + ' ' + (classNames?.header ?? '')}>{header}</header>
-            <div className={styles.body + ' ' + (classNames?.body ?? '')}>
+            <header ref={refs?.header} className={styles.header + ' ' + (classNames?.header ?? '')}>
+                {header}
+            </header>
+            <div ref={refs?.body} className={styles.body + ' ' + (classNames?.body ?? '')}>
                 {children}
             </div>
         </section>
