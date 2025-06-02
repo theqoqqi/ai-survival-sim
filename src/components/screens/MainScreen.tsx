@@ -10,6 +10,7 @@ import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
 import Action from '../../core/actions/Action';
 import { TestActionsPanel } from '../sidebar/TestActionsPanel';
 import { AgentMove } from '../../agent/AgentMove';
+import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
@@ -52,6 +53,9 @@ export default function MainScreen() {
 
     return (
         <div className={styles.mainScreen}>
+            <div className={styles.sidebar + ' ' + styles.moves}>
+                <MoveListPanel moves={appliedMoves} />
+            </div>
             <div className={styles.worldMapContainer}>
                 <WorldMapView
                     key={appliedMoves.length}
