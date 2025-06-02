@@ -1,0 +1,9 @@
+
+.moveItem {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+
+.moveHeader {
+    font-size: 1rem;
+}

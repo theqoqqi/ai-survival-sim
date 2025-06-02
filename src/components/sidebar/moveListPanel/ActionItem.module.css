@@ -1,0 +1,22 @@
+
+.actionItem {
+    margin-bottom: 4px;
+}
+
+.actionType {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.actionJson {
+    display: block;
+
+    padding: 4px;
+    margin: 4px;
+
+    background: #f5f5f5;
+    border-radius: 4px;
+
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
