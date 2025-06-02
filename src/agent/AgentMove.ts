@@ -17,11 +17,13 @@ export type SerializedAction = SerializedJumpAction
 export interface AgentMove {
     actions: Action<any>[];
     thought: string;
+    narrativeEvents: string[];
 }
 
 export interface SerializedAgentMove {
     actions: SerializedAction[];
     thought: string,
+    narrativeEvents: string[],
 }
 
 export function parseMove(responseContent: string): AgentMove {
@@ -30,5 +32,6 @@ export function parseMove(responseContent: string): AgentMove {
     return {
         actions: responseJson.actions.map(createActionFromJson).filter(Boolean).map(action => action!),
         thought: responseJson.thought,
+        narrativeEvents: responseJson.narrativeEvents,
     };
 }

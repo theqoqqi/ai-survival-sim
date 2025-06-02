@@ -32,6 +32,7 @@ export default function MainScreen() {
         handleApplyMove({
             actions: [action],
             thought: '',
+            narrativeEvents: [],
         });
     };
     const handleApplyMove = (move: AgentMove) => {

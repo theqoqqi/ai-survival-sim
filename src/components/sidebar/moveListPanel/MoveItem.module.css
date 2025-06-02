@@ -7,3 +7,15 @@
 .moveHeader {
     font-size: 1rem;
 }
+
+.narrativeEvents {
+    margin: 4px;
+    padding-left: 16px;
+
+    color: #555;
+    font-size: 0.8em;
+}
+
+.narrativeEvents li {
+    padding: 4px 0;
+}

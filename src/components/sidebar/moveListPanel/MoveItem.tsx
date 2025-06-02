@@ -19,6 +19,11 @@ export const MoveItem: React.FC<MoveItemProps> = ({ number, move, isExpanded, on
         >
             <strong>Ход {number}.</strong> {move.thought}
         </div>
+        <ul className={styles.narrativeEvents}>
+            {move.narrativeEvents.map((event, index) => (
+                <li key={index}>{event}</li>
+            ))}
+        </ul>
         {isExpanded && <ActionList actions={move.actions} />}
     </div>
 );
