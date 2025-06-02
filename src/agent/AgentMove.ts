@@ -1,4 +1,4 @@
-import { SerializedMoveAction } from '../core/actions/MoveAction';
+import { SerializedJumpAction } from '../core/actions/JumpAction';
 import { SerializedAddInventoryItemAction } from '../core/actions/AddInventoryItemAction';
 import { SerializedAddItemToStackAction } from '../core/actions/AddItemToStackAction';
 import { SerializedRemoveInventoryItemAction } from '../core/actions/RemoveInventoryItemAction';
@@ -6,7 +6,7 @@ import { SerializedSetTileFeatureAction } from '../core/actions/SetTileFeatureAc
 import Action from '../core/actions/Action';
 import createActionFromJson from '../core/actions/createActionFromJson';
 
-export type SerializedAction = SerializedMoveAction
+export type SerializedAction = SerializedJumpAction
     | SerializedAddInventoryItemAction
     | SerializedAddItemToStackAction
     | SerializedRemoveInventoryItemAction

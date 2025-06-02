@@ -2,15 +2,15 @@ import Action from './Action';
 import type WorldMap from '../WorldMap';
 import type { Vector } from '../util/Vector';
 
-export type SerializedMoveAction = {
-    type: 'move';
+export type SerializedJumpAction = {
+    type: 'jump';
     entityId: string;
     target: Vector;
 }
 
-export default class MoveAction extends Action<SerializedMoveAction> {
+export default class JumpAction extends Action<SerializedJumpAction> {
 
-    readonly type = 'move' as const;
+    readonly type = 'jump' as const;
 
     readonly entityId: string;
 
@@ -26,7 +26,7 @@ export default class MoveAction extends Action<SerializedMoveAction> {
         world.moveEntity(this.entityId, this.target.x, this.target.y);
     }
 
-    toJson(): SerializedMoveAction {
+    toJson(): SerializedJumpAction {
         return {
             type: this.type,
             entityId: this.entityId,
@@ -34,7 +34,7 @@ export default class MoveAction extends Action<SerializedMoveAction> {
         };
     }
 
-    static fromJson(json: any): MoveAction {
-        return new MoveAction(json.entityId, json.target);
+    static fromJson(json: any): JumpAction {
+        return new JumpAction(json.entityId, json.target);
     }
 }

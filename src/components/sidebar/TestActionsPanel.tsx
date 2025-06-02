@@ -1,7 +1,7 @@
 import React from 'react';
 import WorldMap from '../../core/WorldMap';
 import Action from '../../core/actions/Action';
-import MoveAction from '../../core/actions/MoveAction';
+import JumpAction from '../../core/actions/JumpAction';
 import styles from './TestActionsPanel.module.css';
 import { DetailsPanel } from './DetailsPanel';
 import InventoryItem from '../../core/InventoryItem';
@@ -30,7 +30,7 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
             return;
         }
 
-        apply(new MoveAction('player', {
+        apply(new JumpAction('player', {
             x: tile.position.x + byX,
             y: tile.position.y + byY,
         }));
