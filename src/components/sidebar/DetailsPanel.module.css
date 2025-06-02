@@ -2,10 +2,14 @@
 .container {
     display: flex;
     flex-direction: column;
+
     padding: 12px;
+
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: #fafafa;
+
+    overflow-y: hidden;
 }
 
 .empty {
@@ -20,4 +24,8 @@
 
     font-size: 1.1em;
     font-weight: bold;
+}
+
+.body {
+    overflow-y: auto;
 }
