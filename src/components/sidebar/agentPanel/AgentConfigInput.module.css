@@ -1,0 +1,10 @@
+
+.agentConfigInput input,
+.agentConfigInput textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.agentConfigInput textarea {
+    resize: vertical;
+}
