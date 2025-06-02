@@ -1,6 +1,6 @@
 import { Agent } from '../../../agent/Agent';
 import React from 'react';
-import { PersistentField } from './PersistentField';
+import { PersistentField } from '../../util/PersistentField';
 import styles from './AgentSetupView.module.css';
 
 interface AgentSetupViewProps {

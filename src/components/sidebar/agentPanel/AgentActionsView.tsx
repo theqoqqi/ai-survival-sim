@@ -4,7 +4,7 @@ import WorldMap from '../../../core/WorldMap';
 import Entity from '../../../core/Entity';
 import React from 'react';
 import styles from './AgentActionsView.module.css';
-import { PersistentField } from './PersistentField';
+import { PersistentField } from '../../util/PersistentField';
 
 interface AgentActionsViewProps {
     agent: Agent;
