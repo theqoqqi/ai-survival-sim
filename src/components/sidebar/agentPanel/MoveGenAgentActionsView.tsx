@@ -51,7 +51,8 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
                 type='textarea'
                 label='Глобальная цель'
                 storageKey='agent_globalTarget'
-                onValueChange={setGlobalTarget}
+                value={globalTarget}
+                onChange={setGlobalTarget}
             />
             <div>
                 Статус: {status}

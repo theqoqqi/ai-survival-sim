@@ -5,30 +5,32 @@ interface PersistentFieldProps {
     type?: string;
     label: string;
     storageKey: string;
-    defaultValue?: string;
-    onValueChange: (value: string) => void;
+    value: string | number;
+    onChange: (value: string) => void;
 }
 
 export const PersistentField: React.FC<PersistentFieldProps> = ({
     type,
     label,
     storageKey,
-    defaultValue = '',
-    onValueChange,
+    value,
+    onChange,
 }) => {
-    const [value, setValue] = React.useState<string>(() => {
-        return localStorage.getItem(storageKey) || defaultValue;
-    });
+    React.useEffect(() => {
+        const stored = localStorage.getItem(storageKey);
+
+        if (stored !== null && stored !== value) {
+            onChange(stored);
+        }
+    }, [onChange, storageKey, value]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const newValue = e.target.value;
-        setValue(newValue);
-        localStorage.setItem(storageKey, newValue);
-    };
 
-    React.useEffect(() => {
-        onValueChange(value);
-    }, [onValueChange, value]);
+        localStorage.setItem(storageKey, newValue);
+
+        onChange(newValue);
+    };
 
     const inputProps = {
         type,

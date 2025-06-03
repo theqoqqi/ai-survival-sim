@@ -63,7 +63,8 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 type="textarea"
                 label="Вставьте JSON для импорта"
                 storageKey="importWorldMap"
-                onValueChange={setImportJson}
+                value={importJson}
+                onChange={setImportJson}
             />
 
             <div className={styles.buttonGroup}>

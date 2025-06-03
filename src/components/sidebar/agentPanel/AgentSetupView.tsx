@@ -39,22 +39,22 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                 type='text'
                 label='Base URL'
                 storageKey={`${storageKeyPrefix}_baseUrl`}
-                defaultValue=''
-                onValueChange={setBaseUrl}
+                value={baseUrl}
+                onChange={setBaseUrl}
             />
             <PersistentField
                 type='password'
                 label='API Key'
                 storageKey={`${storageKeyPrefix}_apiKey`}
-                defaultValue=''
-                onValueChange={setApiKey}
+                value={apiKey}
+                onChange={setApiKey}
             />
             <PersistentField
                 type='text'
                 label='Model Name'
                 storageKey={`${storageKeyPrefix}_modelName`}
-                defaultValue='gpt-4o-mini'
-                onValueChange={setModelName}
+                value={modelName}
+                onChange={setModelName}
             />
             <button onClick={initializeAgent}>
                 Инициализировать агента
