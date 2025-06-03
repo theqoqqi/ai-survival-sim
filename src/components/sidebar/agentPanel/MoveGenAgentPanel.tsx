@@ -4,17 +4,17 @@ import Entity from '../../../core/Entity';
 import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import { AgentMove } from '../../../agent/AgentMove';
 import { DetailsPanel } from '../DetailsPanel';
-import styles from './AgentPanel.module.css';
+import styles from './MoveGenAgentPanel.module.css';
 import { AgentActionsView } from './AgentActionsView';
 import { AgentSetupView } from './AgentSetupView';
 
-interface AgentPanelProps {
+interface MoveGenAgentPanelProps {
     worldMap: WorldMap;
     playerEntity: Entity;
     onApplyMove: (move: AgentMove) => void;
 }
 
-export const AgentPanel: React.FC<AgentPanelProps> = ({
+export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
     worldMap,
     playerEntity,
     onApplyMove,

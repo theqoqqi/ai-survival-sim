@@ -8,7 +8,7 @@ import { createTestWorld } from '../../presets/testWorld';
 import Entity from '../../core/Entity';
 import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
 import { TestActionsPanel } from '../sidebar/TestActionsPanel';
-import { AgentPanel } from '../sidebar/agentPanel/AgentPanel';
+import { MoveGenAgentPanel } from '../sidebar/agentPanel/MoveGenAgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 import { ImportExportPanel } from '../sidebar/ImportExportPanel';
@@ -74,7 +74,7 @@ export default function MainScreen() {
                     onApplyMove={handleApplyMove}
                 />
                 {player && (
-                    <AgentPanel
+                    <MoveGenAgentPanel
                         worldMap={worldMap}
                         playerEntity={player}
                         onApplyMove={handleApplyMove}
