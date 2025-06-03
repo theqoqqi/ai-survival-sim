@@ -22,7 +22,16 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
         if (stored !== null && stored !== value) {
             onChange(stored);
         }
-    }, [onChange, storageKey, value]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    React.useEffect(() => {
+        const stringValue = String(value);
+
+        if (stringValue !== '') {
+            localStorage.setItem(storageKey, stringValue);
+        }
+    }, [storageKey, value]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const newValue = e.target.value;
