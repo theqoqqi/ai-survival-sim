@@ -1,15 +1,9 @@
-import ChatGptApi, { MessageParam } from '../api/chatGpt/ChatGptApi';
 import WorldMap from '../core/WorldMap';
 import Entity from '../core/Entity';
 import systemPrompt from './systemPrompt';
 import { AgentMove, parseMove } from './AgentMove';
 import { Vectors } from '../core/util/Vector';
-
-interface AgentOptions {
-    apiKey: string;
-    apiBaseUrl: string;
-    modelName?: string;
-}
+import AgentDriver from './drivers/AgentDriver';
 
 interface AgentResponse {
     move?: AgentMove;
@@ -18,35 +12,22 @@ interface AgentResponse {
 
 export class Agent {
 
-    private readonly chatApi: ChatGptApi;
-
-    private readonly messageHistory: MessageParam[] = [];
+    private readonly driver: AgentDriver;
 
     private readonly moveHistory: AgentMove[] = [];
 
     public globalTarget: string = 'Survive';
 
-    constructor(options: AgentOptions) {
-        this.chatApi = new ChatGptApi(options.apiKey, options.apiBaseUrl, {
-            defaultModelName: options.modelName ?? 'gpt-4o-mini',
-        });
+    constructor(driver: AgentDriver) {
+        this.driver = driver;
     }
 
     public async generateMove(worldMap: WorldMap, entity: Entity): Promise<AgentResponse> {
         const systemPrompt = this.buildSystemPrompt();
         const userPrompt = this.buildUserPrompt(worldMap, entity);
-        const promptMessage: MessageParam = {
-            role: 'user',
-            content: userPrompt,
-        };
 
-        const response = await this.chatApi.createChatCompletion({
-            systemPrompt,
-            messages: [
-                ...this.messageHistory,
-                promptMessage,
-            ],
-        });
+        this.driver.setSystemPrompt(systemPrompt);
+        const response = await this.driver.prompt(userPrompt);
 
         if (!response.content) {
             console.warn('Agent: empty response from AI');
@@ -59,12 +40,6 @@ export class Agent {
 
             console.log('Parsed move:', move);
             console.log(response.usedTokens);
-
-            this.messageHistory.push(promptMessage);
-            this.messageHistory.push({
-                role: 'assistant',
-                content: response.content,
-            });
 
             this.moveHistory.push(move);
 
