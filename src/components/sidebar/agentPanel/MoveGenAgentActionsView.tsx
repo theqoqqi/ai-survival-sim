@@ -20,10 +20,11 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
     onApplyMove,
 }) => {
     const [status, setStatus] = React.useState<string>('Готов к запросу хода');
+    const [globalTarget, setGlobalTarget] = React.useState<string>('');
 
-    const handleTargetChange = (newValue: string) => {
-        agent.globalTarget = newValue;
-    };
+    React.useEffect(() => {
+        agent.globalTarget = globalTarget;
+    }, [agent, globalTarget]);
 
     const performAction = async () => {
         setStatus('Генерация хода...');
@@ -50,7 +51,7 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
                 type='textarea'
                 label='Глобальная цель'
                 storageKey='agent_globalTarget'
-                onValueChange={handleTargetChange}
+                onValueChange={setGlobalTarget}
             />
             <div>
                 Статус: {status}
