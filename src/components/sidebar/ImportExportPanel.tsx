@@ -18,6 +18,10 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     const [importJson, setImportJson] = React.useState('');
     const [message, setMessage] = React.useState<string | null>(null);
 
+    const handleExport = () => {
+        setImportJson(JSON.stringify(worldMap.toJson(), null, 2));
+    };
+
     const handleDownload = () => {
         const json = JSON.stringify(worldMap.toJson(), null, 2);
         const blob = new Blob([json], { type: 'application/json' });
@@ -68,6 +72,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             />
 
             <div className={styles.buttonGroup}>
+                <button onClick={handleExport}>Экспортировать</button>
                 <button onClick={handleDownload}>Скачать карту</button>
                 <button onClick={handleImport}>Импортировать</button>
             </div>
