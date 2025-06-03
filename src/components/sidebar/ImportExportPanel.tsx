@@ -48,10 +48,10 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
     }, [importJson, onImport]);
 
     React.useEffect(() => {
-        if (autoImport) {
+        if (autoImport && importJson) {
             handleImport();
         }
-    }, [autoImport, handleImport]);
+    }, [autoImport, handleImport, importJson]);
 
     return (
         <DetailsPanel
