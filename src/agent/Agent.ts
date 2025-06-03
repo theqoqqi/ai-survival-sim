@@ -98,10 +98,7 @@ export class Agent {
             }));
         const visibleTiles = worldMap.getTilesInRadius(playerTile.position.x, playerTile.position.y, 3)
             .map(tile => tile.toJson());
-        const latestThoughts = this.messageHistory
-            .filter(message => message.role === 'assistant')
-            .slice(-5)
-            .map(message => parseMove(message.content).thought);
+        const latestThoughts = this.moveHistory.slice(-5).map(move => move.thought);
 
         const moveContext = {
             globalTarget: this.globalTarget,
