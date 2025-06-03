@@ -3,12 +3,10 @@ import WorldMap from '../../../core/WorldMap';
 import Entity from '../../../core/Entity';
 import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import { AgentMove } from '../../../agent/AgentMove';
-import { DetailsPanel } from '../DetailsPanel';
-import styles from './MoveGenAgentPanel.module.css';
 import { MoveGenAgentActionsView } from './MoveGenAgentActionsView';
-import { AgentSetupView } from './AgentSetupView';
 import { AgentDriverOptions } from '../../../agent/drivers/AgentDriver';
 import ChatGptAgentDriver from '../../../agent/drivers/ChatGptAgentDriver';
+import { AgentPanel } from './AgentPanel';
 
 interface MoveGenAgentPanelProps {
     worldMap: WorldMap;
@@ -27,10 +25,13 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
     };
 
     return (
-        <DetailsPanel header='AI-агент' classNames={{ body: styles.body }}>
-            {!agent ? (
-                <AgentSetupView onCreateAgent={onCreateAgent} />
-            ) : (
+        <AgentPanel
+            header='AI-агент'
+            storageKeyPrefix='agents_moveGen'
+            agent={agent}
+            onCreateAgent={onCreateAgent}
+        >
+            {agent && (
                 <MoveGenAgentActionsView
                     agent={agent}
                     worldMap={worldMap}
@@ -38,6 +39,6 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
                     onApplyMove={onApplyMove}
                 />
             )}
-        </DetailsPanel>
+        </AgentPanel>
     );
 };

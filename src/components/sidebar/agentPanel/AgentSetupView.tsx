@@ -4,10 +4,11 @@ import styles from './AgentSetupView.module.css';
 import { AgentDriverOptions } from '../../../agent/drivers/AgentDriver';
 
 interface AgentSetupViewProps {
+    storageKeyPrefix: string;
     onCreateAgent: (options: AgentDriverOptions) => void;
 }
 
-export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onCreateAgent }) => {
+export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix, onCreateAgent }) => {
     const [apiKey, setApiKey] = React.useState<string>('');
     const [baseUrl, setBaseUrl] = React.useState<string>('');
     const [modelName, setModelName] = React.useState<string>('');
@@ -37,21 +38,21 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onCreateAgent })
             <PersistentField
                 type='text'
                 label='Base URL'
-                storageKey='agent_baseUrl'
+                storageKey={`${storageKeyPrefix}_baseUrl`}
                 defaultValue=''
                 onValueChange={setBaseUrl}
             />
             <PersistentField
                 type='password'
                 label='API Key'
-                storageKey='agent_apiKey'
+                storageKey={`${storageKeyPrefix}_apiKey`}
                 defaultValue=''
                 onValueChange={setApiKey}
             />
             <PersistentField
                 type='text'
                 label='Model Name'
-                storageKey='agent_modelName'
+                storageKey={`${storageKeyPrefix}_modelName`}
                 defaultValue='gpt-4o-mini'
                 onValueChange={setModelName}
             />
