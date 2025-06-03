@@ -1,14 +1,13 @@
-import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import React from 'react';
 import { PersistentField } from '../../util/PersistentField';
 import styles from './AgentSetupView.module.css';
-import ChatGptAgentDriver from '../../../agent/drivers/ChatGptAgentDriver';
+import { AgentDriverOptions } from '../../../agent/drivers/AgentDriver';
 
 interface AgentSetupViewProps {
-    onAgentCreated: (agent: MoveGenAgent) => void;
+    onCreateAgent: (options: AgentDriverOptions) => void;
 }
 
-export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onAgentCreated }) => {
+export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onCreateAgent }) => {
     const [apiKey, setApiKey] = React.useState<string>('');
     const [baseUrl, setBaseUrl] = React.useState<string>('');
     const [modelName, setModelName] = React.useState<string>('');
@@ -21,16 +20,12 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onAgentCreated }
         }
 
         try {
-            const driverOptions = {
+            setStatus('Агент готов');
+            onCreateAgent({
                 apiKey,
                 apiBaseUrl: baseUrl,
                 modelName,
-            };
-
-            const a = new MoveGenAgent(new ChatGptAgentDriver(driverOptions));
-
-            setStatus('Агент готов');
-            onAgentCreated(a);
+            });
         } catch (e) {
             setStatus('Ошибка: ' + (e as Error)?.message);
             console.error(e);

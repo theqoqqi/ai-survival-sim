@@ -7,6 +7,8 @@ import { DetailsPanel } from '../DetailsPanel';
 import styles from './MoveGenAgentPanel.module.css';
 import { MoveGenAgentActionsView } from './MoveGenAgentActionsView';
 import { AgentSetupView } from './AgentSetupView';
+import { AgentDriverOptions } from '../../../agent/drivers/AgentDriver';
+import ChatGptAgentDriver from '../../../agent/drivers/ChatGptAgentDriver';
 
 interface MoveGenAgentPanelProps {
     worldMap: WorldMap;
@@ -20,11 +22,14 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
     onApplyMove,
 }) => {
     const [agent, setAgent] = React.useState<MoveGenAgent | null>(null);
+    const onCreateAgent = (options: AgentDriverOptions) => {
+        setAgent(new MoveGenAgent(new ChatGptAgentDriver(options)));
+    };
 
     return (
         <DetailsPanel header='AI-агент' classNames={{ body: styles.body }}>
             {!agent ? (
-                <AgentSetupView onAgentCreated={setAgent} />
+                <AgentSetupView onCreateAgent={onCreateAgent} />
             ) : (
                 <MoveGenAgentActionsView
                     agent={agent}
