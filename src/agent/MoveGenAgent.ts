@@ -3,35 +3,23 @@ import Entity from '../core/Entity';
 import systemPrompt from './systemPrompt';
 import { AgentMove, parseMove } from './AgentMove';
 import { Vectors } from '../core/util/Vector';
-import AgentDriver from './drivers/AgentDriver';
+import Agent, { AgentResponse } from './Agent';
 
-interface MoveGenAgentResponse {
+interface MoveGenAgentResponse extends AgentResponse {
     move?: AgentMove;
-    error?: string;
 }
 
-export class MoveGenAgent {
-
-    private readonly driver: AgentDriver;
+export class MoveGenAgent extends Agent {
 
     private readonly moveHistory: AgentMove[] = [];
 
     public globalTarget: string = 'Survive';
 
-    constructor(driver: AgentDriver) {
-        this.driver = driver;
-    }
-
     public async generateMove(worldMap: WorldMap, entity: Entity): Promise<MoveGenAgentResponse> {
-        const systemPrompt = this.buildSystemPrompt();
         const userPrompt = this.buildUserPrompt(worldMap, entity);
-
-        this.driver.setSystemPrompt(systemPrompt);
-        const response = await this.driver.prompt(userPrompt);
+        const response = await this.prompt(userPrompt);
 
         if (!response.content) {
-            console.warn('Agent: empty response from AI');
-
             return { error: 'Empty response from AI' };
         }
 
@@ -53,7 +41,7 @@ export class MoveGenAgent {
         }
     }
 
-    private buildSystemPrompt(): string {
+    protected buildSystemPrompt(): string {
         return systemPrompt.trim();
     }
 
