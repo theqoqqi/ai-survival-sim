@@ -5,7 +5,7 @@ import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import { AgentMove } from '../../../agent/AgentMove';
 import { DetailsPanel } from '../DetailsPanel';
 import styles from './MoveGenAgentPanel.module.css';
-import { AgentActionsView } from './AgentActionsView';
+import { MoveGenAgentActionsView } from './MoveGenAgentActionsView';
 import { AgentSetupView } from './AgentSetupView';
 
 interface MoveGenAgentPanelProps {
@@ -26,7 +26,7 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
             {!agent ? (
                 <AgentSetupView onAgentCreated={setAgent} />
             ) : (
-                <AgentActionsView
+                <MoveGenAgentActionsView
                     agent={agent}
                     worldMap={worldMap}
                     playerEntity={playerEntity}

@@ -3,17 +3,17 @@ import { AgentMove } from '../../../agent/AgentMove';
 import WorldMap from '../../../core/WorldMap';
 import Entity from '../../../core/Entity';
 import React from 'react';
-import styles from './AgentActionsView.module.css';
+import styles from './MoveGenAgentActionsView.module.css';
 import { PersistentField } from '../../util/PersistentField';
 
-interface AgentActionsViewProps {
+interface MoveGenAgentActionsViewProps {
     agent: MoveGenAgent;
     worldMap: WorldMap;
     playerEntity: Entity;
     onApplyMove: (move: AgentMove) => void;
 }
 
-export const AgentActionsView: React.FC<AgentActionsViewProps> = ({
+export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = ({
     agent,
     worldMap,
     playerEntity,
