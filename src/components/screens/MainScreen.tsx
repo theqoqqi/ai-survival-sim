@@ -12,6 +12,7 @@ import { MoveGenAgentPanel } from '../sidebar/agentPanel/MoveGenAgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 import { ImportExportPanel } from '../sidebar/ImportExportPanel';
+import { WorldGenAgentPanel } from '../sidebar/agentPanel/WorldGenAgentPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
@@ -72,6 +73,9 @@ export default function MainScreen() {
                 <TestActionsPanel
                     worldMap={worldMap}
                     onApplyMove={handleApplyMove}
+                />
+                <WorldGenAgentPanel
+                    onGenerateWorld={setWorldMap}
                 />
                 {player && (
                     <MoveGenAgentPanel
