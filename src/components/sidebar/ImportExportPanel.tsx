@@ -72,9 +72,9 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
             />
 
             <div className={styles.buttonGroup}>
-                <button onClick={handleExport}>Экспортировать</button>
-                <button onClick={handleDownload}>Скачать карту</button>
-                <button onClick={handleImport}>Импортировать</button>
+                <button onClick={handleExport}>Показать&nbsp;JSON текущей&nbsp;карты</button>
+                <button onClick={handleDownload}>Скачать JSON</button>
+                <button onClick={handleImport}>Загрузить&nbsp;карту из&nbsp;этого&nbsp;JSON</button>
             </div>
 
             {message && <div className={styles.message}>{message}</div>}

@@ -15,6 +15,10 @@
 }
 
 .buttonGroup button {
+    flex: 2;
+}
+
+.buttonGroup button:nth-child(2) {
     flex: 1;
 }
 
