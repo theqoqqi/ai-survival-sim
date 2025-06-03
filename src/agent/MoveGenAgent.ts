@@ -1,6 +1,6 @@
 import WorldMap from '../core/WorldMap';
 import Entity from '../core/Entity';
-import systemPrompt from './systemPrompt';
+import moveGenSystemPrompt from './moveGenSystemPrompt';
 import { AgentMove, parseMove } from './AgentMove';
 import { Vectors } from '../core/util/Vector';
 import Agent, { AgentResponse } from './Agent';
@@ -42,7 +42,7 @@ export class MoveGenAgent extends Agent {
     }
 
     protected buildSystemPrompt(): string {
-        return systemPrompt.trim();
+        return moveGenSystemPrompt.trim();
     }
 
     private buildUserPrompt(worldMap: WorldMap, entity: Entity): string {

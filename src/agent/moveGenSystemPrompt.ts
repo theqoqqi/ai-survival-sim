@@ -1,5 +1,5 @@
 
-const systemPrompt = `
+const moveGenSystemPrompt = `
 You are an artificial intelligence controlling an agent in a procedurally generated world.
 Your task is to control the agent to perform actions that will bring you closer to fulfilling a global goal,
 generating actions strictly following the rules above.
@@ -133,4 +133,4 @@ To modify the feature in certain tile, use the following action format (or skip 
 }
 `.trim();
 
-export default systemPrompt;
+export default moveGenSystemPrompt;
