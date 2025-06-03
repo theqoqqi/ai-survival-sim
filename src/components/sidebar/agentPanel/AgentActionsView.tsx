@@ -1,4 +1,4 @@
-import { Agent } from '../../../agent/Agent';
+import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import { AgentMove } from '../../../agent/AgentMove';
 import WorldMap from '../../../core/WorldMap';
 import Entity from '../../../core/Entity';
@@ -7,7 +7,7 @@ import styles from './AgentActionsView.module.css';
 import { PersistentField } from '../../util/PersistentField';
 
 interface AgentActionsViewProps {
-    agent: Agent;
+    agent: MoveGenAgent;
     worldMap: WorldMap;
     playerEntity: Entity;
     onApplyMove: (move: AgentMove) => void;

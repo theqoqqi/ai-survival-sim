@@ -1,11 +1,11 @@
-import { Agent } from '../../../agent/Agent';
+import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import React from 'react';
 import { PersistentField } from '../../util/PersistentField';
 import styles from './AgentSetupView.module.css';
 import ChatGptAgentDriver from '../../../agent/drivers/ChatGptAgentDriver';
 
 interface AgentSetupViewProps {
-    onAgentCreated: (agent: Agent) => void;
+    onAgentCreated: (agent: MoveGenAgent) => void;
 }
 
 export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onAgentCreated }) => {
@@ -27,7 +27,7 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ onAgentCreated }
                 modelName,
             };
 
-            const a = new Agent(new ChatGptAgentDriver(driverOptions));
+            const a = new MoveGenAgent(new ChatGptAgentDriver(driverOptions));
 
             setStatus('Агент готов');
             onAgentCreated(a);

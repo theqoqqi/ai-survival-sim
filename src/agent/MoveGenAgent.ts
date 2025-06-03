@@ -5,12 +5,12 @@ import { AgentMove, parseMove } from './AgentMove';
 import { Vectors } from '../core/util/Vector';
 import AgentDriver from './drivers/AgentDriver';
 
-interface AgentResponse {
+interface MoveGenAgentResponse {
     move?: AgentMove;
     error?: string;
 }
 
-export class Agent {
+export class MoveGenAgent {
 
     private readonly driver: AgentDriver;
 
@@ -22,7 +22,7 @@ export class Agent {
         this.driver = driver;
     }
 
-    public async generateMove(worldMap: WorldMap, entity: Entity): Promise<AgentResponse> {
+    public async generateMove(worldMap: WorldMap, entity: Entity): Promise<MoveGenAgentResponse> {
         const systemPrompt = this.buildSystemPrompt();
         const userPrompt = this.buildUserPrompt(worldMap, entity);
 

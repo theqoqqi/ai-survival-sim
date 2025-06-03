@@ -1,7 +1,7 @@
 import React from 'react';
 import WorldMap from '../../../core/WorldMap';
 import Entity from '../../../core/Entity';
-import { Agent } from '../../../agent/Agent';
+import { MoveGenAgent } from '../../../agent/MoveGenAgent';
 import { AgentMove } from '../../../agent/AgentMove';
 import { DetailsPanel } from '../DetailsPanel';
 import styles from './AgentPanel.module.css';
@@ -19,7 +19,7 @@ export const AgentPanel: React.FC<AgentPanelProps> = ({
     playerEntity,
     onApplyMove,
 }) => {
-    const [agent, setAgent] = React.useState<Agent | null>(null);
+    const [agent, setAgent] = React.useState<MoveGenAgent | null>(null);
 
     return (
         <DetailsPanel header='AI-агент' classNames={{ body: styles.body }}>
