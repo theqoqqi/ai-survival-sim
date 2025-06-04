@@ -12,6 +12,7 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
     const [apiKey, setApiKey] = React.useState<string>('');
     const [baseUrl, setBaseUrl] = React.useState<string>('');
     const [modelName, setModelName] = React.useState<string>('');
+    const [gpt4FreeMode, setGpt4FreeMode] = React.useState<boolean>(false);
     const [status, setStatus] = React.useState<string>('Не инициализирован');
 
     const initializeAgent = () => {
@@ -26,6 +27,7 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                 apiKey,
                 apiBaseUrl: baseUrl,
                 modelName,
+                gpt4FreeMode,
             });
         } catch (e) {
             setStatus('Ошибка: ' + (e as Error)?.message);
@@ -55,6 +57,13 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                 storageKey={`${storageKeyPrefix}_modelName`}
                 value={modelName}
                 onChange={setModelName}
+            />
+            <PersistentField
+                type='checkbox'
+                label='Gpt4Free Mode'
+                storageKey={`${storageKeyPrefix}_gpt4FreeMode`}
+                value={gpt4FreeMode}
+                onChange={value => setGpt4FreeMode(value === 'true')}
             />
             <button onClick={initializeAgent}>
                 Инициализировать агента
