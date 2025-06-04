@@ -1,0 +1,15 @@
+
+.buttonGroup {
+    display: flex;
+
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.buttonGroup button {
+    flex: 2;
+}
+
+.buttonGroup button:nth-child(2) {
+    flex: 1;
+}
