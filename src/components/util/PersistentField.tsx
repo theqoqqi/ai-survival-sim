@@ -1,12 +1,18 @@
 import React from 'react';
 import styles from './PersistentField.module.css';
 
+interface SelectOption {
+    value: string;
+    label: string;
+}
+
 interface PersistentFieldProps {
     type?: string;
     label: string;
     storageKey: string;
     value: string | number | boolean;
     onChange: (value: string) => void;
+    options?: SelectOption[];
 }
 
 export const PersistentField: React.FC<PersistentFieldProps> = ({
@@ -15,6 +21,7 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
     storageKey,
     value,
     onChange,
+    options = [],
 }) => {
     React.useEffect(() => {
         const stored = localStorage.getItem(storageKey);
@@ -33,7 +40,7 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
         }
     }, [storageKey, value]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const newValue = type === 'checkbox'
             ? String((e.target as HTMLInputElement).checked)
             : e.target.value;
@@ -51,7 +58,7 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
     };
 
     return (
-        <label className={styles.persistentField + ' ' + (type === 'checkbox' ? styles.checkbox : '')}>
+        <label className={styles.persistentField + ' ' + styles[type]}>
             {type === 'checkbox' && <>
                 <input {...inputProps} />
                 <span>{label}</span>
@@ -62,7 +69,18 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
                 <textarea {...inputProps} rows={3} />
             </>}
 
-            {type !== 'checkbox' && type !== 'textarea' && <>
+            {type === 'select' && <>
+                <div>{label}:</div>
+                <select {...inputProps}>
+                    {options.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                        </option>
+                    ))}
+                </select>
+            </>}
+
+            {type !== 'checkbox' && type !== 'textarea' && type !== 'select' && <>
                 <div>{label}:</div>
                 <input {...inputProps} />
             </>}

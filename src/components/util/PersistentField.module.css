@@ -1,5 +1,10 @@
 
+.persistentField {
+    flex: 1;
+}
+
 .persistentField input:not([type="checkbox"]),
+.persistentField select,
 .persistentField textarea {
     width: 100%;
     box-sizing: border-box;
