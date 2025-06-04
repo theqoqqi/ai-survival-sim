@@ -11,7 +11,7 @@ import { TestActionsPanel } from '../sidebar/TestActionsPanel';
 import { MoveGenAgentPanel } from '../sidebar/agentPanel/MoveGenAgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
-import { ImportExportPanel } from '../sidebar/ImportExportPanel';
+import { SaveLoadPanel } from '../sidebar/SaveLoadPanel';
 import { WorldGenAgentPanel } from '../sidebar/agentPanel/WorldGenAgentPanel';
 
 export default function MainScreen() {
@@ -65,7 +65,7 @@ export default function MainScreen() {
                         onClickEntity={onClickEntity}
                     />
                 )}
-                <ImportExportPanel
+                <SaveLoadPanel
                     worldMap={worldMap}
                     onImport={setWorldMap}
                     autoImport

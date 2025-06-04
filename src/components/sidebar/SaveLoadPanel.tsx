@@ -1,17 +1,17 @@
 import React from 'react';
 import WorldMap from '../../core/WorldMap';
 import { DetailsPanel } from './DetailsPanel';
-import styles from './ImportExportPanel.module.css';
+import styles from './SaveLoadPanel.module.css';
 import { SaveLoadSection } from './SaveLoadSection';
 import { ImportExportSection } from './ImportExportSection';
 
-interface ImportExportPanelProps {
+interface SaveLoadPanelProps {
     worldMap: WorldMap;
     onImport: (importedMap: WorldMap) => void;
     autoImport?: boolean;
 }
 
-export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
+export const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     worldMap,
     onImport,
     autoImport,
@@ -20,7 +20,7 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
 
     return (
         <DetailsPanel
-            header='Импорт / Экспорт карты'
+            header='Сохранение и загрузка карты'
             classNames={{ body: styles.body }}
             collapsedByDefault
         >
