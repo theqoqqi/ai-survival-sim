@@ -1,6 +1,6 @@
 import React from 'react';
-import WorldMap from '../../core/WorldMap';
-import { DetailsPanel } from './DetailsPanel';
+import WorldMap from '../../../core/WorldMap';
+import { DetailsPanel } from '../DetailsPanel';
 import styles from './SaveLoadPanel.module.css';
 import { SaveLoadSection } from './SaveLoadSection';
 import { ImportExportSection } from './ImportExportSection';

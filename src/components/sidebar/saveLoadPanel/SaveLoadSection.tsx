@@ -1,4 +1,4 @@
-import WorldMap from '../../core/WorldMap';
+import WorldMap from '../../../core/WorldMap';
 import React from 'react';
 import styles from './SaveLoadSection.module.css';
 

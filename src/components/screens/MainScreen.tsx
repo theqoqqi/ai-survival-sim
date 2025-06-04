@@ -11,7 +11,7 @@ import { TestActionsPanel } from '../sidebar/TestActionsPanel';
 import { MoveGenAgentPanel } from '../sidebar/agentPanel/MoveGenAgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
-import { SaveLoadPanel } from '../sidebar/SaveLoadPanel';
+import { SaveLoadPanel } from '../sidebar/saveLoadPanel/SaveLoadPanel';
 import { WorldGenAgentPanel } from '../sidebar/agentPanel/WorldGenAgentPanel';
 
 export default function MainScreen() {

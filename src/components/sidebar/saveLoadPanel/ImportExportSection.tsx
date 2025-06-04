@@ -1,6 +1,6 @@
 import React from 'react';
-import WorldMap from '../../core/WorldMap';
-import { PersistentField } from '../util/PersistentField';
+import WorldMap from '../../../core/WorldMap';
+import { PersistentField } from '../../util/PersistentField';
 import styles from './ImportExportSection.module.css';
 
 interface ImportExportSectionProps {
