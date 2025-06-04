@@ -3,19 +3,21 @@ import { initReactI18next, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
 
-i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-        fallbackLng: 'en',
-        interpolation: {
-            escapeValue: false,
-        },
-        resources: {
-            en: await load('en'),
-            ru: await load('ru'),
-        }
-    });
+export async function initI18n() {
+    return i18n
+        .use(LanguageDetector)
+        .use(initReactI18next)
+        .init({
+            fallbackLng: 'en',
+            interpolation: {
+                escapeValue: false,
+            },
+            resources: {
+                en: await load('en'),
+                ru: await load('ru'),
+            }
+        });
+}
 
 async function load(locale: string) {
     const jsonFile = `./locales/${locale}/translation.json`;
