@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ai-survival-sim/static/css/main.ac4ca2d3.css",
-    "main.js": "/ai-survival-sim/static/js/main.8f0354bc.js",
+    "main.js": "/ai-survival-sim/static/js/main.38a221ae.js",
     "index.html": "/ai-survival-sim/index.html",
     "main.ac4ca2d3.css.map": "/ai-survival-sim/static/css/main.ac4ca2d3.css.map",
-    "main.8f0354bc.js.map": "/ai-survival-sim/static/js/main.8f0354bc.js.map"
+    "main.38a221ae.js.map": "/ai-survival-sim/static/js/main.38a221ae.js.map"
   },
   "entrypoints": [
     "static/css/main.ac4ca2d3.css",
-    "static/js/main.8f0354bc.js"
+    "static/js/main.38a221ae.js"
   ]
 }
