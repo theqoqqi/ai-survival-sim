@@ -1,10 +1,10 @@
-import { MoveGenAgent } from '../../../agent/MoveGenAgent';
-import { AgentMove } from '../../../agent/AgentMove';
-import WorldMap from '../../../core/WorldMap';
-import Entity from '../../../core/Entity';
+import { MoveGenAgent } from '../../../../agent/MoveGenAgent';
+import { AgentMove } from '../../../../agent/AgentMove';
+import WorldMap from '../../../../core/WorldMap';
+import Entity from '../../../../core/Entity';
 import React from 'react';
 import styles from './MoveGenAgentActionsView.module.css';
-import { PersistentField } from '../../util/PersistentField';
+import { PersistentField } from '../../../util/PersistentField';
 
 interface MoveGenAgentActionsViewProps {
     agent: MoveGenAgent;

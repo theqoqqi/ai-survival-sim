@@ -1,8 +1,8 @@
-import { WorldGenAgent } from '../../../agent/WorldGenAgent';
-import WorldMap from '../../../core/WorldMap';
+import { WorldGenAgent } from '../../../../agent/WorldGenAgent';
+import WorldMap from '../../../../core/WorldMap';
 import React from 'react';
 import styles from './WorldGenAgentActionsView.module.css';
-import { PersistentField } from '../../util/PersistentField';
+import { PersistentField } from '../../../util/PersistentField';
 
 interface WorldGenAgentActionsViewProps {
     agent: WorldGenAgent;

@@ -8,11 +8,11 @@ import { createTestWorld } from '../../presets/testWorld';
 import Entity from '../../core/Entity';
 import { EntityDetailsPanel } from '../sidebar/EntityDetailsPanel';
 import { TestActionsPanel } from '../sidebar/TestActionsPanel';
-import { MoveGenAgentPanel } from '../sidebar/agentPanel/MoveGenAgentPanel';
+import { MoveGenAgentPanel } from '../sidebar/agentPanels/moveGen/MoveGenAgentPanel';
 import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 import { SaveLoadPanel } from '../sidebar/saveLoadPanel/SaveLoadPanel';
-import { WorldGenAgentPanel } from '../sidebar/agentPanel/WorldGenAgentPanel';
+import { WorldGenAgentPanel } from '../sidebar/agentPanels/worldGen/WorldGenAgentPanel';
 
 export default function MainScreen() {
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);

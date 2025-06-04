@@ -1,10 +1,10 @@
 import React from 'react';
-import WorldMap from '../../../core/WorldMap';
-import { WorldGenAgent } from '../../../agent/WorldGenAgent';
+import WorldMap from '../../../../core/WorldMap';
+import { WorldGenAgent } from '../../../../agent/WorldGenAgent';
 import { WorldGenAgentActionsView } from './WorldGenAgentActionsView';
-import { AgentDriverOptions } from '../../../agent/drivers/AgentDriver';
-import ChatGptAgentDriver from '../../../agent/drivers/ChatGptAgentDriver';
-import { AgentPanel } from './AgentPanel';
+import { AgentDriverOptions } from '../../../../agent/drivers/AgentDriver';
+import ChatGptAgentDriver from '../../../../agent/drivers/ChatGptAgentDriver';
+import { AgentPanel } from '../AgentPanel';
 
 interface WorldGenAgentPanelProps {
     onGenerateWorld: (world: WorldMap) => void;
