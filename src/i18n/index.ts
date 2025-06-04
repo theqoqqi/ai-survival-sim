@@ -20,7 +20,36 @@ i18n
 async function load(locale: string) {
     const jsonFile = `./locales/${locale}/translation.json`;
 
-    return (await import(jsonFile)).default;
+    return {
+        translation: nestTranslations((await import(jsonFile)).default),
+    };
+}
+
+function nestTranslations(flatJson) {
+    const result = Object.assign({}, flatJson);
+
+    for (const fullKey of Object.keys(flatJson)) {
+        const value = flatJson[fullKey];
+        const parts = fullKey.split('.');
+
+        let cursor = result;
+
+        for (let i = 0; i < parts.length; i++) {
+            const part = parts[i];
+
+            if (i === parts.length - 1) {
+                cursor[part] = value;
+            } else {
+                if (cursor[part] === undefined || typeof cursor[part] !== 'object') {
+                    cursor[part] = {};
+                }
+
+                cursor = cursor[part];
+            }
+        }
+    }
+
+    return result;
 }
 
 export function useComponentTranslation(component: any, namespace = 'translation') {
