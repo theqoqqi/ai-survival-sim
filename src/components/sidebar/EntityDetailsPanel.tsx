@@ -29,7 +29,7 @@ const InventoryView: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
     const items = inventory.getItems();
 
     return (
-        <div className={styles.inventory}>
+        <div>
             <div className={styles.inventoryTitle}>{t('inventory')}</div>
             {items.length > 0 && <InventoryItemList items={items} />}
             {items.length === 0 && <EmptyMessage message={t('emptyInventory')} />}

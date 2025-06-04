@@ -53,7 +53,7 @@ const EntityList: React.FC<EntityListProps> = ({ entities, onClickEntity }) => {
             {entities.map((ent) => (
                 <div key={ent.id} className={styles.entityListItem} onClick={() => onClickEntity?.(ent)}>
                     <span className={styles.entityIcon}>{ent.icon}</span>
-                    <span className={styles.entityTitle}>{ent.title}</span>
+                    <span>{ent.title}</span>
                 </div>
             ))}
         </div>
