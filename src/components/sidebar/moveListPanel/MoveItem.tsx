@@ -12,7 +12,7 @@ interface MoveItemProps {
 }
 
 export const MoveItem: React.FC<MoveItemProps> = ({ number, move, isExpanded, onToggle }) => {
-    const { t } = useComponentTranslation(MoveItem);
+    const { t } = useComponentTranslation('MoveItem');
 
     return (
         <div className={styles.moveItem}>

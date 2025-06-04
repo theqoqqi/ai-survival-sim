@@ -11,7 +11,7 @@ interface WorldMapViewProps {
 }
 
 export const WorldMapView: React.FC<WorldMapViewProps> = ({ worldMap, onClickTile }) => {
-    const { t } = useComponentTranslation(WorldMapView);
+    const { t } = useComponentTranslation('WorldMapView');
 
     const gridStyle: React.CSSProperties = {
         '--width': worldMap.width,

@@ -10,7 +10,7 @@ interface MoveListPanelProps {
 }
 
 export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
-    const { t } = useComponentTranslation(MoveListPanel);
+    const { t } = useComponentTranslation('MoveListPanel');
     const bodyRef = React.useRef<HTMLDivElement | null>(null);
     const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
 

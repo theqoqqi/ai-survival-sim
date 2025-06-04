@@ -18,7 +18,7 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
     onImport,
     onUpdateStatus,
 }) => {
-    const { t } = useComponentTranslation(SaveLoadSection);
+    const { t } = useComponentTranslation('SaveLoadSection');
     const [saveName, setSaveName] = React.useState('');
     const [savedNames, setSavedNames] = React.useState<string[]>([]);
     const [selectedName, setSelectedName] = React.useState<string>('');

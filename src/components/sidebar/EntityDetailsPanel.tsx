@@ -7,7 +7,7 @@ import Inventory from '../../core/Inventory';
 import { useComponentTranslation } from '../../i18n';
 
 const Header: React.FC<{ entity: Entity }> = ({ entity }) => {
-    const { t } = useComponentTranslation(EntityDetailsPanel);
+    const { t } = useComponentTranslation('EntityDetailsPanel');
 
     return (
         <>
@@ -25,7 +25,7 @@ const EmptyMessage: React.FC<{ message: string }> = ({ message }) => (
 );
 
 const InventoryView: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
-    const { t } = useComponentTranslation(EntityDetailsPanel);
+    const { t } = useComponentTranslation('EntityDetailsPanel');
     const items = inventory.getItems();
 
     return (
@@ -62,7 +62,7 @@ interface EntityDetailsPanelProps {
 }
 
 export const EntityDetailsPanel: React.FC<EntityDetailsPanelProps> = ({ entity }) => {
-    const { t } = useComponentTranslation(EntityDetailsPanel);
+    const { t } = useComponentTranslation('EntityDetailsPanel');
 
     if (!entity) {
         return (

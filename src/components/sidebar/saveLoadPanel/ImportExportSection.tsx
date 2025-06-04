@@ -17,7 +17,7 @@ export const ImportExportSection: React.FC<ImportExportSectionProps> = ({
     onUpdateStatus,
     autoImport,
 }) => {
-    const { t } = useComponentTranslation(ImportExportSection);
+    const { t } = useComponentTranslation('ImportExportSection');
     const [importJson, setImportJson] = React.useState('');
 
     const setStatus = React.useCallback((status: string) => {

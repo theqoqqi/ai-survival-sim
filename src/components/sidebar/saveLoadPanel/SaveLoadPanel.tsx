@@ -17,7 +17,7 @@ export const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     onImport,
     autoImport,
 }) => {
-    const { t } = useComponentTranslation(SaveLoadPanel);
+    const { t } = useComponentTranslation('SaveLoadPanel');
     const [message, setMessage] = React.useState<string | null>(null);
 
     return (

@@ -20,7 +20,7 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
     playerEntity,
     onApplyMove,
 }) => {
-    const { t } = useComponentTranslation(MoveGenAgentPanel);
+    const { t } = useComponentTranslation('MoveGenAgentPanel');
     const [agent, setAgent] = React.useState<MoveGenAgent | null>(null);
     const onCreateAgent = (options: AgentDriverOptions) => {
         setAgent(new MoveGenAgent(new ChatGptAgentDriver(options)));

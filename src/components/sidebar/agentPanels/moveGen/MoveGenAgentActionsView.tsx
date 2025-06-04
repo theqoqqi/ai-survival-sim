@@ -20,7 +20,7 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
     playerEntity,
     onApplyMove,
 }) => {
-    const { t } = useComponentTranslation(MoveGenAgentActionsView);
+    const { t } = useComponentTranslation('MoveGenAgentActionsView');
     const [status, setStatus] = React.useState<string>(t('readyForMoveRequest'));
     const [globalTarget, setGlobalTarget] = React.useState<string>('');
 

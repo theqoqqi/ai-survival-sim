@@ -21,7 +21,7 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
     worldMap,
     onApplyMove,
 }) => {
-    const { t } = useComponentTranslation(TestActionsPanel);
+    const { t } = useComponentTranslation('TestActionsPanel');
 
     const apply = (action: Action<any>) => {
         onApplyMove({

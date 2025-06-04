@@ -6,7 +6,7 @@ import { PersistentField } from '../util/PersistentField';
 import { useComponentTranslation } from '../../i18n';
 
 export const SettingsPanel: React.FC = () => {
-    const { t } = useComponentTranslation(SettingsPanel);
+    const { t } = useComponentTranslation('SettingsPanel');
     const { i18n } = useTranslation();
 
     const handleLanguageChange = (value: string) => {

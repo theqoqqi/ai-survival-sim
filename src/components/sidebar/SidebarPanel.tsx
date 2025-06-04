@@ -25,7 +25,7 @@ export const SidebarPanel: React.FC<SidebarPanelProps> = ({
     collapsedByDefault,
     children,
 }) => {
-    const { t } = useComponentTranslation(SidebarPanel);
+    const { t } = useComponentTranslation('SidebarPanel');
     const [collapsed, setCollapsed] = React.useState(collapsedByDefault);
 
     if (!Children.count(children)) {

@@ -10,7 +10,7 @@ interface AgentSetupViewProps {
 }
 
 export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix, onCreateAgent }) => {
-    const { t } = useComponentTranslation(AgentSetupView);
+    const { t } = useComponentTranslation('AgentSetupView');
     const [apiKey, setApiKey] = React.useState<string>('');
     const [baseUrl, setBaseUrl] = React.useState<string>('');
     const [modelName, setModelName] = React.useState<string>('');

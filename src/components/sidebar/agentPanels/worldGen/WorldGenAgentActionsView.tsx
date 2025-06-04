@@ -14,7 +14,7 @@ export const WorldGenAgentActionsView: React.FC<WorldGenAgentActionsViewProps> =
     agent,
     onGenerateWorld,
 }) => {
-    const { t } = useComponentTranslation(WorldGenAgentActionsView);
+    const { t } = useComponentTranslation('WorldGenAgentActionsView');
     const [status, setStatus] = React.useState<string>(t('readyForGeneration'));
     const [prompt, setPrompt] = React.useState<string>('');
     const [width, setWidth] = React.useState<number>(10);

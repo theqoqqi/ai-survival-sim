@@ -55,13 +55,8 @@ function nestTranslations(flatJson: Record<string, string>): ResourceLanguage {
     return result;
 }
 
-export function useComponentTranslation(component: any, namespace = 'translation') {
+export function useComponentTranslation(componentName: string, namespace = 'translation') {
     const { t: originalT, ...rest } = useTranslation(namespace);
-
-    const componentName =
-        typeof component === 'string'
-            ? component
-            : component.name || 'UnknownComponent';
 
     const t = React.useCallback((key, options = {} as any) => {
         const fullKey = key.includes('.')

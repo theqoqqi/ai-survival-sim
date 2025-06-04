@@ -7,7 +7,7 @@ import { SidebarPanel } from './SidebarPanel';
 import { useComponentTranslation } from '../../i18n';
 
 const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => {
-    const { t } = useComponentTranslation(TileDetailsPanel);
+    const { t } = useComponentTranslation('TileDetailsPanel');
 
     return (
         <div className={styles.terrainLine}>
@@ -17,7 +17,7 @@ const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => {
 };
 
 const FeatureInfo: React.FC<{ feature: TileFeature | null }> = ({ feature }) => {
-    const { t } = useComponentTranslation(TileDetailsPanel);
+    const { t } = useComponentTranslation('TileDetailsPanel');
 
     if (!feature) {
         return (
@@ -41,7 +41,7 @@ interface EntityListProps {
 }
 
 const EntityList: React.FC<EntityListProps> = ({ entities, onClickEntity }) => {
-    const { t } = useComponentTranslation(TileDetailsPanel);
+    const { t } = useComponentTranslation('TileDetailsPanel');
 
     if (entities.length === 0) {
         return null;
@@ -66,7 +66,7 @@ interface TileDetailsPanelProps {
 }
 
 export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClickEntity }) => {
-    const { t } = useComponentTranslation(TileDetailsPanel);
+    const { t } = useComponentTranslation('TileDetailsPanel');
 
     if (!tile) {
         return (

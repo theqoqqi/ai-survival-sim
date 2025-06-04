@@ -17,7 +17,7 @@ import { useComponentTranslation } from '../../i18n';
 import { SettingsPanel } from '../sidebar/SettingsPanel';
 
 export default function MainScreen() {
-    const { t } = useComponentTranslation(MainScreen);
+    const { t } = useComponentTranslation('MainScreen');
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
     const [selectedEntity, setSelectedEntity] = React.useState<Entity | null>(null);
     const [worldMap, setWorldMap] = React.useState<WorldMap | null>(null);

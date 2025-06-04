@@ -12,7 +12,7 @@ interface WorldGenAgentPanelProps {
 }
 
 export const WorldGenAgentPanel: React.FC<WorldGenAgentPanelProps> = ({ onGenerateWorld }) => {
-    const { t } = useComponentTranslation(WorldGenAgentPanel);
+    const { t } = useComponentTranslation('WorldGenAgentPanel');
     const [agent, setAgent] = React.useState<WorldGenAgent | null>(null);
 
     const onCreateAgent = (options: AgentDriverOptions) => {
