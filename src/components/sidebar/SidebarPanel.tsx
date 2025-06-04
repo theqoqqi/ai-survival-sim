@@ -38,19 +38,19 @@ export const SidebarPanel: React.FC<SidebarPanelProps> = ({
 
     return (
         <section className={styles.container + ' ' + (collapsed ? styles.collapsed : '')}>
-            <div className={styles.headerWrapper}>
+            <div
+                className={styles.headerWrapper}
+                onClick={() => setCollapsed(prev => !prev)}
+            >
                 <header
                     ref={refs?.header}
                     className={`${styles.header} ${classNames?.header ?? ''}`}
                 >
                     {header}
                 </header>
-                <button
-                    onClick={() => setCollapsed(prev => !prev)}
-                    className={styles.toggleButton}
-                >
+                <div className={styles.toggleButton}>
                     {collapsed ? '▼' : '▲'}
-                </button>
+                </div>
             </div>
             <div
                 ref={refs?.body}

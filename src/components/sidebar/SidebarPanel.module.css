@@ -30,6 +30,8 @@
     justify-content: space-between;
 
     border-bottom: 1px solid #ddd;
+
+    cursor: pointer;
 }
 
 .header {
@@ -48,11 +50,9 @@
     border: none;
 
     font-size: 1em;
-
-    cursor: pointer;
 }
 
-.toggleButton:hover {
+.headerWrapper:hover .toggleButton {
     color: #000;
 }
 
