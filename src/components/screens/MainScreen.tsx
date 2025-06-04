@@ -14,6 +14,7 @@ import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 import { SaveLoadPanel } from '../sidebar/saveLoadPanel/SaveLoadPanel';
 import { WorldGenAgentPanel } from '../sidebar/agentPanels/worldGen/WorldGenAgentPanel';
 import { useComponentTranslation } from '../../i18n';
+import { SettingsPanel } from '../sidebar/SettingsPanel';
 
 export default function MainScreen() {
     const { t } = useComponentTranslation(MainScreen);
@@ -51,6 +52,7 @@ export default function MainScreen() {
         <div className={styles.mainScreen}>
             <div className={styles.sidebar + ' ' + styles.moves}>
                 <MoveListPanel moves={appliedMoves} />
+                <SettingsPanel />
             </div>
             <div className={styles.worldMapContainer}>
                 <WorldMapView

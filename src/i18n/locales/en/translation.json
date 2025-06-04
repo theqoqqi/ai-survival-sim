@@ -82,5 +82,7 @@
   "components.TileDetailsPanel.coordinates": "Coordinates",
   "components.MoveListPanel.moves": "Moves",
   "components.MoveItem.moveNumber": "Move {{number}}",
+  "components.SettingsPanel.settings": "Settings",
+  "components.SettingsPanel.language": "Language",
   "components.WorldMapView.worldMap": "World map"
 }
