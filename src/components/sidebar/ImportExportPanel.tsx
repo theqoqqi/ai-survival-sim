@@ -3,6 +3,7 @@ import WorldMap from '../../core/WorldMap';
 import { DetailsPanel } from './DetailsPanel';
 import { PersistentField } from '../util/PersistentField';
 import styles from './ImportExportPanel.module.css';
+import { SaveLoadSection } from './SaveLoadSection';
 
 interface ImportExportPanelProps {
     worldMap: WorldMap;
@@ -76,6 +77,14 @@ export const ImportExportPanel: React.FC<ImportExportPanelProps> = ({
                 <button onClick={handleDownload}>Скачать JSON</button>
                 <button onClick={handleImport}>Загрузить&nbsp;карту из&nbsp;этого&nbsp;JSON</button>
             </div>
+
+            <div className={styles.separator} />
+
+            <SaveLoadSection
+                worldMap={worldMap}
+                onImport={onImport}
+                onUpdateStatus={setMessage}
+            />
 
             {message && <div className={styles.message}>{message}</div>}
         </DetailsPanel>

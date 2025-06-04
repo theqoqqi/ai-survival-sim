@@ -7,6 +7,13 @@
     margin-top: 12px;
 }
 
+.separator {
+    height: 1px;
+    margin: 8px 0;
+
+    background-color: #ddd;
+}
+
 .buttonGroup {
     display: flex;
 

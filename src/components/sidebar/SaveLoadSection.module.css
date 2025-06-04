@@ -1,0 +1,43 @@
+
+.saveLoadSection {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.saveLoadGrid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 1fr;
+
+    gap: 8px;
+}
+
+.saveInput {
+    flex: 1;
+    padding: 4px 8px;
+}
+
+.loadSelect {
+    flex: 1;
+    padding: 4px 8px;
+}
+
+.savedMapControls {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+
+    gap: 8px;
+}
+
+.deleteButton {
+    background-color: #e74c3c;
+    border: 1px solid #c0392b;
+    border-radius: 2px;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #c0392b;
+}
