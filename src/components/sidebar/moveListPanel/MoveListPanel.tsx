@@ -11,12 +11,14 @@ interface MoveListPanelProps {
 
 export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
     const { t } = useComponentTranslation(MoveListPanel);
-    const bodyRef = React.useRef<HTMLDivElement>(null);
+    const bodyRef = React.useRef<HTMLDivElement | null>(null);
     const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
 
     React.useEffect(() => {
-        if (bodyRef.current) {
-            bodyRef.current.scrollTop = -bodyRef.current.scrollHeight;
+        const body = bodyRef.current;
+
+        if (body) {
+            body.scrollTop = -body.scrollHeight;
         }
     }, [moves]);
 
