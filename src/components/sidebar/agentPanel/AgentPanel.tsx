@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { DetailsPanel } from '../DetailsPanel';
+import { SidebarPanel } from '../SidebarPanel';
 import styles from './AgentPanel.module.css';
 import { AgentSetupView } from './AgentSetupView';
 import Agent from '../../../agent/Agent';
@@ -22,9 +22,9 @@ export const AgentPanel: React.FC<AgentPanelProps> = ({
     children,
 }) => {
     return (
-        <DetailsPanel header={header} classNames={{ body: styles.body }}>
+        <SidebarPanel header={header} classNames={{ body: styles.body }}>
             {!agent && <AgentSetupView storageKeyPrefix={storageKeyPrefix} onCreateAgent={onCreateAgent} />}
             {children}
-        </DetailsPanel>
+        </SidebarPanel>
     );
 };

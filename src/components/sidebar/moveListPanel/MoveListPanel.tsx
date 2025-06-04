@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './MoveListPanel.module.css';
 import { AgentMove } from '../../../agent/AgentMove';
-import { DetailsPanel } from '../DetailsPanel';
+import { SidebarPanel } from '../SidebarPanel';
 import { MoveItem } from './MoveItem';
 
 interface MoveListPanelProps {
@@ -23,7 +23,7 @@ export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
     };
 
     return (
-        <DetailsPanel
+        <SidebarPanel
             header='Ходы'
             classNames={{ body: styles.body }}
             refs={{ body: bodyRef }}
@@ -37,7 +37,7 @@ export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
                     onToggle={() => toggleExpand(index)}
                 />
             ))}
-        </DetailsPanel>
+        </SidebarPanel>
     );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Entity from '../../core/Entity';
 import styles from './EntityDetailsPanel.module.css';
 import InventoryItem from '../../core/InventoryItem';
-import { DetailsPanel } from './DetailsPanel';
+import { SidebarPanel } from './SidebarPanel';
 import Inventory from '../../core/Inventory';
 
 const Header: React.FC<{ entity: Entity }> = ({ entity }) => (
@@ -65,12 +65,12 @@ export const EntityDetailsPanel: React.FC<EntityDetailsPanelProps> = ({ entity }
     }
 
     return (
-        <DetailsPanel
+        <SidebarPanel
             header={<Header entity={entity} />}
             emptyMessage="Выберите сущность"
             classNames={{ header: styles.header, body: styles.body }}
         >
             <InventoryView inventory={entity.inventory} />
-        </DetailsPanel>
+        </SidebarPanel>
     );
 };

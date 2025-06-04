@@ -3,7 +3,7 @@ import Tile, { TileFeature, TileTerrain } from '../../core/Tile';
 import TileView from '../world/TileView';
 import styles from './TileDetailsPanel.module.css';
 import Entity from '../../core/Entity';
-import { DetailsPanel } from './DetailsPanel';
+import { SidebarPanel } from './SidebarPanel';
 
 const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => (
     <div className={styles.terrainLine}>
@@ -59,7 +59,7 @@ interface TileDetailsPanelProps {
 export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClickEntity }) => {
     if (!tile) {
         return (
-            <DetailsPanel emptyMessage='Выберите тайл' />
+            <SidebarPanel emptyMessage='Выберите тайл' />
         );
     }
 
@@ -70,7 +70,7 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClic
     } = tile;
 
     return (
-        <DetailsPanel
+        <SidebarPanel
             header={`X: ${x}, Y: ${y}`}
             classNames={{ body: styles.body }}
         >
@@ -83,6 +83,6 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClic
                 <FeatureInfo feature={feature} />
                 <EntityList entities={entities} onClickEntity={onClickEntity} />
             </div>
-        </DetailsPanel>
+        </SidebarPanel>
     );
 };

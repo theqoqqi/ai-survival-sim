@@ -1,7 +1,7 @@
 import React, { Children } from 'react';
-import styles from './DetailsPanel.module.css';
+import styles from './SidebarPanel.module.css';
 
-interface DetailsPanelProps {
+interface SidebarPanelProps {
     header?: React.ReactNode;
     classNames?: {
         header?: string;
@@ -16,7 +16,7 @@ interface DetailsPanelProps {
     children?: React.ReactNode;
 }
 
-export const DetailsPanel: React.FC<DetailsPanelProps> = ({
+export const SidebarPanel: React.FC<SidebarPanelProps> = ({
     header,
     classNames,
     refs,

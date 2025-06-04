@@ -1,6 +1,6 @@
 import React from 'react';
 import WorldMap from '../../../core/WorldMap';
-import { DetailsPanel } from '../DetailsPanel';
+import { SidebarPanel } from '../SidebarPanel';
 import styles from './SaveLoadPanel.module.css';
 import { SaveLoadSection } from './SaveLoadSection';
 import { ImportExportSection } from './ImportExportSection';
@@ -19,7 +19,7 @@ export const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     const [message, setMessage] = React.useState<string | null>(null);
 
     return (
-        <DetailsPanel
+        <SidebarPanel
             header='Сохранение и загрузка карты'
             classNames={{ body: styles.body }}
             collapsedByDefault
@@ -40,6 +40,6 @@ export const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
             />
 
             {message && <div className={styles.message}>{message}</div>}
-        </DetailsPanel>
+        </SidebarPanel>
     );
 };

@@ -3,7 +3,7 @@ import WorldMap from '../../core/WorldMap';
 import Action from '../../core/actions/Action';
 import JumpAction from '../../core/actions/JumpAction';
 import styles from './TestActionsPanel.module.css';
-import { DetailsPanel } from './DetailsPanel';
+import { SidebarPanel } from './SidebarPanel';
 import InventoryItem from '../../core/InventoryItem';
 import { AddInventoryItemAction } from '../../core/actions/AddInventoryItemAction';
 import { RemoveInventoryItemAction } from '../../core/actions/RemoveInventoryItemAction';
@@ -86,7 +86,7 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
     };
 
     return (
-        <DetailsPanel
+        <SidebarPanel
             header='Тестовые действия'
             classNames={{ body: styles.body }}
             collapsedByDefault
@@ -127,6 +127,6 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
             <button onClick={clearFeature}>
                 Clear tile feature at (8, 1)
             </button>
-        </DetailsPanel>
+        </SidebarPanel>
     );
 };
