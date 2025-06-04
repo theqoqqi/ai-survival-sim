@@ -5,12 +5,14 @@ import { WorldGenAgentActionsView } from './WorldGenAgentActionsView';
 import { AgentDriverOptions } from '../../../../agent/drivers/AgentDriver';
 import ChatGptAgentDriver from '../../../../agent/drivers/ChatGptAgentDriver';
 import { AgentPanel } from '../AgentPanel';
+import { useComponentTranslation } from '../../../../i18n';
 
 interface WorldGenAgentPanelProps {
     onGenerateWorld: (world: WorldMap) => void;
 }
 
 export const WorldGenAgentPanel: React.FC<WorldGenAgentPanelProps> = ({ onGenerateWorld }) => {
+    const { t } = useComponentTranslation(WorldGenAgentPanel);
     const [agent, setAgent] = React.useState<WorldGenAgent | null>(null);
 
     const onCreateAgent = (options: AgentDriverOptions) => {
@@ -19,7 +21,7 @@ export const WorldGenAgentPanel: React.FC<WorldGenAgentPanelProps> = ({ onGenera
 
     return (
         <AgentPanel
-            header='Генерация мира'
+            header={t('title')}
             storageKeyPrefix='agents_worldGen'
             agent={agent}
             onCreateAgent={onCreateAgent}

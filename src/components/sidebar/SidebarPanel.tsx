@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import styles from './SidebarPanel.module.css';
+import { useComponentTranslation } from '../../i18n';
 
 interface SidebarPanelProps {
     header?: React.ReactNode;
@@ -20,16 +21,17 @@ export const SidebarPanel: React.FC<SidebarPanelProps> = ({
     header,
     classNames,
     refs,
-    emptyMessage = 'Ничего не выбрано',
+    emptyMessage,
     collapsedByDefault,
     children,
 }) => {
+    const { t } = useComponentTranslation(SidebarPanel);
     const [collapsed, setCollapsed] = React.useState(collapsedByDefault);
 
     if (!Children.count(children)) {
         return (
             <section className={styles.container}>
-                <div className={styles.empty}>{emptyMessage}</div>
+                <div className={styles.empty}>{emptyMessage || t('empty')}</div>
             </section>
         );
     }

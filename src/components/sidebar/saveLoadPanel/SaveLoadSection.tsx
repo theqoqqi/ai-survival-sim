@@ -1,6 +1,7 @@
 import WorldMap from '../../../core/WorldMap';
 import React from 'react';
 import styles from './SaveLoadSection.module.css';
+import { useComponentTranslation } from '../../../i18n';
 
 interface SavedWorlds {
     [name: string]: string;
@@ -17,6 +18,7 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
     onImport,
     onUpdateStatus,
 }) => {
+    const { t } = useComponentTranslation(SaveLoadSection);
     const [saveName, setSaveName] = React.useState('');
     const [savedNames, setSavedNames] = React.useState<string[]>([]);
     const [selectedName, setSelectedName] = React.useState<string>('');
@@ -43,7 +45,7 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
 
     const handleSave = () => {
         if (!saveName.trim()) {
-            setStatus('Введите имя для сохранения мира.');
+            setStatus(t('enterNameForSaving'));
             return;
         }
 
@@ -54,7 +56,7 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
         all[saveName] = json;
 
         localStorage.setItem('savedWorlds', JSON.stringify(all));
-        setStatus(`Мир сохранён как "${saveName}".`);
+        setStatus(t('worldSavedAs', { saveName }));
 
         setSaveName('');
         loadSavedNames();
@@ -62,14 +64,14 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
 
     const handleLoad = () => {
         if (!selectedName) {
-            setStatus('Выберите сохранённый мир.');
+            setStatus(t('selectSavedWorld'));
             return;
         }
 
         const stored = localStorage.getItem('savedWorlds');
 
         if (!stored) {
-            setStatus('Сохранённые миры не найдены.');
+            setStatus(t('savedWorldsNotFound'));
             return;
         }
 
@@ -78,7 +80,7 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
             const json = all[selectedName];
 
             if (!json) {
-                setStatus(`Мир "${selectedName}" не найден.`);
+                setStatus(t('worldNotFound', { selectedName }));
                 return;
             }
 
@@ -86,23 +88,23 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
             const importedMap = WorldMap.fromJson(parsed);
 
             onImport(importedMap);
-            setStatus(`Мир "${selectedName}" успешно загружен.`);
+            setStatus(t('worldLoadedSuccessfully', { selectedName }));
         } catch (e) {
-            console.error('Ошибка загрузки мира:', e);
-            setStatus('❌ Ошибка при загрузке сохранённого мира.');
+            console.error(t('worldLoadError'), e);
+            setStatus('❌ ' + t('worldLoadError'));
         }
     };
 
     const handleDelete = () => {
         if (!selectedName) {
-            setStatus('Выберите мир для удаления.');
+            setStatus(t('selectWorldToDelete'));
             return;
         }
 
         const stored = localStorage.getItem('savedWorlds');
 
         if (!stored) {
-            setStatus('Сохранённые миры не найдены.');
+            setStatus(t('savedWorldsNotFound'));
             return;
         }
 
@@ -110,46 +112,46 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
             const all: SavedWorlds = JSON.parse(stored);
 
             if (!(selectedName in all)) {
-                setStatus(`Мир "${selectedName}" не найден.`);
+                setStatus(t('worldNotFound', { selectedName }));
                 return;
             }
 
-            if (!window.confirm(`Вы уверены, что хотите удалить мир "${selectedName}"?`)) {
+            if (!window.confirm(t('confirmDeleteWorld', { selectedName }))) {
                 return;
             }
 
             delete all[selectedName];
 
             localStorage.setItem('savedWorlds', JSON.stringify(all));
-            setStatus(`Мир "${selectedName}" удалён.`);
+            setStatus(t('worldDeleted', { selectedName }));
 
             setSelectedName('');
             loadSavedNames();
         } catch (e) {
-            console.error('Ошибка удаления мира:', e);
-            setStatus('❌ Ошибка при удалении сохранённого мира.');
+            console.error(t('worldDeleteError'), e);
+            setStatus('❌ ' + t('worldDeleteError'));
         }
     };
 
     return (
         <div className={styles.saveLoadSection}>
-            <div>Сохраненные карты</div>
+            <div>{t('savedMaps')}</div>
             <div className={styles.saveLoadGrid}>
                 <input
                     type='text'
-                    placeholder='Имя мира'
+                    placeholder={t('worldName')}
                     value={saveName}
                     onChange={(e) => setSaveName(e.target.value)}
                     className={styles.saveInput}
                 />
-                <button onClick={handleSave}>Сохранить карту</button>
+                <button onClick={handleSave}>{t('saveMap')}</button>
 
                 <select
                     value={selectedName}
                     onChange={(e) => setSelectedName(e.target.value)}
                     className={styles.loadSelect}
                 >
-                    <option value=''>— Выберите мир —</option>
+                    <option value=''>— {t('selectWorld')} —</option>
                     {savedNames.map((name) => (
                         <option key={name} value={name}>
                             {name}
@@ -157,7 +159,7 @@ export const SaveLoadSection: React.FC<SaveLoadSectionProps> = ({
                     ))}
                 </select>
                 <div className={styles.savedMapControls}>
-                    <button onClick={handleLoad}>Загрузить</button>
+                    <button onClick={handleLoad}>{t('load')}</button>
                     <button onClick={handleDelete} className={styles.deleteButton}>
                         X
                     </button>

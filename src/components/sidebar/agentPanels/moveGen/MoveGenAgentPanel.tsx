@@ -7,6 +7,7 @@ import { MoveGenAgentActionsView } from './MoveGenAgentActionsView';
 import { AgentDriverOptions } from '../../../../agent/drivers/AgentDriver';
 import ChatGptAgentDriver from '../../../../agent/drivers/ChatGptAgentDriver';
 import { AgentPanel } from '../AgentPanel';
+import { useComponentTranslation } from '../../../../i18n';
 
 interface MoveGenAgentPanelProps {
     worldMap: WorldMap;
@@ -19,6 +20,7 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
     playerEntity,
     onApplyMove,
 }) => {
+    const { t } = useComponentTranslation(MoveGenAgentPanel);
     const [agent, setAgent] = React.useState<MoveGenAgent | null>(null);
     const onCreateAgent = (options: AgentDriverOptions) => {
         setAgent(new MoveGenAgent(new ChatGptAgentDriver(options)));
@@ -26,7 +28,7 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
 
     return (
         <AgentPanel
-            header='AI-агент'
+            header={t('title')}
             storageKeyPrefix='agents_moveGen'
             agent={agent}
             onCreateAgent={onCreateAgent}

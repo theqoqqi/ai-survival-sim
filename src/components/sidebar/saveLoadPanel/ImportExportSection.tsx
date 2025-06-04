@@ -2,6 +2,7 @@ import React from 'react';
 import WorldMap from '../../../core/WorldMap';
 import { PersistentField } from '../../util/PersistentField';
 import styles from './ImportExportSection.module.css';
+import { useComponentTranslation } from '../../../i18n';
 
 interface ImportExportSectionProps {
     worldMap: WorldMap;
@@ -16,6 +17,7 @@ export const ImportExportSection: React.FC<ImportExportSectionProps> = ({
     onUpdateStatus,
     autoImport,
 }) => {
+    const { t } = useComponentTranslation(ImportExportSection);
     const [importJson, setImportJson] = React.useState('');
 
     const setStatus = React.useCallback((status: string) => {
@@ -37,7 +39,7 @@ export const ImportExportSection: React.FC<ImportExportSectionProps> = ({
         a.click();
 
         URL.revokeObjectURL(url);
-        setStatus('Карта успешно экспортирована.');
+        setStatus(t('mapExportedSuccess'));
     };
 
     const handleImport = React.useCallback(() => {
@@ -47,13 +49,13 @@ export const ImportExportSection: React.FC<ImportExportSectionProps> = ({
 
             onImport(importedMap);
 
-            setStatus('Карта успешно импортирована.');
+            setStatus(t('mapImportedSuccess'));
         } catch (e) {
-            console.error('Ошибка импорта карты:', e);
+            console.error(t('mapImportError') + ':', e);
 
-            setStatus('❌ Ошибка импорта карты: ' + ((e as Error).message));
+            setStatus('❌ ' + t('mapImportError') + ': ' + ((e as Error).message));
         }
-    }, [importJson, onImport, setStatus]);
+    }, [importJson, onImport, setStatus, t]);
 
     React.useEffect(() => {
         if (autoImport && importJson) {
@@ -65,16 +67,16 @@ export const ImportExportSection: React.FC<ImportExportSectionProps> = ({
         <>
             <PersistentField
                 type='textarea'
-                label='Вставьте JSON для импорта'
+                label={t('pasteJsonForImport')}
                 storageKey='importWorldMap'
                 value={importJson}
                 onChange={setImportJson}
             />
 
             <div className={styles.buttonGroup}>
-                <button onClick={handleExport}>Показать&nbsp;JSON текущей&nbsp;карты</button>
-                <button onClick={handleDownload}>Скачать JSON</button>
-                <button onClick={handleImport}>Загрузить&nbsp;карту из&nbsp;этого&nbsp;JSON</button>
+                <button onClick={handleExport}>{t('showCurrentMapJson')}</button>
+                <button onClick={handleDownload}>{t('downloadJson')}</button>
+                <button onClick={handleImport}>{t('loadMapFromJson')}</button>
             </div>
         </>
     );

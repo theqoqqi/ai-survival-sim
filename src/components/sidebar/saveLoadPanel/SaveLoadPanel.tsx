@@ -4,6 +4,7 @@ import { SidebarPanel } from '../SidebarPanel';
 import styles from './SaveLoadPanel.module.css';
 import { SaveLoadSection } from './SaveLoadSection';
 import { ImportExportSection } from './ImportExportSection';
+import { useComponentTranslation } from '../../../i18n';
 
 interface SaveLoadPanelProps {
     worldMap: WorldMap;
@@ -16,11 +17,12 @@ export const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     onImport,
     autoImport,
 }) => {
+    const { t } = useComponentTranslation(SaveLoadPanel);
     const [message, setMessage] = React.useState<string | null>(null);
 
     return (
         <SidebarPanel
-            header='Сохранение и загрузка карты'
+            header={t('saveLoadMap')}
             classNames={{ body: styles.body }}
             collapsedByDefault
         >

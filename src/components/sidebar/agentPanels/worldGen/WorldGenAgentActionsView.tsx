@@ -3,6 +3,7 @@ import WorldMap from '../../../../core/WorldMap';
 import React from 'react';
 import styles from './WorldGenAgentActionsView.module.css';
 import { PersistentField } from '../../../util/PersistentField';
+import { useComponentTranslation } from '../../../../i18n';
 
 interface WorldGenAgentActionsViewProps {
     agent: WorldGenAgent;
@@ -13,13 +14,14 @@ export const WorldGenAgentActionsView: React.FC<WorldGenAgentActionsViewProps> =
     agent,
     onGenerateWorld,
 }) => {
-    const [status, setStatus] = React.useState<string>('Готов к генерации');
+    const { t } = useComponentTranslation(WorldGenAgentActionsView);
+    const [status, setStatus] = React.useState<string>(t('readyForGeneration'));
     const [prompt, setPrompt] = React.useState<string>('');
     const [width, setWidth] = React.useState<number>(10);
     const [height, setHeight] = React.useState<number>(10);
 
     const performGeneration = async () => {
-        setStatus('Генерация мира...');
+        setStatus(t('generatingWorld'));
 
         try {
             const response = await agent.generateWorld({
@@ -29,14 +31,14 @@ export const WorldGenAgentActionsView: React.FC<WorldGenAgentActionsViewProps> =
             });
 
             if (!response.world) {
-                setStatus(response.error ?? 'Не удалось сгенерировать карту');
+                setStatus(response.error ?? t('failedToGenerateMap'));
                 return;
             }
 
             onGenerateWorld(response.world);
-            setStatus('Карта успешно сгенерирована');
+            setStatus(t('mapGeneratedSuccessfully'));
         } catch (e) {
-            setStatus('Ошибка генерации карты');
+            setStatus(t('mapGenerationError'));
             console.error(e);
         }
     };
@@ -45,29 +47,29 @@ export const WorldGenAgentActionsView: React.FC<WorldGenAgentActionsViewProps> =
         <div className={styles.agentActionsView}>
             <PersistentField
                 type='textarea'
-                label='Описание мира'
+                label={t('worldDescription')}
                 storageKey='agent_worldGen_prompt'
                 value={prompt}
                 onChange={setPrompt}
             />
             <PersistentField
                 type='number'
-                label='Ширина'
+                label={t('width')}
                 storageKey='agent_worldGen_width'
                 value={width}
                 onChange={value => setWidth(Number(value))}
             />
             <PersistentField
                 type='number'
-                label='Высота'
+                label={t('height')}
                 storageKey='agent_worldGen_height'
                 value={height}
                 onChange={value => setHeight(Number(value))}
             />
             <div>
-                Статус: {status}
+                {t('status')}: {status}
             </div>
-            <button onClick={performGeneration}>Сгенерировать мир</button>
+            <button onClick={performGeneration}>{t('generateWorld')}</button>
         </div>
     );
 };

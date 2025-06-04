@@ -10,6 +10,7 @@ import { RemoveInventoryItemAction } from '../../core/actions/RemoveInventoryIte
 import { AddItemToStackAction } from '../../core/actions/AddItemToStackAction';
 import { SetTileFeatureAction } from '../../core/actions/SetTileFeatureAction';
 import { AgentMove } from '../../agent/AgentMove';
+import { useComponentTranslation } from '../../i18n';
 
 interface TestActionsPanelProps {
     worldMap: WorldMap;
@@ -20,6 +21,8 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
     worldMap,
     onApplyMove,
 }) => {
+    const { t } = useComponentTranslation(TestActionsPanel);
+
     const apply = (action: Action<any>) => {
         onApplyMove({
             actions: [action],
@@ -45,8 +48,8 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
         const item: InventoryItem = {
             id: 'apple',
             icon: '🍎',
-            title: 'Яблоко',
-            description: 'Сочное красное яблоко',
+            title: t('apple'),
+            description: t('juicyRedApple'),
             amount: 1,
         };
 
@@ -68,16 +71,16 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
     const setTreeFeature = () => {
         apply(new SetTileFeatureAction({ x: 8, y: 1 }, {
             icon: '🌳',
-            title: 'Дерево',
-            description: 'Большое зеленое дерево',
+            title: t('tree'),
+            description: t('largeGreenTree'),
         }));
     };
 
     const setMountainFeature = () => {
         apply(new SetTileFeatureAction({ x: 8, y: 1 }, {
             icon: '⛰️',
-            title: 'Гора',
-            description: 'Большая гора',
+            title: t('mountain'),
+            description: t('largeMountain'),
         }));
     };
 
@@ -87,7 +90,7 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
 
     return (
         <SidebarPanel
-            header='Тестовые действия'
+            header={t('testActions')}
             classNames={{ body: styles.body }}
             collapsedByDefault
         >
@@ -106,26 +109,26 @@ export const TestActionsPanel: React.FC<TestActionsPanelProps> = ({
             </div>
 
             <button onClick={addItem}>
-                Add new stack of 🍎
+                {t('addNewStackOfApple')}
             </button>
             <button onClick={addItemToStack}>
-                Add 🍎 to existing stack
+                {t('addAppleToExistingStack')}
             </button>
             <button onClick={removeItem}>
-                Remove one 🍎
+                {t('removeOneApple')}
             </button>
             <button onClick={removeAllItems}>
-                Remove all 🍎
+                {t('removeAllApples')}
             </button>
 
             <button onClick={setTreeFeature}>
-                Set tile feature 🌳 at (8, 1)
+                {t('setTreeFeature')} 🌳 {t('atCoordinates', { x: 8, y: 1 })}
             </button>
             <button onClick={setMountainFeature}>
-                Set tile feature ⛰️ at (8, 1)
+                {t('setMountainFeature')} ⛰️ {t('atCoordinates', { x: 8, y: 1 })}
             </button>
             <button onClick={clearFeature}>
-                Clear tile feature at (8, 1)
+                {t('clearTileFeature')} {t('atCoordinates', { x: 8, y: 1 })}
             </button>
         </SidebarPanel>
     );

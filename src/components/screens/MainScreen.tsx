@@ -13,8 +13,10 @@ import { AgentMove } from '../../agent/AgentMove';
 import { MoveListPanel } from '../sidebar/moveListPanel/MoveListPanel';
 import { SaveLoadPanel } from '../sidebar/saveLoadPanel/SaveLoadPanel';
 import { WorldGenAgentPanel } from '../sidebar/agentPanels/worldGen/WorldGenAgentPanel';
+import { useComponentTranslation } from '../../i18n';
 
 export default function MainScreen() {
+    const { t } = useComponentTranslation(MainScreen);
     const [selectedTile, setSelectedTile] = React.useState<Tile | null>(null);
     const [selectedEntity, setSelectedEntity] = React.useState<Entity | null>(null);
     const [worldMap, setWorldMap] = React.useState<WorldMap | null>(null);
@@ -40,7 +42,7 @@ export default function MainScreen() {
     }, []);
 
     if (!worldMap) {
-        return <div>Loading...</div>;
+        return <div>{t('loading')}</div>;
     }
 
     const player = worldMap.findEntity('player') ?? null;

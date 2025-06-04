@@ -4,25 +4,32 @@ import TileView from '../world/TileView';
 import styles from './TileDetailsPanel.module.css';
 import Entity from '../../core/Entity';
 import { SidebarPanel } from './SidebarPanel';
+import { useComponentTranslation } from '../../i18n';
 
-const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => (
-    <div className={styles.terrainLine}>
-        Местность: <span style={{ backgroundColor: terrain.color }}>{terrain.title}</span>
-    </div>
-);
+const TerrainInfo: React.FC<{ terrain: TileTerrain }> = ({ terrain }) => {
+    const { t } = useComponentTranslation(TileDetailsPanel);
+
+    return (
+        <div className={styles.terrainLine}>
+            {t('terrain')}: <span style={{ backgroundColor: terrain.color }}>{terrain.title}</span>
+        </div>
+    );
+};
 
 const FeatureInfo: React.FC<{ feature: TileFeature | null }> = ({ feature }) => {
+    const { t } = useComponentTranslation(TileDetailsPanel);
+
     if (!feature) {
         return (
             <div className={styles.emptyFeature}>
-                Пусто
+                {t('empty')}
             </div>
         );
     }
 
     return (
         <>
-            <div className={styles.field}>Объект: <span>{feature.icon} {feature.title}</span></div>
+            <div className={styles.field}>{t('object')}: <span>{feature.icon} {feature.title}</span></div>
             <div className={styles.field}>{feature.description}</div>
         </>
     );
@@ -34,13 +41,15 @@ interface EntityListProps {
 }
 
 const EntityList: React.FC<EntityListProps> = ({ entities, onClickEntity }) => {
+    const { t } = useComponentTranslation(TileDetailsPanel);
+
     if (entities.length === 0) {
         return null;
     }
 
     return (
         <div className={styles.entityList}>
-            Сущности:
+            {t('entities')}:
             {entities.map((ent) => (
                 <div key={ent.id} className={styles.entityListItem} onClick={() => onClickEntity?.(ent)}>
                     <span className={styles.entityIcon}>{ent.icon}</span>
@@ -57,9 +66,11 @@ interface TileDetailsPanelProps {
 }
 
 export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClickEntity }) => {
+    const { t } = useComponentTranslation(TileDetailsPanel);
+
     if (!tile) {
         return (
-            <SidebarPanel emptyMessage='Выберите тайл' />
+            <SidebarPanel emptyMessage={t('selectTile')} />
         );
     }
 
@@ -71,7 +82,7 @@ export const TileDetailsPanel: React.FC<TileDetailsPanelProps> = ({ tile, onClic
 
     return (
         <SidebarPanel
-            header={`X: ${x}, Y: ${y}`}
+            header={`${t('coordinates')}: X: ${x}, Y: ${y}`}
             classNames={{ body: styles.body }}
         >
             <div className={styles.tileWrapper}>

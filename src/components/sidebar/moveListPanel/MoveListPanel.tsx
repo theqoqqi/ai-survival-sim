@@ -3,12 +3,14 @@ import styles from './MoveListPanel.module.css';
 import { AgentMove } from '../../../agent/AgentMove';
 import { SidebarPanel } from '../SidebarPanel';
 import { MoveItem } from './MoveItem';
+import { useComponentTranslation } from '../../../i18n';
 
 interface MoveListPanelProps {
     moves: AgentMove[];
 }
 
 export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
+    const { t } = useComponentTranslation(MoveListPanel);
     const bodyRef = React.useRef<HTMLDivElement>(null);
     const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
 
@@ -24,7 +26,7 @@ export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
 
     return (
         <SidebarPanel
-            header='Ходы'
+            header={t('moves')}
             classNames={{ body: styles.body }}
             refs={{ body: bodyRef }}
         >
@@ -40,4 +42,3 @@ export const MoveListPanel: React.FC<MoveListPanelProps> = ({ moves }) => {
         </SidebarPanel>
     );
 };
-

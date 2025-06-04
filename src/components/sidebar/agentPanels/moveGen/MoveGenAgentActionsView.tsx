@@ -5,6 +5,7 @@ import Entity from '../../../../core/Entity';
 import React from 'react';
 import styles from './MoveGenAgentActionsView.module.css';
 import { PersistentField } from '../../../util/PersistentField';
+import { useComponentTranslation } from '../../../../i18n';
 
 interface MoveGenAgentActionsViewProps {
     agent: MoveGenAgent;
@@ -19,7 +20,8 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
     playerEntity,
     onApplyMove,
 }) => {
-    const [status, setStatus] = React.useState<string>('Готов к запросу хода');
+    const { t } = useComponentTranslation(MoveGenAgentActionsView);
+    const [status, setStatus] = React.useState<string>(t('readyForMoveRequest'));
     const [globalTarget, setGlobalTarget] = React.useState<string>('');
 
     React.useEffect(() => {
@@ -27,20 +29,20 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
     }, [agent, globalTarget]);
 
     const performAction = async () => {
-        setStatus('Генерация хода...');
+        setStatus(t('generatingMove'));
 
         try {
             const response = await agent.generateMove(worldMap, playerEntity);
 
             if (!response.move) {
-                setStatus(response.error ?? 'Не удалось сгенерировать ход');
+                setStatus(response.error ?? t('failedToGenerateMove'));
                 return;
             }
 
             onApplyMove(response.move);
-            setStatus('Действие выполнено');
+            setStatus(t('moveGeneratedSuccessfully'));
         } catch (e) {
-            setStatus('Ошибка во время работы агента');
+            setStatus(t('moveGenerationError'));
             console.error(e);
         }
     };
@@ -49,16 +51,16 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
         <div className={styles.agentActionsView}>
             <PersistentField
                 type='textarea'
-                label='Глобальная цель'
+                label={t('globalTarget')}
                 storageKey='agent_globalTarget'
                 value={globalTarget}
                 onChange={setGlobalTarget}
             />
             <div>
-                Статус: {status}
+                {t('status')}: {status}
             </div>
             <button onClick={performAction}>
-                Следующий ход
+                {t('nextMove')}
             </button>
         </div>
     );
