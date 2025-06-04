@@ -12,9 +12,12 @@
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "gh-pages": "^6.3.0",
+    "i18next": "^25.2.1",
+    "i18next-browser-languagedetector": "^8.1.0",
     "openai": "^5.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
