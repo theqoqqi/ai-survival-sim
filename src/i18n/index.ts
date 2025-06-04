@@ -1,7 +1,10 @@
-import i18n from 'i18next';
+import i18n, { Resource, ResourceLanguage } from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
+import en from './locales/en/translation.json';
+import ru from './locales/ru/translation.json';
+import { ResourceKey } from 'i18next/typescript/options';
 
 export async function initI18n() {
     return i18n
@@ -13,28 +16,26 @@ export async function initI18n() {
                 escapeValue: false,
             },
             resources: {
-                en: await load('en'),
-                ru: await load('ru'),
+                en: prepareTranslations(en),
+                ru: prepareTranslations(ru),
             }
         });
 }
 
-async function load(locale: string) {
-    const jsonFile = `./locales/${locale}/translation.json`;
-
+function prepareTranslations(json: Record<string, string>): Resource {
     return {
-        translation: nestTranslations((await import(jsonFile)).default),
+        translation: nestTranslations(json),
     };
 }
 
-function nestTranslations(flatJson) {
-    const result = Object.assign({}, flatJson);
+function nestTranslations(flatJson: Record<string, string>): ResourceLanguage {
+    const result: ResourceLanguage = Object.assign({}, flatJson);
 
     for (const fullKey of Object.keys(flatJson)) {
         const value = flatJson[fullKey];
         const parts = fullKey.split('.');
 
-        let cursor = result;
+        let cursor: ResourceKey = result;
 
         for (let i = 0; i < parts.length; i++) {
             const part = parts[i];
