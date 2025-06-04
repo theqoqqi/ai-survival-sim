@@ -13,6 +13,9 @@ export type ChatCompletionOptions = {
     model?: string,
     maxCompletionTokens?: number,
     temperature?: number,
+    extraOptions?: {
+        [key: string]: any,
+    },
 };
 
 export type ChatCompletionTokenUsage = {
@@ -33,7 +36,7 @@ export default class ChatGptApi {
 
     private openai: OpenAI;
 
-    private readonly defaultModelName: string;
+    public readonly defaultModelName: string;
 
     constructor(apiKey: string, baseURL: string, options: { defaultModelName: string }) {
         this.openai = new OpenAI({
@@ -55,6 +58,7 @@ export default class ChatGptApi {
             messages: this.getMessages(options) as any[],
             max_completion_tokens: options.maxCompletionTokens,
             temperature: options.temperature,
+            ...options.extraOptions,
         });
 
         return this.buildResult(chatCompletion, options);
