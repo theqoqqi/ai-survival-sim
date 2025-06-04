@@ -5,7 +5,7 @@ interface PersistentFieldProps {
     type?: string;
     label: string;
     storageKey: string;
-    value: string | number;
+    value: string | number | boolean;
     onChange: (value: string) => void;
 }
 
@@ -34,7 +34,9 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
     }, [storageKey, value]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const newValue = e.target.value;
+        const newValue = type === 'checkbox'
+            ? String((e.target as HTMLInputElement).checked)
+            : e.target.value;
 
         localStorage.setItem(storageKey, newValue);
 
@@ -43,18 +45,27 @@ export const PersistentField: React.FC<PersistentFieldProps> = ({
 
     const inputProps = {
         type,
-        value,
+        value: type === 'checkbox' ? undefined : String(value),
+        checked: type === 'checkbox' ? (value as boolean) : undefined,
         onChange: handleChange,
     };
 
     return (
-        <label className={styles.persistentField}>
-            <div>{label}:</div>
-            {type === 'textarea' ? (
-                <textarea {...inputProps} rows={3} />
-            ) : (
+        <label className={styles.persistentField + ' ' + (type === 'checkbox' ? styles.checkbox : '')}>
+            {type === 'checkbox' && <>
                 <input {...inputProps} />
-            )}
+                <span>{label}</span>
+            </>}
+
+            {type === 'textarea' && <>
+                <div>{label}:</div>
+                <textarea {...inputProps} rows={3} />
+            </>}
+
+            {type !== 'checkbox' && type !== 'textarea' && <>
+                <div>{label}:</div>
+                <input {...inputProps} />
+            </>}
         </label>
     );
 };

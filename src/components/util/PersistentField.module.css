@@ -1,5 +1,5 @@
 
-.persistentField input,
+.persistentField input:not([type="checkbox"]),
 .persistentField textarea {
     width: 100%;
     box-sizing: border-box;
@@ -7,4 +7,16 @@
 
 .persistentField textarea {
     resize: vertical;
+}
+
+.persistentField.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.persistentField.checkbox input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0 8px 0 0;
 }
