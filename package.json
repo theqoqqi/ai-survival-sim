@@ -15,7 +15,6 @@
     "openai": "^5.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,6 +45,7 @@
   "devDependencies": {
     "@types/node": "^22.15.29",
     "@vitejs/plugin-react": "^4.5.1",
+    "typescript": "^5.8.3",
     "vite": "^6.3.5"
   }
 }
