@@ -2,8 +2,8 @@ import i18n, { Resource, ResourceLanguage } from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
-import en from './locales/en/translation.json';
-import ru from './locales/ru/translation.json';
+import enTranslation from './locales/en/translation.json';
+import ruTranslation from './locales/ru/translation.json';
 import { ResourceKey } from 'i18next/typescript/options';
 
 export async function initI18n() {
@@ -16,16 +16,24 @@ export async function initI18n() {
                 escapeValue: false,
             },
             resources: {
-                en: prepareTranslations(en),
-                ru: prepareTranslations(ru),
+                en: prepareTranslations({
+                    translation: enTranslation,
+                }),
+                ru: prepareTranslations({
+                    translation: ruTranslation,
+                }),
             }
         });
 }
 
-function prepareTranslations(json: Record<string, string>): Resource {
-    return {
-        translation: nestTranslations(json),
-    };
+function prepareTranslations(namespaces: Record<string, Record<string, string>>): Resource {
+    const translations: Record<string, ResourceLanguage> = {};
+
+    for (const namespace of Object.keys(namespaces)) {
+        translations[namespace] = nestTranslations(namespaces[namespace]);
+    }
+
+    return translations;
 }
 
 function nestTranslations(flatJson: Record<string, string>): ResourceLanguage {
