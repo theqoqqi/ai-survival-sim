@@ -2,7 +2,7 @@
 import providers from './providers.json';
 
 export function getProvidersString(model: string): string {
-    return getProvidersByModel(model).join(', ');
+    return getProvidersByModel(model).join(' ');
 }
 
 export function getProvidersByModel(model: string): string[] {
