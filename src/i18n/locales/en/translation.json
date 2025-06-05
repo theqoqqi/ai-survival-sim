@@ -8,6 +8,8 @@
   "components.AgentSetupView.apiKey": "API Key",
   "components.AgentSetupView.modelName": "Model name",
   "components.AgentSetupView.gpt4FreeMode": "Gpt4Free Mode",
+  "components.AgentSetupView.provider": "Provider",
+  "components.AgentSetupView.autoSelectProvider": "Auto-select",
   "components.AgentSetupView.initializeAgent": "Initialize agent",
   "components.AgentSetupView.status": "Status",
   "components.MoveGenAgentActionsView.readyForMoveRequest": "Ready for move request",

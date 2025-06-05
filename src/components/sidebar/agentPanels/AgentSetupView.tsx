@@ -3,6 +3,7 @@ import { PersistentField } from '../../util/PersistentField';
 import styles from './AgentSetupView.module.css';
 import { AgentDriverOptions } from '../../../agent/drivers/AgentDriver';
 import { useComponentTranslation } from '../../../i18n';
+import { getProvidersByModel } from '../../../g4f/providers';
 
 interface AgentSetupViewProps {
     storageKeyPrefix: string;
@@ -15,6 +16,7 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
     const [baseUrl, setBaseUrl] = React.useState<string>('');
     const [modelName, setModelName] = React.useState<string>('');
     const [gpt4FreeMode, setGpt4FreeMode] = React.useState<boolean>(false);
+    const [provider, setProvider] = React.useState<string>('');
     const [status, setStatus] = React.useState<string>(t('notInitialized'));
 
     const initializeAgent = () => {
@@ -30,11 +32,22 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                 apiBaseUrl: baseUrl,
                 modelName,
                 gpt4FreeMode,
+                provider,
             });
         } catch (e) {
             setStatus(t('error') + ': ' + (e as Error)?.message);
             console.error(e);
         }
+    };
+
+    const getProviderOptions = (modelName: string) => {
+        const providers = getProvidersByModel(modelName);
+        const options = providers.map((provider) => ({ value: provider, label: provider }));
+
+        options.sort((a, b) => a.label.localeCompare(b.label));
+        options.unshift({ value: '', label: t('autoSelectProvider') });
+
+        return options;
     };
 
     return (
@@ -67,6 +80,16 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                 value={gpt4FreeMode}
                 onChange={value => setGpt4FreeMode(value === 'true')}
             />
+            {gpt4FreeMode && (
+                <PersistentField
+                    type='select'
+                    label={t('provider')}
+                    storageKey={`${storageKeyPrefix}_provider`}
+                    value={provider}
+                    onChange={setProvider}
+                    options={getProviderOptions(modelName)}
+                />
+            )}
             <button onClick={initializeAgent}>
                 {t('initializeAgent')}
             </button>

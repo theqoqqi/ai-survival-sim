@@ -8,6 +8,8 @@
   "components.AgentSetupView.apiKey": "Ключ API",
   "components.AgentSetupView.modelName": "Имя модели",
   "components.AgentSetupView.gpt4FreeMode": "Режим Gpt4Free",
+  "components.AgentSetupView.provider": "Провайдер",
+  "components.AgentSetupView.autoSelectProvider": "Автоматически",
   "components.AgentSetupView.initializeAgent": "Инициализировать агента",
   "components.AgentSetupView.status": "Статус",
   "components.MoveGenAgentActionsView.readyForMoveRequest": "Готов к запросу хода",
