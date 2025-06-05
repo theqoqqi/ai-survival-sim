@@ -14,7 +14,7 @@ export const WorldGenAgentActionsView: React.FC<WorldGenAgentActionsViewProps> =
     agent,
     onGenerateWorld,
 }) => {
-    const { t } = useComponentTranslation('WorldGenAgentActionsView');
+    const { t, i18n } = useComponentTranslation('WorldGenAgentActionsView');
     const [status, setStatus] = React.useState<string>(t('readyForGeneration'));
     const [prompt, setPrompt] = React.useState<string>('');
     const [width, setWidth] = React.useState<number>(10);
@@ -24,10 +24,12 @@ export const WorldGenAgentActionsView: React.FC<WorldGenAgentActionsViewProps> =
         setStatus(t('generatingWorld'));
 
         try {
+            const systemPromptVariables = i18n.getResourceBundle(i18n.language, 'worldGenPrompt');
             const response = await agent.generateWorld({
                 width,
                 height,
                 prompt,
+                systemPromptVariables,
             });
 
             if (!response.world) {

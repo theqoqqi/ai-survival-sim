@@ -6,6 +6,8 @@ import enTranslation from './locales/en/translation.json';
 import ruTranslation from './locales/ru/translation.json';
 import enMoveGenPrompt from './locales/en/moveGenPrompt.json';
 import ruMoveGenPrompt from './locales/ru/moveGenPrompt.json';
+import enWorldGenPrompt from './locales/en/worldGenPrompt.json';
+import ruWorldGenPrompt from './locales/ru/worldGenPrompt.json';
 import { ResourceKey } from 'i18next/typescript/options';
 
 export async function initI18n() {
@@ -21,10 +23,12 @@ export async function initI18n() {
                 en: prepareTranslations({
                     translation: enTranslation,
                     moveGenPrompt: enMoveGenPrompt,
+                    worldGenPrompt: enWorldGenPrompt,
                 }),
                 ru: prepareTranslations({
                     translation: ruTranslation,
                     moveGenPrompt: ruMoveGenPrompt,
+                    worldGenPrompt: ruWorldGenPrompt,
                 }),
             }
         });

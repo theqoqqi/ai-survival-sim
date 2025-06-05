@@ -10,15 +10,14 @@ interface WorldGenOptions {
     width: number;
     height: number;
     prompt: string;
+    systemPromptVariables?: Record<string, string>;
 }
 
 export class WorldGenAgent extends Agent {
 
     public async generateWorld(options: WorldGenOptions): Promise<WorldGenAgentResponse> {
         const userPrompt = this.buildUserPrompt(options);
-        const response = await this.prompt(userPrompt, {
-            textLanguage: 'Russian',
-        });
+        const response = await this.prompt(userPrompt, options.systemPromptVariables);
 
         if (!response.content) {
             return { error: 'Empty response from AI' };
