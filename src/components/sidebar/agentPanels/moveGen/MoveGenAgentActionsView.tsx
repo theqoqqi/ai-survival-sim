@@ -24,15 +24,15 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
     const [status, setStatus] = React.useState<string>(t('readyForMoveRequest'));
     const [globalTarget, setGlobalTarget] = React.useState<string>('');
 
-    React.useEffect(() => {
-        agent.globalTarget = globalTarget;
-    }, [agent, globalTarget]);
-
     const performAction = async () => {
         setStatus(t('generatingMove'));
 
         try {
-            const response = await agent.generateMove(worldMap, playerEntity);
+            const response = await agent.generateMove({
+                worldMap,
+                playerEntity,
+                globalTarget,
+            });
 
             if (!response.move) {
                 setStatus(response.error ?? t('failedToGenerateMove'));

@@ -9,14 +9,18 @@ interface MoveGenAgentResponse extends AgentResponse {
     move?: AgentMove;
 }
 
+interface MoveGenOptions {
+    worldMap: WorldMap;
+    playerEntity: Entity;
+    globalTarget: string;
+}
+
 export class MoveGenAgent extends Agent {
 
     private readonly moveHistory: AgentMove[] = [];
 
-    public globalTarget: string = 'Survive';
-
-    public async generateMove(worldMap: WorldMap, entity: Entity): Promise<MoveGenAgentResponse> {
-        const userPrompt = this.buildUserPrompt(worldMap, entity);
+    public async generateMove(options: MoveGenOptions): Promise<MoveGenAgentResponse> {
+        const userPrompt = this.buildUserPrompt(options);
         const response = await this.prompt(userPrompt, {
             textLanguage: 'Russian',
         });
@@ -48,26 +52,26 @@ export class MoveGenAgent extends Agent {
         return moveGenSystemPrompt;
     }
 
-    private buildUserPrompt(worldMap: WorldMap, entity: Entity): string {
-        const playerTile = worldMap.findEntityTile(entity.id);
+    private buildUserPrompt(options: MoveGenOptions): string {
+        const playerTile = options.worldMap.findEntityTile(options.playerEntity.id);
 
         if (!playerTile) {
             throw new Error('Failed to find player tile');
         }
 
-        const adjacentTiles = worldMap.getTilesInRadius(playerTile.position.x, playerTile.position.y, 1)
+        const adjacentTiles = options.worldMap.getTilesInRadius(playerTile.position.x, playerTile.position.y, 1)
             .filter(tile => !Vectors.equals(tile.position, playerTile.position))
             .map(tile => tile.toJson())
             .map(tile => ({
                 relativePosition: Vectors.subtract(tile.position, playerTile.position),
                 tileInfo: `${tile.data.terrain.title}. ${tile.data.feature?.icon} ${tile.data.feature?.title ?? 'ничего интересного'}.`,
             }));
-        const visibleTiles = worldMap.getTilesInRadius(playerTile.position.x, playerTile.position.y, 3)
+        const visibleTiles = options.worldMap.getTilesInRadius(playerTile.position.x, playerTile.position.y, 3)
             .map(tile => tile.toJson());
         const latestThoughts = this.moveHistory.slice(-5).map(move => move.thought);
 
         const moveContext = {
-            globalTarget: this.globalTarget,
+            globalTarget: options.globalTarget,
             previousMoves: this.moveHistory,
             latestThoughts,
             playerTile,
