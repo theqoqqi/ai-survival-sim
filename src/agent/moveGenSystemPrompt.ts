@@ -131,6 +131,33 @@ To modify the feature in certain tile, use the following action format (or skip 
         description: string;
     };
 }
+
+To add custom variable to the entity, use the following action format:
+{
+    type: 'addEntityVar';
+    entityId: string;
+    customVarId: string;
+    customVar: {
+        icon: string;
+        title: string;
+        value: string;
+    };
+}
+
+To remove custom variable from the entity, use the following action format:
+{
+    type: 'removeEntityVar';
+    entityId: string;
+    customVarId: string;
+}
+
+To set custom variable value in the entity, use the following action format:
+{
+    type: 'setEntityVarValue';
+    entityId: string;
+    customVarId: string;
+    newValue: string;
+}
 `.trim();
 
 export default moveGenSystemPrompt;
