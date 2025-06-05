@@ -20,5 +20,9 @@ export default abstract class Agent {
         return await this.driver.prompt(prompt);
     }
 
+    protected parseJson<T>(text: string) {
+        return JSON.parse(text) as T;
+    }
+
     protected abstract buildSystemPrompt(): string;
 }

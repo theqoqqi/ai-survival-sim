@@ -26,12 +26,10 @@ export interface SerializedAgentMove {
     narrativeEvents: string[],
 }
 
-export function parseMove(responseContent: string): AgentMove {
-    const responseJson = JSON.parse(responseContent) as SerializedAgentMove;
-
+export function parseMove(moveJson: SerializedAgentMove): AgentMove {
     return {
-        actions: responseJson.actions.map(createActionFromJson).filter(Boolean).map(action => action!),
-        thought: responseJson.thought,
-        narrativeEvents: responseJson.narrativeEvents,
+        actions: moveJson.actions.map(createActionFromJson).filter(Boolean).map(action => action!),
+        thought: moveJson.thought,
+        narrativeEvents: moveJson.narrativeEvents,
     };
 }

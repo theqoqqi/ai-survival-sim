@@ -23,7 +23,7 @@ export class WorldGenAgent extends Agent {
         }
 
         try {
-            const parsedJson = JSON.parse(response.content) as SerializedWorldMap;
+            const parsedJson = this.parseJson<SerializedWorldMap>(response.content);
             const world = WorldMap.fromJson(parsedJson);
 
             console.log('Parsed world:', world);

@@ -1,7 +1,7 @@
 import WorldMap from '../core/WorldMap';
 import Entity from '../core/Entity';
 import moveGenSystemPrompt from './moveGenSystemPrompt';
-import { AgentMove, parseMove } from './AgentMove';
+import { AgentMove, parseMove, SerializedAgentMove } from './AgentMove';
 import { Vectors } from '../core/util/Vector';
 import Agent, { AgentResponse } from './Agent';
 
@@ -24,7 +24,8 @@ export class MoveGenAgent extends Agent {
         }
 
         try {
-            const move = parseMove(response.content);
+            const parsedJson = this.parseJson<SerializedAgentMove>(response.content);
+            const move = parseMove(parsedJson);
 
             console.log('Parsed move:', move);
             console.log(response.usedTokens);
