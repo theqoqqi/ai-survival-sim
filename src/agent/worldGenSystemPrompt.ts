@@ -65,6 +65,7 @@ interface SerializedEntity {
     icon: string;
     title: string;
     inventory: InventoryItem[];
+    customVars?: CustomVarsData;
 }
 interface InventoryItem {
     id: string;
@@ -73,6 +74,17 @@ interface InventoryItem {
     description: string;
     amount: number;
 }
+interface CustomVarsData {
+    [key: string]: CustomVar;
+}
+export interface CustomVar {
+    icon: string;
+    title: string;
+    value: string;
+}
+
+CustomVarsData should contain arbitrary key–CustomVar pairs representing entity-specific parameters.
+The AI must invent a realistic set of such fields and assign each a plausible value.
 
 The terrain title should be short (1–2 words). The color should be a soft hex color like "#fafffa".
 Feature icons should be emojis (e.g. 🌲 for tree, 💧 for spring).
