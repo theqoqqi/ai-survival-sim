@@ -18,11 +18,11 @@ export default class Entity {
 
     inventory: Inventory;
 
-    constructor(params: { id: string; icon: string; title: string; initialItems?: InventoryItem[] }) {
+    constructor(params: SerializedEntity) {
         this.id = params.id;
         this.icon = params.icon;
         this.title = params.title;
-        this.inventory = new Inventory(params.initialItems);
+        this.inventory = new Inventory(params.inventory);
     }
 
     toJson(): SerializedEntity {
@@ -32,14 +32,5 @@ export default class Entity {
             title: this.title,
             inventory: this.inventory.getItems(),
         };
-    }
-
-    static fromJson(json: SerializedEntity): Entity {
-        return new Entity({
-            id: json.id,
-            icon: json.icon,
-            title: json.title,
-            initialItems: json.inventory,
-        });
     }
 }

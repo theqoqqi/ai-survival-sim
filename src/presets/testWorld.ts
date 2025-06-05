@@ -56,7 +56,7 @@ export function createTestWorld(): WorldMap {
         id: 'player',
         icon: '👤',
         title: 'Игрок',
-        initialItems: [
+        inventory: [
             {
                 id: 'apple',
                 icon: '🍎',

@@ -74,7 +74,7 @@ export default class Tile {
             tile.position.x,
             tile.position.y,
             tile.data,
-            tile.entities.map(entity => Entity.fromJson(entity))
+            tile.entities.map(serializedEntity => new Entity(serializedEntity))
         );
     }
 }
