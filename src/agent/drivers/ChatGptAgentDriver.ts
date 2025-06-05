@@ -45,11 +45,13 @@ export default class ChatGptAgentDriver implements AgentDriver {
             };
         }
 
-        this.messageHistory.push(promptMessage);
-        this.messageHistory.push({
-            role: 'assistant',
-            content: response.content,
-        });
+        if (this.options.useMessageHistory) {
+            this.messageHistory.push(promptMessage);
+            this.messageHistory.push({
+                role: 'assistant',
+                content: response.content,
+            });
+        }
 
         return {
             content: response.content,

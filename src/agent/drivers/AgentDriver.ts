@@ -5,6 +5,7 @@ export interface AgentDriverOptions {
     modelName?: string;
     gpt4FreeMode?: boolean;
     provider?: string;
+    useMessageHistory?: boolean;
 }
 
 export interface AgentDriverResponse {
