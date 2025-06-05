@@ -5,6 +5,7 @@ import InventoryItem from '../../core/InventoryItem';
 import { SidebarPanel } from './SidebarPanel';
 import Inventory from '../../core/Inventory';
 import { useComponentTranslation } from '../../i18n';
+import { CustomVarsView } from '../util/CustomVarsView';
 
 const Header: React.FC<{ entity: Entity }> = ({ entity }) => {
     const { t } = useComponentTranslation('EntityDetailsPanel');
@@ -78,6 +79,7 @@ export const EntityDetailsPanel: React.FC<EntityDetailsPanelProps> = ({ entity }
             emptyMessage={t('selectEntity')}
             classNames={{ header: styles.header, body: styles.body }}
         >
+            <CustomVarsView customVars={entity.customVars} />
             <InventoryView inventory={entity.inventory} />
         </SidebarPanel>
     );
