@@ -63,7 +63,7 @@ export default class ChatGptAgentDriver implements AgentDriver {
         }
 
         return {
-            provider: getProvidersString(this.chatApi.defaultModelName),
+            provider: this.options.provider ?? getProvidersString(this.chatApi.defaultModelName),
         };
     }
 }

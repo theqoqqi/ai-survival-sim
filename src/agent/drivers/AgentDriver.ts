@@ -4,6 +4,7 @@ export interface AgentDriverOptions {
     apiBaseUrl: string;
     modelName?: string;
     gpt4FreeMode?: boolean;
+    provider?: string;
 }
 
 export interface AgentDriverResponse {
