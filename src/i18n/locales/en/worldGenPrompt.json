@@ -1,3 +1,17 @@
 {
-  "textLanguage": "English"
+  "textLanguage": "English",
+  "examplePlayerTitle": "Player",
+  "funnyPlayerTitle": "Local Fool",
+  "appleTitle": "Apple",
+  "appleDescription": "A big red apple",
+  "badAppleDescription": "An apple that doesn't look very tasty",
+  "treeTitle": "Tree",
+  "treeDescription": "An ordinary tree",
+  "lakeTitle": "Lake",
+  "lakeDescription": "A small calm lake",
+  "plainsTitle": "Plains",
+  "waterBottleTitle": "Water Bottle",
+  "waterBottleDescription": "A half-empty bottle of drinking water",
+  "axeTitle": "Axe",
+  "axeDescription": "An old axe that's about to break"
 }

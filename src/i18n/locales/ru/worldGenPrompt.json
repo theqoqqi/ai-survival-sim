@@ -1,3 +1,17 @@
 {
-  "textLanguage": "Русский"
+  "textLanguage": "Русский",
+  "examplePlayerTitle": "Игрок",
+  "funnyPlayerTitle": "Местный дурачок",
+  "appleTitle": "Яблоко",
+  "appleDescription": "Большое красное яблоко",
+  "badAppleDescription": "Не очень вкусное на вид яблоко",
+  "treeTitle": "Дерево",
+  "treeDescription": "Обычное дерево",
+  "lakeTitle": "Озеро",
+  "lakeDescription": "Тихое спокойное озеро",
+  "plainsTitle": "Равнина",
+  "waterBottleTitle": "Бутылка с водой",
+  "waterBottleDescription": "Полупустая бутылка с питьевой водой",
+  "axeTitle": "Топор",
+  "axeDescription": "Старый топор, который вот-вот сломается"
 }

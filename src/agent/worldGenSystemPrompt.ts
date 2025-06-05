@@ -29,9 +29,9 @@ Example:
 {
   "id": "player",
   "icon": "👤",
-  "title": "Игрок",
+  "title": "{{examplePlayerTitle}}",
   "inventory": [
-    { "id": "apple", "icon": "🍎", "title": "Яблоко", "description": "Большое красное яблоко", "amount": 1 },
+    { "id": "apple", "icon": "🍎", "title": "{{appleTitle}}", "description": "{{appleDescription}}", "amount": 1 },
   ]
 }
 
@@ -77,7 +77,7 @@ interface InventoryItem {
 The terrain title should be short (1–2 words). The color should be a soft hex color like "#fafffa".
 Feature icons should be emojis (e.g. 🌲 for tree, 💧 for spring).
 
-Feature descriptions should be short and natural, e.g. "An ordinary tree", "A small calm lake".
+Feature descriptions should be short and natural, e.g. "{{treeDescription}}", "{{lakeDescription}}".
 Include a field called emptyTileData, which represents the default tile type (usually plain terrain, no feature).
 
 The map must be coherent, with clusters of terrain types and natural transitions (e.g., forest near plains, lakes inside valleys, etc).
@@ -88,19 +88,19 @@ Example output:
 {
   "width":3,"height":3,
   "tiles":[
-    {"position":{"x":2,"y":0},"data":{"terrain":{"title":"Равнина","color":"#fafffa"},"feature":{"title":"Дерево","icon":"🌲","description":"Обычное дерево"}},"entities":[]},
-    {"position":{"x":0,"y":1},"data":{"terrain":{"title":"Равнина","color":"#fafffa"},"feature":{"title":"Дерево","icon":"🌲","description":"Обычное дерево"}},"entities":[]},
-    {"position":{"x":1,"y":1},"data":{"terrain":{"title":"Озеро","color":"#fafbff"},"feature":null},"entities":[]},
-    {"position":{"x":0,"y":2},"data":{"terrain":{"title":"Равнина","color":"#fafffa"},"feature":{"title":"Дерево","icon":"🌲","description":"Обычное дерево"}},"entities":[]},
-    {"position":{"x":1,"y":2},"data":{"terrain":{"title":"Равнина","color":"#fafffa"},"feature":null},"entities":[
-      {"id":"player","icon":"👤","title":"Местный дурачок","inventory":[
-        {"id":"apple","icon":"🍎","title":"Яблоко","description":"Не очень вкусное на вид яблоко","amount":2},
-        {"id":"bottleWithWater","icon":"💧","title":"Бутылка с водой","description":"Полупустая бутылка с питьевой водой","amount":1},
-        {"id":"axe","icon":"🪓","title":"Топор","description":"Старый топор, который вот-вот сломается","amount":1}
+    {"position":{"x":2,"y":0},"data":{"terrain":{"title":"{{plainsTitle}}","color":"#fafffa"},"feature":{"title":"{{treeTitle}}","icon":"🌲","description":"{{treeDescription}}"}},"entities":[]},
+    {"position":{"x":0,"y":1},"data":{"terrain":{"title":"{{plainsTitle}}","color":"#fafffa"},"feature":{"title":"{{treeTitle}}","icon":"🌲","description":"{{treeDescription}}"}},"entities":[]},
+    {"position":{"x":1,"y":1},"data":{"terrain":{"title":"{{lakeTitle}}","color":"#fafbff"},"feature":null},"entities":[]},
+    {"position":{"x":0,"y":2},"data":{"terrain":{"title":"{{plainsTitle}}","color":"#fafffa"},"feature":{"title":"{{treeTitle}}","icon":"🌲","description":"{{treeDescription}}"}},"entities":[]},
+    {"position":{"x":1,"y":2},"data":{"terrain":{"title":"{{plainsTitle}}","color":"#fafffa"},"feature":null},"entities":[
+      {"id":"player","icon":"👤","title":"{{funnyPlayerTitle}}","inventory":[
+        {"id":"apple","icon":"🍎","title":"{{appleTitle}}","description":"{{badAppleDescription}}","amount":2},
+        {"id":"bottleWithWater","icon":"💧","title":"{{waterBottleTitle}}","description":"{{waterBottleDescription}}","amount":1},
+        {"id":"axe","icon":"🪓","title":"{{axeTitle}}","description":"{{axeDescription}}","amount":1}
       ]}
     ]}
   ],
-  "emptyTileData":{"terrain":{"title":"Равнина","color":"#fafffa"},"feature":null}
+  "emptyTileData":{"terrain":{"title":"{{plainsTitle}}","color":"#fafffa"},"feature":null}
 }
 `.trim();
 
