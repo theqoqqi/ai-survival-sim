@@ -20,7 +20,7 @@ export interface TileData {
 export interface SerializedTile {
     position: Vector;
     data: TileData;
-    entities: SerializedEntity[];
+    entities?: SerializedEntity[];
 }
 
 export default class Tile {
@@ -74,7 +74,7 @@ export default class Tile {
             tile.position.x,
             tile.position.y,
             tile.data,
-            tile.entities.map(serializedEntity => new Entity(serializedEntity))
+            (tile.entities ?? []).map(serializedEntity => new Entity(serializedEntity))
         );
     }
 }
