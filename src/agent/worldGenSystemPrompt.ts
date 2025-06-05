@@ -19,7 +19,7 @@ Use diverse terrains such as plains, forests, mountains, lakes, swamps etc.
 Features should complement the terrain. For example, trees appear in forests, rocks in mountains, reeds near lakes.
 
 All fields such as id fields for items, entities, and other objects must be strictly in English.
-All user-facing fields such as title and description must be written in Russian, using natural, expressive language.
+All user-facing fields such as title and description must be written in {{textLanguage}}, using natural, expressive language.
 
 The world MUST include an entity with id "player".
 This entity represents the player and must be placed on one of the tiles.

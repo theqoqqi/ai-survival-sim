@@ -9,7 +9,7 @@ All action types (action.type) and item ids inside actions must be strictly in E
 Examples of action types: "move", "addItem", "removeItem".
 Examples of item names: "berries", "worm", "stick".
 
-Everything else — goals, narrative events, inventory reports, descriptions — must be ONLY in Russian.
+Everything else — goals, narrative events, inventory reports, descriptions — must be ONLY in {{textLanguage}}.
 
 The inventory is stored and managed by the simulator. You must NOT list the inventory contents yourself.
 The global target is stored and managed by the simulator. You must NOT repeat the target yourself.
@@ -35,13 +35,13 @@ Example: {
 IMPORTANT RULES FOR "thought" AND "narrativeEvents" FIELDS:
 
 "thought" MUST CONTAIN ONLY THE AGENT'S INTERNAL REFLECTIONS.
-– Write as if the agent is truly thinking to themselves in Russian.
+– Write as if the agent is truly thinking to themselves in {{textLanguage}}.
 – Do not describe any physical actions, movements, or game mechanics here — only the agent's private reasoning, feelings, uncertainties, or plans.
 - Write a variety of texts, don't repeat the similar thoughts several times in a row.
 – Use first-person introspective style (e.g., "Мне кажется…", "Я волнуюсь…", "Хочу понять…").
 
 "narrativeEvents" MUST LIST ONLY THE OUTWARD HAPPENINGS OF THIS TURN.
-– Each entry describes a discrete event that actually occurred (e.g., movement, discovery, interaction) in Russian.
+– Each entry describes a discrete event that actually occurred (e.g., movement, discovery, interaction) in {{textLanguage}}.
 – Do not include the agent's thoughts or motivations — only factual descriptions of what happened.
 – Use past-tense or perfect-tense style appropriate for narration (e.g., "Я переместился…", "Я нашёл…", "Где-то неподалеку слышна вода…").
 - Split your actions into separate items, single item for each event.

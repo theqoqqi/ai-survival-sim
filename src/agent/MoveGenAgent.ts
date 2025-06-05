@@ -17,7 +17,9 @@ export class MoveGenAgent extends Agent {
 
     public async generateMove(worldMap: WorldMap, entity: Entity): Promise<MoveGenAgentResponse> {
         const userPrompt = this.buildUserPrompt(worldMap, entity);
-        const response = await this.prompt(userPrompt);
+        const response = await this.prompt(userPrompt, {
+            textLanguage: 'Russian',
+        });
 
         if (!response.content) {
             return { error: 'Empty response from AI' };

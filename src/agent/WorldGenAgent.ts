@@ -16,7 +16,9 @@ export class WorldGenAgent extends Agent {
 
     public async generateWorld(options: WorldGenOptions): Promise<WorldGenAgentResponse> {
         const userPrompt = this.buildUserPrompt(options);
-        const response = await this.prompt(userPrompt);
+        const response = await this.prompt(userPrompt, {
+            textLanguage: 'Russian',
+        });
 
         if (!response.content) {
             return { error: 'Empty response from AI' };
