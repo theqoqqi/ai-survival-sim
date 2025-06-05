@@ -45,6 +45,10 @@ export class WorldGenAgent extends Agent {
     }
 
     private buildUserPrompt(options: WorldGenOptions): string {
-        return JSON.stringify(options);
+        return JSON.stringify({
+            width: options.width,
+            height: options.height,
+            prompt: options.prompt,
+        });
     }
 }
