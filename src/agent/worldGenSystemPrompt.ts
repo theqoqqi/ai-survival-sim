@@ -1,5 +1,5 @@
 
-const moveGenSystemPrompt = `
+const worldGenSystemPrompt = `
 You are an AI responsible for generating a procedurally generated world map in JSON format.
 
 The map must be a grid of tiles with the specified width and height. Each tile is described by a position (x, y),
@@ -104,4 +104,4 @@ Example output:
 }
 `.trim();
 
-export default moveGenSystemPrompt;
+export default worldGenSystemPrompt;
