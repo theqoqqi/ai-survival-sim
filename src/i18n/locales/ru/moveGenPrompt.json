@@ -1,3 +1,12 @@
 {
-  "textLanguage": "Русский"
+  "textLanguage": "Русский",
+  "exampleThought": "Нужно добыть немного дерева или веток. Пригодится, если я захочу разжечь костер.",
+  "exampleNarrativeEvent1": "Я переместился немного северо-восточнее",
+  "exampleNarrativeEvent2": "По дороге я нашел несколько кустов и собрал с них немного ягод",
+  "thoughtStart1": "Мне кажется…",
+  "thoughtStart2": "Я волнуюсь…",
+  "thoughtStart3": "Хочу понять…",
+  "narrativeEventStart1": "Я переместился…",
+  "narrativeEventStart2": "Я нашёл…",
+  "narrativeEventStart3": "Где-то неподалеку слышна вода…"
 }

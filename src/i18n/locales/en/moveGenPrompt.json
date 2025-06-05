@@ -1,3 +1,12 @@
 {
-  "textLanguage": "English"
+  "textLanguage": "English",
+  "exampleThought": "I should gather some wood or sticks. It’ll come in handy if I want to start a fire.",
+  "exampleNarrativeEvent1": "I moved a bit to the northeast",
+  "exampleNarrativeEvent2": "Along the way, I found some bushes and picked a few berries",
+  "thoughtStart1": "I feel like…",
+  "thoughtStart2": "I’m worried…",
+  "thoughtStart3": "I want to understand…",
+  "narrativeEventStart1": "I moved…",
+  "narrativeEventStart2": "I found…",
+  "narrativeEventStart3": "I can hear water nearby…"
 }
