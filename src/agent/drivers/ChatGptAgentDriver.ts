@@ -4,19 +4,19 @@ import { getProvidersString } from '../../g4f/providers';
 
 export default class ChatGptAgentDriver implements AgentDriver {
 
+    private readonly options: AgentDriverOptions;
+
     private readonly chatApi: ChatGptApi;
 
     private systemPrompt: string = '';
 
     private readonly messageHistory: MessageParam[] = [];
 
-    private readonly gpt4FreeMode: boolean = false;
-
     constructor(options: AgentDriverOptions) {
+        this.options = options;
         this.chatApi = new ChatGptApi(options.apiKey, options.apiBaseUrl, {
             defaultModelName: options.modelName ?? 'gpt-4o-mini',
         });
-        this.gpt4FreeMode = options.gpt4FreeMode ?? false;
     }
 
     setSystemPrompt(prompt: string): void {
@@ -58,7 +58,7 @@ export default class ChatGptAgentDriver implements AgentDriver {
     }
 
     private getExtraOptions() {
-        if (!this.gpt4FreeMode) {
+        if (!this.options.gpt4FreeMode) {
             return {};
         }
 
