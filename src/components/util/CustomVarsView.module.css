@@ -1,0 +1,55 @@
+
+.customVars {
+
+}
+
+.empty {
+    color: #777;
+
+    font-style: italic;
+    text-align: center;
+}
+
+.customVarsTitle {
+    margin-bottom: 8px;
+
+    color: #333;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.customVarsList {
+    display: flex;
+    flex-direction: column;
+}
+
+.customVarItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 4px 6px;
+
+    box-sizing: border-box;
+}
+
+.customVarItem:hover {
+    background-color: #eee;
+}
+
+.customVarIcon {
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+
+.customVarTitle {
+    flex-grow: 1;
+    font-weight: 500;
+    color: #333;
+}
+
+.customVarValue {
+    color: #555;
+    text-align: right;
+    word-break: break-word;
+}

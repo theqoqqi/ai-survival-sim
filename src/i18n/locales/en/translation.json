@@ -86,5 +86,7 @@
   "components.MoveItem.moveNumber": "Move {{number}}",
   "components.SettingsPanel.settings": "Settings",
   "components.SettingsPanel.language": "Language",
-  "components.WorldMapView.worldMap": "World map"
+  "components.WorldMapView.worldMap": "World map",
+  "components.CustomVarsView.title": "Variables",
+  "components.CustomVarsView.empty": "Empty"
 }

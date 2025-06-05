@@ -86,5 +86,7 @@
   "components.MoveItem.moveNumber": "Ход {{number}}",
   "components.SettingsPanel.settings": "Настройки",
   "components.SettingsPanel.language": "Язык",
-  "components.WorldMapView.worldMap": "Карта мира"
+  "components.WorldMapView.worldMap": "Карта мира",
+  "components.CustomVarsView.title": "Переменные",
+  "components.CustomVarsView.empty": "Пусто"
 }
