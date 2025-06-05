@@ -42,8 +42,8 @@ export class MoveGenAgent extends Agent {
         }
     }
 
-    protected buildSystemPrompt(): string {
-        return moveGenSystemPrompt.trim();
+    protected getSystemPromptTemplate(): string {
+        return moveGenSystemPrompt;
     }
 
     private buildUserPrompt(worldMap: WorldMap, entity: Entity): string {

@@ -12,8 +12,8 @@ export default abstract class Agent {
         this.driver = driver;
     }
 
-    async prompt(prompt: string): Promise<AgentDriverResponse> {
-        const systemPrompt = this.buildSystemPrompt();
+    async prompt(prompt: string, systemPromptVariables?: Record<string, string>): Promise<AgentDriverResponse> {
+        const systemPrompt = this.buildSystemPrompt(systemPromptVariables);
 
         this.driver.setSystemPrompt(systemPrompt);
 
@@ -24,5 +24,13 @@ export default abstract class Agent {
         return JSON.parse(text) as T;
     }
 
-    protected abstract buildSystemPrompt(): string;
+    protected buildSystemPrompt(variables?: Record<string, string>): string {
+        const template = this.getSystemPromptTemplate().trim();
+
+        return template.replace(/\{\{(\w+)}}/g, (placeholder, variableName) => {
+            return variables?.[variableName] ?? placeholder;
+        });
+    }
+
+    protected abstract getSystemPromptTemplate(): string;
 }

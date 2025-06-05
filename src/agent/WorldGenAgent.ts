@@ -39,8 +39,8 @@ export class WorldGenAgent extends Agent {
         }
     }
 
-    protected buildSystemPrompt(): string {
-        return worldGenSystemPrompt.trim();
+    protected getSystemPromptTemplate(): string {
+        return worldGenSystemPrompt;
     }
 
     private buildUserPrompt(options: WorldGenOptions): string {
