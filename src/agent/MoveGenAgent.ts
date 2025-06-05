@@ -13,6 +13,7 @@ interface MoveGenOptions {
     worldMap: WorldMap;
     playerEntity: Entity;
     globalTarget: string;
+    systemPromptVariables?: Record<string, string>;
 }
 
 export class MoveGenAgent extends Agent {
@@ -21,9 +22,7 @@ export class MoveGenAgent extends Agent {
 
     public async generateMove(options: MoveGenOptions): Promise<MoveGenAgentResponse> {
         const userPrompt = this.buildUserPrompt(options);
-        const response = await this.prompt(userPrompt, {
-            textLanguage: 'Russian',
-        });
+        const response = await this.prompt(userPrompt, options.systemPromptVariables);
 
         if (!response.content) {
             return { error: 'Empty response from AI' };

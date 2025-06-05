@@ -4,6 +4,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
 import enTranslation from './locales/en/translation.json';
 import ruTranslation from './locales/ru/translation.json';
+import enMoveGenPrompt from './locales/en/moveGenPrompt.json';
+import ruMoveGenPrompt from './locales/ru/moveGenPrompt.json';
 import { ResourceKey } from 'i18next/typescript/options';
 
 export async function initI18n() {
@@ -18,9 +20,11 @@ export async function initI18n() {
             resources: {
                 en: prepareTranslations({
                     translation: enTranslation,
+                    moveGenPrompt: enMoveGenPrompt,
                 }),
                 ru: prepareTranslations({
                     translation: ruTranslation,
+                    moveGenPrompt: ruMoveGenPrompt,
                 }),
             }
         });

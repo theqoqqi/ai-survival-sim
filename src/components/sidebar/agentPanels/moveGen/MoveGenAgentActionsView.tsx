@@ -20,7 +20,7 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
     playerEntity,
     onApplyMove,
 }) => {
-    const { t } = useComponentTranslation('MoveGenAgentActionsView');
+    const { t, i18n } = useComponentTranslation('MoveGenAgentActionsView');
     const [status, setStatus] = React.useState<string>(t('readyForMoveRequest'));
     const [globalTarget, setGlobalTarget] = React.useState<string>('');
 
@@ -28,10 +28,12 @@ export const MoveGenAgentActionsView: React.FC<MoveGenAgentActionsViewProps> = (
         setStatus(t('generatingMove'));
 
         try {
+            const systemPromptVariables = i18n.getResourceBundle(i18n.language, 'moveGenPrompt');
             const response = await agent.generateMove({
                 worldMap,
                 playerEntity,
                 globalTarget,
+                systemPromptVariables,
             });
 
             if (!response.move) {
