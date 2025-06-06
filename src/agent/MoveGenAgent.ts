@@ -73,7 +73,7 @@ export class MoveGenAgent extends Agent {
             globalTarget: options.globalTarget,
             previousMoves: this.moveHistory,
             latestThoughts,
-            playerTile,
+            playerTile: playerTile.toJson(),
             adjacentTiles,
             visibleTiles,
         };
