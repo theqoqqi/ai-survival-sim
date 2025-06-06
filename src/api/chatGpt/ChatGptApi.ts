@@ -61,6 +61,8 @@ export default class ChatGptApi {
             ...options.extraOptions,
         });
 
+        console.log(chatCompletion);
+
         return this.buildResult(chatCompletion, options);
     }
 
