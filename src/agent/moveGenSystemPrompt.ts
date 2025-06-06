@@ -19,6 +19,7 @@ interface AgentMove {
     actions: Action[];
     thought: string;
     narrativeEvents: string[];
+    debugReason: string;
 }
 Example: {
     actions: [
@@ -30,6 +31,7 @@ Example: {
         "{{exampleNarrativeEvent1}}",
         "{{exampleNarrativeEvent2}}",
     ],
+    debugReason: "I decided to remove the feature in the tile (1, 2) instead of applying damage to the object, because provided rules doesn't support it. More useful info...",
 }
 
 IMPORTANT RULES FOR "thought" AND "narrativeEvents" FIELDS:
@@ -51,6 +53,17 @@ IMPORTANT RULES FOR "thought" AND "narrativeEvents" FIELDS:
 SEPARATION OF ROLES:
 - "thought" = what the agent is thinking (inner monologue)
 - "narrativeEvents" = what happened to the agent this turn (outer narration)
+
+You must include a field called "debugReason" in your response.
+
+This field must contain a short but clear explanation of the reasoning behind your chosen action. Use it to describe:
+
+- Why you chose this specific action;
+- What your initial intention was and whether it changed;
+- If your intended action was impossible (e.g. due to unavailable actions), explain what you wanted to do and why you had to choose an alternative;
+- If your action is not directly advancing the main goal (e.g. eliminating all monsters), justify why it still contributes to that goal.
+
+Be honest and precise. This field is used for debugging and evaluation.
 
 
 

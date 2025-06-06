@@ -18,12 +18,14 @@ export interface AgentMove {
     actions: Action<any>[];
     thought: string;
     narrativeEvents: string[];
+    debugReason;
 }
 
 export interface SerializedAgentMove {
     actions: SerializedAction[];
     thought: string,
     narrativeEvents: string[],
+    debugReason;
 }
 
 export function parseMove(moveJson: SerializedAgentMove): AgentMove {
@@ -31,5 +33,6 @@ export function parseMove(moveJson: SerializedAgentMove): AgentMove {
         actions: moveJson.actions.map(createActionFromJson).filter(Boolean).map(action => action!),
         thought: moveJson.thought,
         narrativeEvents: moveJson.narrativeEvents,
+        debugReason: moveJson.debugReason,
     };
 }
