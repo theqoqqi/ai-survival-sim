@@ -30,8 +30,14 @@ export default function createActionFromJson(json: any): Action<any> | null {
     const factory = factories[actionType];
 
     if (!factory) {
+        console.warn('Unknown action type: ' + actionType);
         return null;
     }
 
-    return factory(json);
+    try {
+        return factory(json);
+    } catch (e) {
+        console.error('Failed to create action from json:', json, e);
+        return null;
+    }
 }
