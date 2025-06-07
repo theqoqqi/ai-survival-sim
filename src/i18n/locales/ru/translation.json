@@ -84,6 +84,7 @@
   "components.TileDetailsPanel.coordinates": "Координаты",
   "components.MoveListPanel.moves": "Ходы",
   "components.MoveItem.moveNumber": "Ход {{number}}",
+  "components.MoveItem.debugReasonTitle": "Обоснование хода (отладка)",
   "components.SettingsPanel.settings": "Настройки",
   "components.SettingsPanel.language": "Язык",
   "components.WorldMapView.worldMap": "Карта мира",

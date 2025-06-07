@@ -19,3 +19,22 @@
 .narrativeEvents li {
     padding: 4px 0;
 }
+
+.debugReason {
+    margin: 4px;
+    padding-left: 8px;
+
+    color: #555;
+    font-size: 0.8em;
+}
+
+.debugReasonTitle {
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.debugReasonText {
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.2em;
+}

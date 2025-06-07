@@ -28,7 +28,15 @@ export const MoveItem: React.FC<MoveItemProps> = ({ number, move, isExpanded, on
                     <li key={index}>{event}</li>
                 ))}
             </ul>
-            {isExpanded && <ActionList actions={move.actions} />}
+            {isExpanded && (
+                <>
+                    <ActionList actions={move.actions} />
+                    <div className={styles.debugReason}>
+                        <div className={styles.debugReasonTitle}>{t('debugReasonTitle')}:</div>
+                        <div className={styles.debugReasonText}>{move.debugReason}</div>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
