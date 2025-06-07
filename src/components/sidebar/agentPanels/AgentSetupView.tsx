@@ -17,6 +17,7 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
     const [modelName, setModelName] = React.useState<string>('');
     const [gpt4FreeMode, setGpt4FreeMode] = React.useState<boolean>(false);
     const [provider, setProvider] = React.useState<string>('');
+    const [useMessageHistory, setUseMessageHistory] = React.useState<boolean>(false);
     const [status, setStatus] = React.useState<string>(t('notInitialized'));
 
     const initializeAgent = () => {
@@ -33,6 +34,7 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                 modelName,
                 gpt4FreeMode,
                 provider,
+                useMessageHistory,
             });
         } catch (e) {
             setStatus(t('error') + ': ' + (e as Error)?.message);
@@ -90,6 +92,13 @@ export const AgentSetupView: React.FC<AgentSetupViewProps> = ({ storageKeyPrefix
                     options={getProviderOptions(modelName)}
                 />
             )}
+            <PersistentField
+                type='checkbox'
+                label={t('useMessageHistory')}
+                storageKey={`${storageKeyPrefix}_useMessageHistory`}
+                value={useMessageHistory}
+                onChange={value => setUseMessageHistory(value === 'true')}
+            />
             <button onClick={initializeAgent}>
                 {t('initializeAgent')}
             </button>

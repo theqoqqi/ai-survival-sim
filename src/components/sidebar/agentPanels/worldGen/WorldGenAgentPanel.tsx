@@ -16,10 +16,7 @@ export const WorldGenAgentPanel: React.FC<WorldGenAgentPanelProps> = ({ onGenera
     const [agent, setAgent] = React.useState<WorldGenAgent | null>(null);
 
     const onCreateAgent = (options: AgentDriverOptions) => {
-        setAgent(new WorldGenAgent(new ChatGptAgentDriver({
-            ...options,
-            useMessageHistory: false,
-        })));
+        setAgent(new WorldGenAgent(new ChatGptAgentDriver(options)));
     };
 
     return (

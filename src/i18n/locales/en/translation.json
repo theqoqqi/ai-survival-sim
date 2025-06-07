@@ -12,6 +12,7 @@
   "components.AgentSetupView.autoSelectProvider": "Auto-select",
   "components.AgentSetupView.initializeAgent": "Initialize agent",
   "components.AgentSetupView.status": "Status",
+  "components.AgentSetupView.useMessageHistory": "Use message history",
   "components.MoveGenAgentActionsView.readyForMoveRequest": "Ready for move request",
   "components.MoveGenAgentActionsView.generatingMove": "Generating move...",
   "components.MoveGenAgentActionsView.failedToGenerateMove": "Failed to generate move",

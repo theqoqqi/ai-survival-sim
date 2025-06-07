@@ -23,10 +23,7 @@ export const MoveGenAgentPanel: React.FC<MoveGenAgentPanelProps> = ({
     const { t } = useComponentTranslation('MoveGenAgentPanel');
     const [agent, setAgent] = React.useState<MoveGenAgent | null>(null);
     const onCreateAgent = (options: AgentDriverOptions) => {
-        setAgent(new MoveGenAgent(new ChatGptAgentDriver({
-            ...options,
-            useMessageHistory: true,
-        })));
+        setAgent(new MoveGenAgent(new ChatGptAgentDriver(options)));
     };
 
     return (
