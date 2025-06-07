@@ -8,6 +8,8 @@ import Action from './Action';
 import { AddEntityVarAction } from './AddEntityVarAction';
 import { RemoveEntityVarAction } from './RemoveEntityVarAction';
 import { SetEntityVarValueAction } from './SetEntityVarValueAction';
+import { AddEntityAction } from './AddEntityAction';
+import { RemoveEntityAction } from './RemoveEntityAction';
 
 const factories: Record<string, (json: any) => Action<any>> = {
     'jump': JumpAction.fromJson,
@@ -16,6 +18,8 @@ const factories: Record<string, (json: any) => Action<any>> = {
     'addItemToStack': AddItemToStackAction.fromJson,
     'removeItem': RemoveInventoryItemAction.fromJson,
     'setTileFeature': SetTileFeatureAction.fromJson,
+    'addEntity': AddEntityAction.fromJson,
+    'removeEntity': RemoveEntityAction.fromJson,
     'addEntityVar': AddEntityVarAction.fromJson,
     'removeEntityVar': RemoveEntityVarAction.fromJson,
     'setEntityVarValue': SetEntityVarValueAction.fromJson,
