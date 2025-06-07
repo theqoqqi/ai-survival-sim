@@ -145,6 +145,38 @@ To modify the feature in certain tile, use the following action format (or skip 
     };
 }
 
+To add a new entity, use the following action format:
+{
+    type: 'addEntity';
+    x: number;
+    y: number;
+    entity: {
+        id: string;
+        icon: string;
+        title: string;
+        inventory: {
+            id: string;
+            icon: string;
+            title: string;
+            description: string;
+            amount: number;
+        }[];
+        customVars?: {
+            [id: string]: {
+                icon: string;
+                title: string;
+                value: string;
+            };
+        };
+    };
+}
+
+To remove an entity, use the following action format:
+{
+    type: 'removeEntity';
+    entityId: string;
+}
+
 To add custom variable to the entity, use the following action format:
 {
     type: 'addEntityVar';
